@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    redpotion (0.1)
-      ProMotion (~> 2.0.0)
+    redpotion (0.2)
+      ProMotion (~> 2.0)
       afmotion
       cdq
       motion_print
-      ruby_motion_query (>= 0.8.0)
+      ruby_motion_query (~> 0.8)
 
 GEM
   remote: https://rubygems.org/
