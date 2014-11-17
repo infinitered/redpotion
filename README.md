@@ -4,7 +4,7 @@
 
 RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and other libraries. It also adds new features to better integrate RMQ with ProMotion.
 
-Its goals are to choose standard libraries and promote best practices, allowing you to developed iOS apps in record time.
+Its goals are to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 =========
 
