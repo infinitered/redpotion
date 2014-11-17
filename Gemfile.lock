@@ -1,10 +1,8 @@
 PATH
   remote: .
   specs:
-    redpotion (0.2)
+    redpotion (0.2.1)
       ProMotion (~> 2.0)
-      afmotion
-      cdq
       motion_print
       ruby_motion_query (~> 0.8)
 
@@ -13,74 +11,18 @@ GEM
   specs:
     ProMotion (2.0.1)
       methadone (~> 1.4)
-    activesupport (3.2.20)
-      i18n (~> 0.6, >= 0.6.4)
-      multi_json (~> 1.0)
-    afmotion (2.4.1)
-      motion-cocoapods (>= 1.4.1)
-      motion-require (>= 0.1)
-    builder (3.2.2)
-    cdq (0.1.10)
-      motion-yaml
-      ruby-xcdm (~> 0.0, >= 0.0.7)
-    claide (0.7.0)
-    cocoapods (0.34.4)
-      activesupport (>= 3.2.15, < 4)
-      claide (~> 0.7.0)
-      cocoapods-core (= 0.34.4)
-      cocoapods-downloader (~> 0.7.2)
-      cocoapods-plugins (~> 0.3.1)
-      cocoapods-trunk (~> 0.3.1)
-      cocoapods-try (~> 0.4.1)
-      colored (~> 1.2)
-      escape (~> 0.0.4)
-      json_pure (~> 1.8)
-      nap (~> 0.8)
-      open4 (~> 1.3)
-      xcodeproj (~> 0.19.4)
-    cocoapods-core (0.34.4)
-      activesupport (>= 3.2.15)
-      fuzzy_match (~> 2.0.4)
-      json_pure (~> 1.8)
-      nap (~> 0.8.0)
-    cocoapods-downloader (0.7.2)
-    cocoapods-plugins (0.3.2)
-      nap
-    cocoapods-trunk (0.3.1)
-      json_pure (~> 1.8)
-      nap (>= 0.8)
-      netrc (= 0.7.8)
-    cocoapods-try (0.4.2)
-    colored (1.2)
-    escape (0.0.4)
-    fuzzy_match (2.0.4)
-    i18n (0.6.11)
-    json_pure (1.8.1)
     methadone (1.8.0)
       bundler
-    motion-cocoapods (1.7.0)
-      cocoapods (>= 0.34)
-    motion-require (0.2.0)
-    motion-yaml (1.3)
     motion_print (0.0.4)
-    multi_json (1.10.1)
-    nap (0.8.0)
-    netrc (0.7.8)
-    open4 (1.3.4)
-    plist (3.1.0)
     rake (10.3.2)
-    ruby-xcdm (0.0.8)
-      activesupport (~> 3.2)
-      builder (~> 3.2)
-      plist (~> 3.1)
     ruby_motion_query (0.8.0)
-    xcodeproj (0.19.4)
-      activesupport (~> 3.0)
-      colored (~> 1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  ProMotion (~> 2.0)
+  motion_print
   rake
   redpotion!
+  ruby_motion_query (~> 0.8)

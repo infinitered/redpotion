@@ -1,0 +1,201 @@
+#!/usr/bin/env ruby
+
+require "erb"
+require "rubygems"
+require 'open-uri'
+
+$:.unshift(File.join(File.dirname(__FILE__), "/../lib/project"))
+require "version"
+
+class PotionCommandLine
+  HELP_TEXT = %{     potion version #{RedPotion::VERSION}
+
+     Some things you can do with the potion command:
+
+     > potion create my_new_app
+
+     > potion create model foo
+     > potion create controller foos
+     > potion create view bar
+     > potion create shared some_class_used_app_wide
+     > potion create lib some_class_used_by_multiple_apps
+
+     > potion create collection_view_controller foos
+     > potion create table_view_controller bars 
+
+     > potion -h, --help
+     > potion -v, --version 
+
+     > rmq_docs
+     > rmq_docs query
+     > rmq_docs "background image" }
+
+  class << self
+    VALID_CREATE_TYPES = [
+      :model, :controller, 
+      :view, 
+      :shared, 
+      :lib, 
+      :collection_view_controller, 
+      :table_view_controller
+    ]
+
+    def create(template_or_app_name, name, options)
+      @dry_run = true if options == 'dry_run'
+
+      if name
+        if VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
+          insert_from_template(template_or_app_name, name)
+        else
+          puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
+        end
+      else
+        #ensure_template_dir
+        create_app(template_or_app_name)
+      end
+    end
+
+    def create_app(app_name)
+      puts '     Creating app'
+
+      `motion create --template=git@github.com:infinitered/redpotion-template.git #{app_name}`
+
+      puts %{
+      Complete. Things you should do:
+      > cd #{app_name}
+      > bundle
+      > rake spec
+      > rake
+      (main)> exit
+
+      Then try these:
+      > rake device_name='iPhone 4s'
+      > rake device_name='iPhone 5s'
+      > rake device_name='iPhone 5s' target=7.1
+      > rake device_name='iPhone 6 Plus'
+      > rake device_name='iPad Retina'
+      > rake device
+
+      Or for XCode 5.1
+      > rake retina=3.5
+      > rake retina=4
+      > rake device_family=ipad}
+
+    end
+
+    def template_dir
+      "#{Dir.home}/Library/RubyMotion/template/potion-template"
+    end
+
+    # TODO Disabling for now, this needs to get latest template
+    def ensure_template_dir
+      return if Dir.exists?(template_dir)
+      `git clone git@github.com:infinitered/potion-template.git #{template_dir}`
+    end
+
+    def template_path(template_name)
+      sub_path = "templates/#{template_name}/"
+
+      # First check local directory, use that if it exists
+      if Dir.exist?("#{Dir.pwd}/#{sub_path}")
+        "#{Dir.pwd}/#{sub_path}"
+      else # Then check the gem
+        begin
+          spec = Gem::Specification.find_by_name("redpotion")
+          gem_root = spec.gem_dir
+          "#{gem_root}/#{sub_path}"
+        rescue Exception => e
+          puts "potion - could not find template directory\n"
+          nil
+        end
+      end
+    end
+
+    def insert_from_template(template_name, name)
+      puts `rmq create #{template_name} #{name}`
+      return
+
+      #if [:lib, :collection_view_controller, :shared, :controller].include?(template_name)
+      #end
+
+      puts "\n     Creating #{template_name}: #{name}\n\n"
+
+      return unless (@template_path = template_path(template_name))
+      files = Dir["#{@template_path}**/*"].select {|f| !File.directory? f}
+
+      @name = name.gsub(/_?(controller|stylesheet)/,'')
+      @name_camel_case = @name.split('_').map{|word| word.capitalize}.join
+
+      files.each do |template_file_path_and_name|
+        @in_app_path = File.dirname(template_file_path_and_name).gsub(@template_path, '')
+        @ext = File.extname(template_file_path_and_name)
+        @file_name = File.basename(template_file_path_and_name, @ext)
+        
+        @new_file_name = @file_name.gsub('name', @name)
+        @new_file_path_name = "#{Dir.pwd}/#{@in_app_path}/#{@new_file_name}#{@ext}"
+
+        if @dry_run
+          puts "\n     Instance vars:"
+          self.instance_variables.each{|var| puts "     #{var} = #{self.instance_variable_get(var)}"} 
+          puts
+        end
+
+        if Dir.exist?(@in_app_path)
+          puts "     Using existing directory: #{@in_app_path}"
+        else
+          puts "  \u0394  Creating directory: #{@in_app_path}"
+          Dir.mkdir(@in_app_path) unless @dry_run
+        end
+
+        results = load_and_parse_erb(template_file_path_and_name)
+
+        if File.exists?(@new_file_path_name)
+          puts "  X  File exists, SKIPPING: #{@new_file_path_name}"
+        else
+          puts "  \u0394  Creating file: #{@new_file_path_name}"
+          File.open(@new_file_path_name, 'w+') { |file| file.write(results) } unless @dry_run
+        end
+      end
+
+      puts "\n     Done"
+    end
+
+    def load_and_parse_erb(template_file_name_and_path)
+      template_file = File.open(template_file_name_and_path, 'r').read
+      erb = ERB.new(template_file)
+      erb.result(binding)
+    end
+  end
+end
+
+
+# Process input, execute actions
+unless ARGV.length > 0
+  puts "potion - Invalid command, do something like this: potion create my_new_app\n"
+  puts PotionCommandLine::HELP_TEXT
+  exit
+end
+
+action = ARGV[0]
+query = ARGV[1]
+
+case action
+when 'create'
+  PotionCommandLine.create(ARGV[1], ARGV[2], ARGV[3])
+when 'rmq_docs'
+  if query
+    query = URI::encode(query)
+    url = "http://rubymotionquery.com?s=#{query}&post_type=document"
+    `open #{url}`
+  else
+    `open http://rubymotionquery.com/documentation`
+  end
+when '--help', '-h'
+  puts PotionCommandLine::HELP_TEXT
+when '-v', '--version'
+  puts RedPotion::VERSION
+else
+  puts 'potion - Invalid action'
+  puts PotionCommandLine::HELP_TEXT
+end
+
