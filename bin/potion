@@ -64,6 +64,7 @@ class PotionCommandLine
       Complete. Things you should do:
       > cd #{app_name}
       > bundle
+      > rake pod:install
       > rake spec
       > rake
       (main)> exit

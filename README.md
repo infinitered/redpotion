@@ -2,12 +2,9 @@
 
 # RedPotion
 
-*Note the potion command isn't working yet. It will soon.*
-
-
 RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and other libraries. It also adds new features to better integrate RMQ with ProMotion.
 
-Its goals are to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
+Its goals are to choose standard libraries and promote best practices, allowing you to developed iOS apps in record time.
 
 =========
 
@@ -25,18 +22,17 @@ You can use both RMQ Plugins and ProMotion Add-ons
 
 ![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2014/11/ProMotion-addon-logo.png)
 
-ProMotion Addon
 
 ## Quick start
 
 ```
-gem install redpotion
+gem install red_potion
 
 potion create my_app
 bundle
 rake pod:install
-potion create model state
-potion create table_screen states
+potion create model state # This doesn't work yet
+potion create screen table states # This doesn't work yet
  # a few changes
 rake
 ```

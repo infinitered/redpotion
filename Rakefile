@@ -5,6 +5,9 @@ require './lib/redpotion'
 
 require 'bundler'
 require 'motion/project/template/gem/gem_tasks'
+
+require 'ProMotion'
+require 'motion_print'
 require 'ruby_motion_query'
 Bundler.require
 

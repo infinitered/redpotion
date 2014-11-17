@@ -14,10 +14,11 @@ Gem::Specification.new do |spec|
   spec.files         = Dir.glob("lib/**/*.rb")
   spec.files         << "README.md"
 
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
   spec.version       = RedPotion::VERSION
+
+  spec.executables << 'potion'
 
   spec.add_runtime_dependency "ruby_motion_query", "~> 0.8"
   spec.add_runtime_dependency "ProMotion", "~> 2.0"
