@@ -1,5 +1,5 @@
 class HomeScreen < PM::Screen
-  #title "RedPotion"
+  title "RedPotion"
   stylesheet MainStylesheet
 
   def on_load

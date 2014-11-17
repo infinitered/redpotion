@@ -4,7 +4,7 @@ PATH
     redpotion (0.2.3)
       ProMotion (~> 2.0)
       motion_print
-      ruby_motion_query (~> 0.8)
+      ruby_motion_query (~> 0.9)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +15,7 @@ GEM
       bundler
     motion_print (0.0.4)
     rake (10.3.2)
-    ruby_motion_query (0.8.0)
+    ruby_motion_query (0.9.0)
 
 PLATFORMS
   ruby
@@ -25,4 +25,4 @@ DEPENDENCIES
   motion_print
   rake
   redpotion!
-  ruby_motion_query (~> 0.8)
+  ruby_motion_query (~> 0.9)

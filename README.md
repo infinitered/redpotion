@@ -31,15 +31,12 @@ gem install red_potion
 potion create my_app
 bundle
 rake pod:install
-potion create model state # This doesn't work yet
-potion create screen table states # This doesn't work yet
- # a few changes
 rake
 ```
 
 ## New features for RMQ
 
-### You can use `find` instead of `rmq` in your views or screens
+### `find` is aliased to `rmq` so you can use it for more natural reading code:
 
 ```ruby
 find.all.hide
