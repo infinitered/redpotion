@@ -4,7 +4,7 @@
 
 RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and other libraries. It also adds new features to better integrate RMQ with ProMotion.
 
-Its goals are to choose standard libraries and promote best practices, allowing you to developed iOS apps in record time.
+Its goals are to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 =========
 
@@ -95,7 +95,7 @@ None so far. ProMotion is perfect just as it is :-)
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkoutut -b my-new-feature`)
+2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
