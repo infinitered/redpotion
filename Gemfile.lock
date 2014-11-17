@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redpotion (0.2.2)
+    redpotion (0.2.3)
       ProMotion (~> 2.0)
       motion_print
       ruby_motion_query (~> 0.8)

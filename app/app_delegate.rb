@@ -1,13 +1,14 @@
-class AppDelegate
-  attr_reader :window
+class AppDelegate < PM::Delegate
+  status_bar true, animation: :fade
 
-  def application(application, didFinishLaunchingWithOptions:launchOptions)
-    @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
+  def on_load(app, options)
+    open HomeScreen.new(nav_bar: true)
+  end
 
-    main_controller = MainController.new
-    @window.rootViewController = UINavigationController.alloc.initWithRootViewController(main_controller)
-
-    @window.makeKeyAndVisible
-    true
+  # Remove this if you are only supporting portrait
+  def application(application, willChangeStatusBarOrientation: new_orientation, duration: duration)
+    # Manually set RMQ's orientation before the device is actually oriented
+    # So that we can do stuff like style views before the rotation begins
+    rmq.device.orientation = new_orientation
   end
 end

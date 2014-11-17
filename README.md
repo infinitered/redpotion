@@ -37,7 +37,60 @@ potion create screen table states # This doesn't work yet
 rake
 ```
 
-![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2014/11/pm_table.png)
+## New features for RMQ
+
+### You can use `find` instead of `rmq` in your views or screens
+
+```ruby
+find.all.hide
+find(my_view).children.nudge(right: 10)
+```
+
+### You can use `app` directly in code, which is the same as `rmq.app`
+
+So you also get window, device, and delegate from that.
+
+```
+app.device
+app.window
+app.delegate
+```
+
+### You can use the folling in a UIView or Screen or UIViewController without prefacing it with `rmq`:
+
+```ruby
+append
+append!
+prepend
+prepend!
+create
+create!
+build
+build!
+on
+apply_style
+reapply_styles
+style
+```
+
+### Stylesheet in your screens
+
+You can specify the stylesheet in your screen like so:
+
+```ruby
+class HomeScreen < PM::Screen
+  title "RedPotion"
+  stylesheet HomeStylesheet
+
+  def on_load
+  end
+end
+```
+
+## New features for ProMotion
+
+None so far. ProMotion is perfect just as it is :-)
+
 
 ## Contributing
 
