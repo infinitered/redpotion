@@ -53,7 +53,7 @@ app.window
 app.delegate
 ```
 
-### You can use the folling in a UIView or Screen or UIViewController without prefacing it with `rmq`:
+### You can use the following in a UIView or Screen or UIViewController without prefacing it with `rmq`:
 
 ```ruby
 append
