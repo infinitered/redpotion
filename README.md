@@ -26,7 +26,7 @@ You can use both RMQ Plugins and ProMotion Add-ons
 ## Quick start
 
 ```
-gem install red_potion
+gem install redpotion
 
 potion create my_app
 bundle
