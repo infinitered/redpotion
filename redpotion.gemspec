@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.executables << 'potion'
 
   spec.add_runtime_dependency "ruby_motion_query", "~> 0.9"
-  spec.add_runtime_dependency "ProMotion", "~> 2.0"
+  spec.add_runtime_dependency "ProMotion", "~> 2.1"
   spec.add_runtime_dependency "motion_print"
   spec.add_development_dependency "rake"
 end

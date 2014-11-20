@@ -2,15 +2,15 @@ PATH
   remote: .
   specs:
     redpotion (0.3.1)
-      ProMotion (~> 2.0)
+      ProMotion (~> 2.1)
       motion_print
       ruby_motion_query (~> 0.9)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    ProMotion (2.0.1)
-      methadone (~> 1.4)
+    ProMotion (2.1.0)
+      methadone (~> 1.7)
     methadone (1.8.0)
       bundler
     motion_print (0.0.4)
