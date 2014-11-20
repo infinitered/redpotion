@@ -21,8 +21,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ProMotion (~> 2.0)
-  motion_print
   rake
   redpotion!
-  ruby_motion_query (~> 0.9)
