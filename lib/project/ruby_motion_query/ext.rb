@@ -36,7 +36,7 @@ class UIView
   end
 
   def on(event, args = {}, &block)
-    rmq(self).on(event, args, block)
+    rmq(self).on(event, args, &block)
   end
 
   def apply_style(style_name)
@@ -48,7 +48,7 @@ class UIView
   end
 
   def style(&block)
-    rmq(self).style(block)
+    rmq(self).style(&block)
   end
 end
 
