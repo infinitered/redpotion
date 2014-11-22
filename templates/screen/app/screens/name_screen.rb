@@ -1,4 +1,4 @@
-class <%= @name_camel_case %>Screen < PM::Screen
+class <%= @name_camel_case %>Screen < PM::<%= @screen_base %>
   title "Your title here"
   stylesheet <%= @name_camel_case %>ScreenStylesheet
 
