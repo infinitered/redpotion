@@ -26,7 +26,7 @@ You can use both RMQ Plugins and ProMotion Add-ons
 ## Quick start
 
 ```
-gem install red_potion
+gem install redpotion
 
 potion create my_app
 bundle
@@ -53,7 +53,7 @@ app.window
 app.delegate
 ```
 
-### You can use the folling in a UIView or Screen or UIViewController without prefacing it with `rmq`:
+### You can use the following in a UIView or Screen or UIViewController without prefacing it with `rmq`:
 
 ```ruby
 append
