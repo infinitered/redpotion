@@ -36,7 +36,7 @@ rake
 
 ## New features for RMQ
 
-### `find` is aliased to `rmq` so you can use it for more natural reading code:
+### `find` is aliased to `rmq` so you can use it for a more natural reading code:
 
 ```ruby
 find.all.hide
