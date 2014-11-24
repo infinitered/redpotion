@@ -50,6 +50,10 @@ class UIView
   def style(&block)
     rmq(self).style(&block)
   end
+
+  def color
+    rmq.color
+  end
 end
 
 class UIViewController
@@ -89,5 +93,9 @@ class ProMotion::Screen
 
   def reapply_styles
     rmq.all.reapply_styles
+  end
+
+  def color
+    view.color
   end
 end

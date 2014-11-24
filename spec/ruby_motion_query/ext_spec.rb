@@ -163,10 +163,27 @@ describe 'RubyMotionQuery ext' do
         @view.text.should.equal("test style")
       end
     end
+    describe "color" do
+      before do
+        @view = UIView.alloc.init
+      end
+
+      it "should return rmq.color" do
+        @view.color.should.equal(RubyMotionQuery::Color)
+      end
+    end
   end
 
   describe "Promotion::Screen" do
-    class TestScreen < PM::Screen; end
+    class TestScreenStylesheet < ApplicationStylesheet
+      def root_view(st)
+        st.background_color = color.white
+      end
+    end
+    class TestScreen < PM::Screen
+      stylesheet TestScreenStylesheet
+    end
+
     before { @screen = TestScreen.new }
 
     describe "append" do
@@ -265,6 +282,11 @@ describe 'RubyMotionQuery ext' do
 
         @screen.reapply_styles
         @view.text.should.equal('style from sheet')
+      end
+    end
+    describe "color" do
+      it "should return rmq.color" do
+        @screen.color.should.equal(RubyMotionQuery::Color)
       end
     end
   end
