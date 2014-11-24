@@ -64,31 +64,31 @@ end
 
 class ProMotion::Screen
   def append(view_or_constant, style=nil, opts = {})
-    rmq(view).append(view_or_constant, style, opts)
+    view.append(view_or_constant, style, opts)
   end
   def append!(view_or_constant, style=nil, opts = {})
-    rmq(view).append!(view_or_constant, style, opts)
+    view.append!(view_or_constant, style, opts)
   end
 
   def prepend(view_or_constant, style=nil, opts = {})
-    rmq(view).prepend(view_or_constant, style, opts)
+    view.prepend(view_or_constant, style, opts)
   end
   def prepend!(view_or_constant, style=nil, opts = {})
-    rmq(view).prepend!(view_or_constant, style, opts)
+    view.prepend!(view_or_constant, style, opts)
   end
 
   def create(view_or_constant, style=nil, opts = {})
-    rmq(view).create(view_or_constant, style, opts)
+    view.create(view_or_constant, style, opts)
   end
   def create!(view_or_constant, style=nil, opts = {})
-    rmq(view).create!(view_or_constant, style, opts)
+    view.create!(view_or_constant, style, opts)
   end
 
   def build(view_or_constant, style = nil, opts = {})
-    rmq(view).build(view_or_constant, style, opts)
+    view.build(view_or_constant, style, opts)
   end
   def build!(view_or_constant, style = nil, opts = {})
-    rmq(view).build!(view_or_constant, style, opts)
+    view.build!(view_or_constant, style, opts)
   end
 
   def reapply_styles
