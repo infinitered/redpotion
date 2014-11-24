@@ -164,4 +164,108 @@ describe 'RubyMotionQuery ext' do
       end
     end
   end
+
+  describe "Promotion::Screen" do
+    class TestScreen < PM::Screen; end
+    before { @screen = TestScreen.new }
+
+    describe "append" do
+      it "should return a RMQ object" do
+        appended = @screen.append(UIView, nil, {})
+        appended.is_a?(RubyMotionQuery::RMQ).should.be.true
+      end
+
+      it "should create a new object class provided" do
+        appended = @screen.append(UIView, nil, {})
+        appended.get.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "append!" do
+      it "should return the appended object" do
+        appended = @screen.append!(UIView, nil, {})
+        appended.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "prepend" do
+      it "should return a RMQ object" do
+        prepended = @screen.prepend(UIView, nil, {})
+        prepended.is_a?(RubyMotionQuery::RMQ).should.be.true
+      end
+
+      it "should create a new object class provided" do
+        prepended = @screen.prepend(UIView, nil, {})
+        prepended.get.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "prepend!" do
+      it "should return the appended object" do
+        prepended = @screen.prepend!(UIView, nil, {})
+        prepended.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "create" do
+      it "should return a RMQ object" do
+        created = @screen.create(UIView, nil, {})
+        created.is_a?(RubyMotionQuery::RMQ).should.be.true
+      end
+
+      it "should create a new object class provided" do
+        created = @screen.create(UIView, nil, {})
+        created.get.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "create!" do
+      it "should return the appended object" do
+        created = @screen.create!(UIView, nil, {})
+        created.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "build" do
+      it "should return a RMQ object" do
+        built = @screen.build(UIView, nil, {})
+        built.is_a?(RubyMotionQuery::RMQ).should.be.true
+      end
+
+      it "should create a new object class provided" do
+        built = @screen.build(UIView, nil, {})
+        built.get.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "build!" do
+      it "should return the appended object" do
+        built = @screen.build!(UIView, nil, {})
+        built.is_a?(UIView).should.be.true
+      end
+    end
+
+    describe "reapply_styles" do
+      class TestStylesheet
+        def root_view(st)
+          st.background_color = UIColor.greenColor
+        end
+        def fake(st)
+          st.text = 'style from sheet'
+        end
+      end
+
+      it "should reapply styles" do
+        TestScreen.stylesheet(TestStylesheet)
+        @view = @screen.append!(UILabel, :fake)
+        @view.text.should.equal('style from sheet')
+
+        @view.text = nil
+        @view.text.should.be.nil
+
+        @screen.reapply_styles
+        @view.text.should.equal('style from sheet')
+      end
+    end
+  end
 end

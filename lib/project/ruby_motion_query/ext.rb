@@ -80,11 +80,11 @@ class ProMotion::Screen
     rmq(view).create!(view_or_constant, style, opts)
   end
 
-  def build(view, style = nil, opts = {})
-    rmq(view).build(view, style, opts)
+  def build(view_or_constant, style = nil, opts = {})
+    rmq(view).build(view_or_constant, style, opts)
   end
-  def build!(view, style = nil, opts = {})
-    rmq(view).build!(view, style, opts)
+  def build!(view_or_constant, style = nil, opts = {})
+    rmq(view).build!(view_or_constant, style, opts)
   end
 
   def reapply_styles
