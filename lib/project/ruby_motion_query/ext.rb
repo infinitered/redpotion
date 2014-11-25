@@ -54,6 +54,10 @@ class UIView
   def color
     rmq.color
   end
+
+  def font
+    rmq.font
+  end
 end
 
 class UIViewController
@@ -97,5 +101,9 @@ class ProMotion::Screen
 
   def color
     view.color
+  end
+
+  def font
+    view.font
   end
 end

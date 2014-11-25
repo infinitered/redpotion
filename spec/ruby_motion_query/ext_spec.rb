@@ -172,6 +172,16 @@ describe 'RubyMotionQuery ext' do
         @view.color.should.equal(RubyMotionQuery::Color)
       end
     end
+
+    describe "font" do
+      before do
+        @view = UIView.alloc.init
+      end
+
+      it "should return rmq.font" do
+        @view.font.should.equal(RubyMotionQuery::Font)
+      end
+    end
   end
 
   describe "Promotion::Screen" do
@@ -287,6 +297,12 @@ describe 'RubyMotionQuery ext' do
     describe "color" do
       it "should return rmq.color" do
         @screen.color.should.equal(RubyMotionQuery::Color)
+      end
+    end
+
+    describe "font" do
+      it "should return rmq.font" do
+        @screen.font.should.equal(RubyMotionQuery::Font)
       end
     end
   end
