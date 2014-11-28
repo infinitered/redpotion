@@ -11,8 +11,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/infinitered/redpotion"
   spec.license       = "MIT"
 
-  spec.files         = Dir.glob("lib/**/*.rb")
-  spec.files         << "README.md"
+  files = []
+  files << 'README.md'
+  files.concat(Dir.glob('lib/**/*.rb'))
+  files.concat(Dir.glob('templates/**/*.rb'))
+  spec.files = files
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
