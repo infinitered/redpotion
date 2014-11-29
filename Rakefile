@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
+
 require 'motion/project/template/ios'
-require './lib/redpotion'
-
-require 'motion/project/template/gem/gem_tasks'
-
-require 'ProMotion'
+require "bundler/gem_tasks"
+require "bundler/setup"
 require 'motion_print'
-require 'ruby_motion_query'
-
-require 'bundler'
 Bundler.require
 
 Motion::Project::App.setup do |app|
