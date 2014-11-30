@@ -1,8 +1,12 @@
 module ProMotion
   module ScreenModule
     def view_did_load
-      self.rmq.stylesheet = self.class.rmq_style_sheet_class
-      self.view.rmq.apply_style :root_view
+      if self.class.rmq_style_sheet_class.nil?
+        puts "[Redpotion Error] Stylesheet should be set in #{self.class}, ex: 'stylesheet #{self.class}Stylesheet'"
+      else
+        self.rmq.stylesheet = self.class.rmq_style_sheet_class
+        self.view.rmq.apply_style :root_view
+      end
 
       self.on_load
     end
