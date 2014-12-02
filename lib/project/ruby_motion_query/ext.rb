@@ -66,7 +66,7 @@ class UIViewController
   end
 end
 
-class ProMotion::Screen
+class ProMotion::ScreenModule
   def append(view_or_constant, style=nil, opts = {})
     view.append(view_or_constant, style, opts)
   end
