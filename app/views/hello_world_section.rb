@@ -1,4 +1,4 @@
-class Section < UIView
+class HelloWorldSection < UIView
   def on_load
     apply_style :section
 

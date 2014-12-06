@@ -11,12 +11,21 @@ describe 'RubyMotionQuery ext' do
 
   describe "UIView" do
     it "should call on_load instead of rmq_build if rmq_build does not exist in the view" do
-      rmq.create(TestOnLoadView).get.on_loaded.should == true
+      rmq.create(TestView).get.on_loaded.should == true
 
-      test_view = TestOnLoadView.alloc.initWithFrame([[0,0],[10,10]])
+      test_view = TestView.alloc.initWithFrame([[0,0],[10,10]])
       test_view.on_loaded.should.be.nil
       rmq.build(test_view)
       test_view.on_loaded.should.be.true
+    end
+
+    it "should call on_styled instead of rmq_style_applied if rmq_style_applied does not exist in the view" do
+      test_view = rmq.create!(TestView, :root_view)
+      test_view.on_styled_fired.should.be.true
+      test_view = TestView.alloc.initWithFrame([[0,0],[10,10]])
+      test_view.on_styled_fired.should.be.nil
+      test_view.apply_style(:root_view)
+      test_view.on_styled_fired.should.be.true
     end
 
     describe "#append" do
@@ -316,11 +325,15 @@ describe 'RubyMotionQuery ext' do
     end
   end
 end
-
-
-class TestOnLoadView < UIView
+class TestView < UIView
   attr_reader :on_loaded
+  attr_reader :on_styled_fired
+
   def on_load
     @on_loaded = true
+  end
+
+  def on_styled
+    @on_styled_fired = true
   end
 end

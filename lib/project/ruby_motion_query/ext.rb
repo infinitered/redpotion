@@ -17,6 +17,16 @@ class UIView
   def on_load
   end
 
+  def on_styled
+  end
+
+  # You can user either rmq_style_applied or on_styled, not both.  If you have both on_styled will be ignored,
+  # you can however call it from rmq_style_applied.  They are the same, on_styled follows the Promotion style
+  # and is recommended.
+  def rmq_style_applied
+    on_styled
+  end
+
   def append(view_or_constant, style=nil, opts = {})
     rmq(self).append(view_or_constant, style, opts)
   end
