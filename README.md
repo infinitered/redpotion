@@ -34,6 +34,21 @@ rake pod:install
 rake
 ```
 
+## Installation
+
+- `gem install redpotion`
+
+If you use rbenv
+
+- `rbenv rehash`
+
+add it to your `Gemfile`:
+
+- `gem 'redpotion'`
+
+Do **NOT** use RedPotion from github, we don't know why, but it will throw exceptions if you do; we're currently investigating why.
+
+
 ## New generators to integrate RMQ & ProMotion nicely ##
 
 Our new generates allow you to create your ProMotion screen and stylesheet template to let you hit the ground running.  Currently the following RedPotion generators exist:
@@ -41,11 +56,12 @@ Our new generates allow you to create your ProMotion screen and stylesheet templ
 ```
 potion create screen foo
 potion create table_screen foo
+potion create view foo
+
 # All rmq generators work with the potion command as well
 potion create model foo
-potion create view bar
-potion create shared some_class_used_app_wide
-potion create lib some_class_used_by_multiple_apps
+potion create shared foo
+potion create lib foo
 
 # rmq controller generators also still exist
 # but screens are preferred to get the redpotion value
@@ -104,9 +120,26 @@ class HomeScreen < PM::Screen
 end
 ```
 
+### rmq_build can now be called on_load
+
+You can use either rmq_build or on_load, they do exactly the same thing. You can only use one or the other. `on_load` is preferred as it matches the screen's onload.
+
+```ruby
+class Section < UIView
+  def on_load
+    apply_style :section
+
+    append(UIButton, :section_button).on(:touch) do
+      mp "Button touched"
+    end
+  end
+end
+```
+
+
 ## New features for ProMotion
 
-None so far. ProMotion is perfect just as it is :-)
+ProMotion 2.2.0 added on_load and on_styled to match RedPotion
 
 
 ## Contributing
