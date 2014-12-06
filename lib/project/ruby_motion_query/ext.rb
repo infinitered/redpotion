@@ -100,10 +100,10 @@ class ProMotion::ScreenModule
   end
 
   def color
-    view.color
+    rmq.color
   end
 
   def font
-    view.font
+    rmq.font
   end
 end
