@@ -7,7 +7,7 @@ class HomeScreen < PM::Screen
     set_nav_bar_button :right, title: "Right", action: :nav_right_button
 
     @hello_world_label = append!(UILabel, :hello_world)
-    append Section # Section will handle its own styling
+    append HelloWorldSection # Section will handle its own styling
   end
 
   def nav_left_button
