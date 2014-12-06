@@ -16,3 +16,4 @@ nbproject
 .sass-cache
 .idea
 .dat*.*
+rm_spec_output

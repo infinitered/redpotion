@@ -17,11 +17,12 @@ class PotionCommandLine
      > potion create model foo
      > potion create screen foo
      > potion create table_screen foo
-     > potion create controller foos
      > potion create view bar
      > potion create shared some_class_used_app_wide
      > potion create lib some_class_used_by_multiple_apps
 
+     You can still create controllers, but you should create screens instead
+     > potion create controller foos
      > potion create collection_view_controller foos
      > potion create table_view_controller bars 
 
@@ -116,7 +117,7 @@ class PotionCommandLine
     end
 
     def insert_from_template(template_name, name)
-      unless %w{screen table_screen}.include? template_name
+      unless %w{screen table_screen view}.include? template_name
         puts `rmq create #{template_name} #{name}`
         return
       else

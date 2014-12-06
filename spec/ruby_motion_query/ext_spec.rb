@@ -10,6 +10,15 @@ describe 'RubyMotionQuery ext' do
   end
 
   describe "UIView" do
+    it "should call on_load instead of rmq_build if rmq_build does not exist in the view" do
+      rmq.create(TestOnLoadView).get.on_loaded.should == true
+
+      test_view = TestOnLoadView.alloc.initWithFrame([[0,0],[10,10]])
+      test_view.on_loaded.should.be.nil
+      rmq.build(test_view)
+      test_view.on_loaded.should.be.true
+    end
+
     describe "#append" do
       before { @view = UIView.alloc.init }
 
@@ -305,5 +314,13 @@ describe 'RubyMotionQuery ext' do
         @screen.font.should.equal(RubyMotionQuery::Font)
       end
     end
+  end
+end
+
+
+class TestOnLoadView < UIView
+  attr_reader :on_loaded
+  def on_load
+    @on_loaded = true
   end
 end

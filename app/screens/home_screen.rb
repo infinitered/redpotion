@@ -1,12 +1,13 @@
 class HomeScreen < PM::Screen
   title "RedPotion"
-  stylesheet MainStylesheet
+  stylesheet HomeScreenStylesheet
 
   def on_load
     set_nav_bar_button :left, system_item: :camera, action: :nav_left_button
     set_nav_bar_button :right, title: "Right", action: :nav_right_button
 
     @hello_world_label = append!(UILabel, :hello_world)
+    append Section # Section will handle its own styling
   end
 
   def nav_left_button
