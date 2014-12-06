@@ -34,6 +34,26 @@ rake pod:install
 rake
 ```
 
+## New generators to integrate RMQ & ProMotion nicely ##
+
+Our new generates allow you to create your ProMotion screen and stylesheet template to let you hit the ground running.  Currently the following RedPotion generators exist:
+
+```
+potion create screen foo
+potion create table_screen foo
+# All rmq generators work with the potion command as well
+potion create model foo
+potion create view bar
+potion create shared some_class_used_app_wide
+potion create lib some_class_used_by_multiple_apps
+
+# rmq controller generators also still exist
+# but screens are preferred to get the redpotion value
+potion create controller foo
+potion create collection_view_controller foos
+potion create table_view_controller bars
+```
+
 ## New features for RMQ
 
 ### `find` is aliased to `rmq` so you can use it for a more natural reading code:
