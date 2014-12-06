@@ -10,7 +10,6 @@ class <%= @name_camel_case %>Screen < PM::<%= @screen_base %>
     []
   end
   <% end %>
-
   # You don't have to reapply styles to all UIViews, if you want to optimize,
   # another way to do it is tag the views you need to restyle in your stylesheet,
   # then only reapply the tagged views, like so:
@@ -21,7 +20,7 @@ class <%= @name_camel_case %>Screen < PM::<%= @screen_base %>
   #   st.tag(:reapply_style)
   # end
   #
-  # # Then in willAnimateRotationToInterfaceOrientation
+  # Then in willAnimateRotationToInterfaceOrientation
   # find(:reapply_style).reapply_styles
   def willAnimateRotationToInterfaceOrientation(orientation, duration: duration)
     find.all.reapply_styles

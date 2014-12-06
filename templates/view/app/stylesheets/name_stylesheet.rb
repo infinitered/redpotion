@@ -6,7 +6,7 @@
 # Another option is to use your controller's stylesheet to style this view. This
 # works well if only one controller uses it. If you do that, delete the
 # view's stylesheet with:
-#   rm app/stylesheets/views/<%= @name %>_stylesheet.rb
+#   rm app/stylesheets/<%= @name %>_stylesheet.rb
 
 module <%= @name_camel_case %>Stylesheet
 

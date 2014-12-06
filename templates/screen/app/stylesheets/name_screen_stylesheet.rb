@@ -1,7 +1,6 @@
 class <%= @name_camel_case %>ScreenStylesheet < ApplicationStylesheet
-    # Add your view stylesheets here. You can then override styles if needed,
-  # example:
-  #   # include FooStylesheet
+  # Add your view stylesheets here. You can then override styles if needed,
+  # example: include FooStylesheet
 
   def setup
     # Add sytlesheet specific setup stuff here.

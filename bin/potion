@@ -121,8 +121,10 @@ class PotionCommandLine
         puts `rmq create #{template_name} #{name}`
         return
       else
-        @screen_base = template_name.split('_').collect(&:capitalize).join
-        template_name = 'screen'
+        if template_name =~ /.*screen/
+          @screen_base = template_name.split('_').collect(&:capitalize).join
+          template_name = 'screen'
+        end
       end
 
       #if [:lib, :collection_view_controller, :shared, :controller].include?(template_name)
