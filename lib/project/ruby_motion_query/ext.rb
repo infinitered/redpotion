@@ -78,6 +78,17 @@ class UIView
   def font
     rmq.font
   end
+
+  def image
+    rmq.image
+  end
+
+  def stylesheet
+    rmq.stylesheet
+  end
+  def stylesheet=(value)
+    rmq.stylesheet = value
+  end
 end
 
 class UIViewController
@@ -125,5 +136,16 @@ class ProMotion::ScreenModule
 
   def font
     rmq.font
+  end
+
+  def image
+    rmq.image
+  end
+
+  def stylesheet
+    rmq.stylesheet
+  end
+  def stylesheet=(value)
+    rmq.stylesheet = value
   end
 end
