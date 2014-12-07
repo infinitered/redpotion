@@ -2,9 +2,9 @@
 
 # RedPotion
 
-RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and other libraries. It also adds new features to better integrate RMQ with ProMotion.
+We believe iPhone development should be clean, scalable, and fast with a langauge that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 
-Its goals are to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
+RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and [MotionPrint](https://github.com/MohawkApps/motion_print). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 =========
 
@@ -144,6 +144,7 @@ ProMotion 2.2.0 added on_load and on_styled to match RedPotion
 
 ## Contributing
 
+0. Create an issue in GitHub to make sure your PR will be accepted.
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
