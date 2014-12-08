@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redpotion (0.4.3)
+    redpotion (0.4.6)
       ProMotion (~> 2.2)
       motion-cocoapods
       motion_print

@@ -95,7 +95,6 @@ end
 
 class UIViewController
   def on_load
-    # Abstract
   end
 
   def append(view_or_constant, style=nil, opts = {})
@@ -148,12 +147,76 @@ class UIViewController
   def stylesheet=(value)
     rmq.stylesheet = value
   end
-
   def self.stylesheet(style_sheet_class)
     @rmq_style_sheet_class = style_sheet_class
   end
-
   def self.rmq_style_sheet_class
     @rmq_style_sheet_class
+  end
+
+  def view_did_load
+  end
+  def viewDidLoad
+    if self.class.rmq_style_sheet_class
+      self.rmq.stylesheet = self.class.rmq_style_sheet_class
+      self.view.rmq.apply_style :root_view
+    end
+
+    self.view_did_load
+    self.on_load
+  end
+
+  def view_will_appear(animated)
+  end
+  def viewWillAppear(animated)
+    self.view_will_appear(animated)
+  end
+
+  def view_did_appear(animated)
+  end
+  def viewDidAppear(animated)
+    self.view_did_appear(animated)
+  end
+
+  def view_will_disappear(animated)
+  end
+  def viewWillDisappear(animated)
+    self.view_will_disappear(animated)
+  end
+
+  def view_did_disappear(animated)
+  end
+  def viewDidDisappear(animated)
+    self.view_did_disappear(animated)
+  end
+
+  def should_rotate(orientation)
+  end
+  def shouldAutorotateToInterfaceOrientation(orientation)
+    self.should_rotate(orientation)
+  end
+
+  def should_autorotate
+  end
+  def shouldAutorotate
+    self.should_autorotate
+  end
+
+  def will_rotate(orientation, duration)
+  end
+  def willRotateToInterfaceOrientation(orientation, duration:duration)
+    self.will_rotate(orientation, duration)
+  end
+
+  def on_rotate(orientation)
+  end
+  def didRotateFromInterfaceOrientation(orientation)
+    self.on_rotate orientation
+  end
+
+  def will_animate_rotate(orientation, duration)
+  end
+  def willAnimateRotationToInterfaceOrientation(orientation, duration: duration)
+    self.will_animate_rotate(orientation, duration)
   end
 end

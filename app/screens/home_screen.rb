@@ -8,6 +8,9 @@ class HomeScreen < PM::Screen
 
     @hello_world_label = append!(UILabel, :hello_world)
     append HelloWorldSection # Section will handle its own styling
+    append(UIButton, :open_table_button).on(:touch) do
+      open TasksScreen.new(nav_bar: true)
+    end
   end
 
   def nav_left_button
@@ -30,7 +33,7 @@ class HomeScreen < PM::Screen
   #
   # # Then in willAnimateRotationToInterfaceOrientation
   # find(:reapply_style).reapply_styles
-  def willAnimateRotationToInterfaceOrientation(orientation, duration: duration)
+  def will_animate_rotate(orientation, duration)
     find.all.reapply_styles
   end
 end
