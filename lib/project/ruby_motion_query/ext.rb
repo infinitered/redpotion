@@ -97,9 +97,7 @@ class UIViewController
   def on_load
     # Abstract
   end
-end
 
-class ProMotion::ScreenModule
   def append(view_or_constant, style=nil, opts = {})
     view.append(view_or_constant, style, opts)
   end
@@ -149,5 +147,13 @@ class ProMotion::ScreenModule
   end
   def stylesheet=(value)
     rmq.stylesheet = value
+  end
+
+  def self.stylesheet(style_sheet_class)
+    @rmq_style_sheet_class = style_sheet_class
+  end
+
+  def self.rmq_style_sheet_class
+    @rmq_style_sheet_class
   end
 end
