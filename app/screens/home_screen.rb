@@ -35,7 +35,7 @@ class HomeScreen < PM::Screen
   #   st.tag(:reapply_style)
   # end
   #
-  # # Then in willAnimateRotationToInterfaceOrientation
+  # # Then in will_animate_rotate
   # find(:reapply_style).reapply_styles
   def will_animate_rotate(orientation, duration)
     find.all.reapply_styles
