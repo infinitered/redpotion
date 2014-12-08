@@ -23,8 +23,14 @@ class HomeScreenStylesheet < ApplicationStylesheet
   end
 
   def open_table_button(st)
-    st.frame = {centered: :horizontal, fb: 10, w: 200, h: 20}
+    st.frame = {centered: :horizontal, fb: 40, w: 200, h: 20}
     st.color = color.tint
     st.text = "Open table screen"
+  end
+
+  def open_metal_table_button(st)
+    open_table_button st
+    st.frame = {bp: 10}
+    st.text = "Open metal table screen"
   end
 end

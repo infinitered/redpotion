@@ -11,6 +11,10 @@ class HomeScreen < PM::Screen
     append(UIButton, :open_table_button).on(:touch) do
       open TasksScreen.new(nav_bar: true)
     end
+
+    append(UIButton, :open_metal_table_button).on(:touch) do
+      open MetalTableScreen.new(nav_bar: true)
+    end
   end
 
   def nav_left_button

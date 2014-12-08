@@ -3,7 +3,7 @@ class TaskCell < PM::TableViewCell
     apply_style :cell
 
     find(self.contentView).tap do |q|
-      @title = append!(UILabel, :cell_title)
+      @title = q.append!(UILabel, :cell_title)
     end
   end
 
