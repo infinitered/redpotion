@@ -92,7 +92,6 @@ class UIView
     rmq.stylesheet = value
   end
 end
-
 class UIViewController
   def on_load
   end
@@ -156,14 +155,17 @@ class UIViewController
 
   def view_did_load
   end
+
   def viewDidLoad
     if self.class.rmq_style_sheet_class
       self.rmq.stylesheet = self.class.rmq_style_sheet_class
       self.view.rmq.apply_style :root_view
     end
+    self.view_did_load unless pm_handles_did_load?
+  end
 
-    self.view_did_load
-    self.on_load
+  def pm_handles_did_load?
+    self.is_a?(ProMotion::ViewController) || self.is_a?(ProMotion::TableScreen)
   end
 
   def view_will_appear(animated)

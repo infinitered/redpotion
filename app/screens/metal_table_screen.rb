@@ -15,7 +15,6 @@ class MetalTableScreen < UITableViewController
 
   def on_load
     load_data
-
     view.tap do |table|
       table.delegate = self
       table.dataSource = self
