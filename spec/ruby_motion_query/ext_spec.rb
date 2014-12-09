@@ -181,10 +181,9 @@ describe 'RubyMotionQuery ext' do
         @view.text.should.equal("test style")
       end
     end
+
     describe "color" do
-      before do
-        @view = UIView.alloc.init
-      end
+      before { @view = UIView.alloc.init }
 
       it "should return rmq.color" do
         @view.color.should.equal(RubyMotionQuery::Color)
@@ -192,12 +191,36 @@ describe 'RubyMotionQuery ext' do
     end
 
     describe "font" do
-      before do
-        @view = UIView.alloc.init
-      end
+      before { @view = UIView.alloc.init }
 
       it "should return rmq.font" do
         @view.font.should.equal(RubyMotionQuery::Font)
+      end
+    end
+
+    describe "image" do
+      before { @view = UIView.alloc.init }
+
+      it "should return rmq.image" do
+        @view.image.should.equal(RubyMotionQuery::ImageUtils)
+      end
+    end
+
+    describe "stylesheet" do
+      before { @view = UIView.alloc.init }
+
+      it "should return rmq.stylesheet" do
+        @view.stylesheet.should.equal(@view.rmq.stylesheet)
+      end
+    end
+
+    describe "stylesheet=" do
+      before { @view = UIView.alloc.init }
+
+      class FakeStylesheetForTest;end
+      it "should set rmq.stylesheet" do
+        @view.stylesheet = FakeStylesheetForTest
+        @view.rmq.stylesheet.is_a?(FakeStylesheetForTest).should.be.true
       end
     end
   end
@@ -312,6 +335,7 @@ describe 'RubyMotionQuery ext' do
         @view.text.should.equal('style from sheet')
       end
     end
+
     describe "color" do
       it "should return rmq.color" do
         @screen.color.should.equal(RubyMotionQuery::Color)
@@ -321,6 +345,26 @@ describe 'RubyMotionQuery ext' do
     describe "font" do
       it "should return rmq.font" do
         @screen.font.should.equal(RubyMotionQuery::Font)
+      end
+    end
+
+    describe "image" do
+      it "should return rmq.image" do
+        @screen.image.should.equal(RubyMotionQuery::ImageUtils)
+      end
+    end
+
+    describe "stylesheet" do
+      it "should return rmq.stylesheet" do
+        @screen.stylesheet.should.equal(@screen.rmq.stylesheet)
+      end
+    end
+
+    describe "stylesheet=" do
+      class FakeStylesheetForTest;end
+      it "should set rmq.stylesheet" do
+        @screen.stylesheet = FakeStylesheetForTest
+        @screen.rmq.stylesheet.is_a?(FakeStylesheetForTest).should.be.true
       end
     end
   end
