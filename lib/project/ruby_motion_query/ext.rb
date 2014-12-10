@@ -93,9 +93,6 @@ class UIView
   end
 end
 class UIViewController
-  def on_load
-  end
-
   def append(view_or_constant, style=nil, opts = {})
     view.append(view_or_constant, style, opts)
   end
@@ -153,15 +150,27 @@ class UIViewController
     @rmq_style_sheet_class
   end
 
+  def on_load
+  end
+
   def view_did_load
   end
 
+  # Monkey patch because I think that overriding viewDidLoad like this may be problematic
+  alias :originalViewDidLoad :viewDidLoad
   def viewDidLoad
     if self.class.rmq_style_sheet_class
       self.rmq.stylesheet = self.class.rmq_style_sheet_class
       self.view.rmq.apply_style :root_view
     end
-    self.view_did_load unless pm_handles_did_load?
+
+    self.originalViewDidLoad
+    unless pm_handles_did_load?
+      unless self.class.included_modules.include?(ProMotion::ScreenModule)
+        self.view_did_load
+      end
+      self.on_load
+    end
   end
 
   def pm_handles_did_load?
