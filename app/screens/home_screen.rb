@@ -8,12 +8,17 @@ class HomeScreen < PM::Screen
 
     @hello_world_label = append!(UILabel, :hello_world)
     append HelloWorldSection # Section will handle its own styling
+
     append(UIButton, :open_table_button).on(:touch) do
       open TasksScreen.new(nav_bar: true)
     end
 
     append(UIButton, :open_metal_table_button).on(:touch) do
       open MetalTableScreen.new(nav_bar: true)
+    end
+
+    append(UIButton, :open_example_controller_button).on(:touch) do
+      open ExampleController
     end
   end
 

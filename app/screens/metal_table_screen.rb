@@ -30,6 +30,11 @@ class MetalTableScreen < UITableViewController
     end
   end
 
+  # Remove if you are only supporting portrait
+  def will_animate_rotate(orientation, duration)
+    reapply_styles
+  end
+
   # Standard table stuff
   def tableView(table_view, numberOfRowsInSection: section)
     @data.length
@@ -50,4 +55,3 @@ class MetalTableScreen < UITableViewController
     cell
   end
 end
-

@@ -208,6 +208,7 @@ class UIViewController
   end
 
   def should_autorotate
+    true
   end
   def shouldAutorotate
     self.should_autorotate
