@@ -104,6 +104,7 @@ on
 apply_style
 reapply_styles
 style
+color
 ```
 
 ### Stylesheet in your screens
