@@ -4,6 +4,11 @@ describe 'RubyMotionQuery ext' do
     object.app.should.equal(RubyMotionQuery::App)
   end
 
+  it "should return the RMQ Device when Object#device is called" do
+    object = Object.new
+    object.device.should.equal(RubyMotionQuery::Device)
+  end
+
   it "find should be an alias for rmq" do
     object = Object.new
     object.find.is_a?(RubyMotionQuery::RMQ).should.be.true
