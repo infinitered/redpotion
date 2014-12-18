@@ -105,6 +105,9 @@ apply_style
 reapply_styles
 style
 color
+image
+stylesheet
+stylesheet=
 ```
 
 ### Stylesheet in your screens
@@ -142,6 +145,14 @@ end
 
 ProMotion 2.2.0 added on_load and on_styled to match RedPotion
 
+## RedPotion specific features
+
+UIColor has a `with` method.  Allowing you to build a color from an existing color easily
+
+```ruby
+# for example that time you want your existing color, but with a slight change
+color.my_custom_color.with(a: 0.5)
+```
 
 ## Contributing
 
