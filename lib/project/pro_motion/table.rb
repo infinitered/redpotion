@@ -17,5 +17,4 @@ module ProMotion
       table_cell
     end
   end
-
 end
