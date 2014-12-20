@@ -144,7 +144,7 @@ describe 'RubyMotionQuery ext' do
         @button.off(:tap, :swipe)
       end
 
-      it "should attach the event" do
+      it "should detach the events" do
         @button.rmq_data.events.has_event?(:tap).should.be.false
         @button.rmq_data.events.has_event?(:swipe).should.be.false
       end
