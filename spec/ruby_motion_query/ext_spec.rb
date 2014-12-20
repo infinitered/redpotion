@@ -136,6 +136,20 @@ describe 'RubyMotionQuery ext' do
       end
     end
 
+    describe "off" do
+      before do
+        @button = UIButton.alloc.init
+        @button.on(:tap, {}) { }
+        @button.on(:swipe, {}) { }
+        @button.off(:tap, :swipe)
+      end
+
+      it "should attach the event" do
+        @button.rmq_data.events.has_event?(:tap).should.be.false
+        @button.rmq_data.events.has_event?(:swipe).should.be.false
+      end
+    end
+
     describe "apply_style" do
       class TestStylesheet
         def fake(st)

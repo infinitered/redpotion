@@ -65,6 +65,10 @@ class UIView
     rmq(self).on(event, args, &block)
   end
 
+  def off(*events)
+    rmq(self).off(events)
+  end
+
   def apply_style(style_name)
     rmq(self).apply_style(style_name)
   end
