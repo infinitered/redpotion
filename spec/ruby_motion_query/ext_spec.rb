@@ -141,12 +141,29 @@ describe 'RubyMotionQuery ext' do
         @button = UIButton.alloc.init
         @button.on(:tap, {}) { }
         @button.on(:swipe, {}) { }
-        @button.off(:tap, :swipe)
+        @button.on(:value_changed, {}) { }
       end
+      describe "removing a single event when many exist" do
+        before do
+          @button.off(:tap)
+        end
 
-      it "should detach the events" do
-        @button.rmq_data.events.has_event?(:tap).should.be.false
-        @button.rmq_data.events.has_event?(:swipe).should.be.false
+        it "should detach the events" do
+          @button.rmq_data.events.has_event?(:tap).should.be.false
+          @button.rmq_data.events.has_event?(:swipe).should.be.true
+          @button.rmq_data.events.has_event?(:value_changed).should.be.true
+        end
+      end
+      describe "removing multiple events when many exist" do
+        before do
+          @button.off(:swipe, :value_changed)
+        end
+
+        it "should detach the events" do
+          @button.rmq_data.events.has_event?(:tap).should.be.true
+          @button.rmq_data.events.has_event?(:swipe).should.be.false
+          @button.rmq_data.events.has_event?(:value_changed).should.be.false
+        end
       end
     end
 
