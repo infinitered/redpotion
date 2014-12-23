@@ -14,3 +14,4 @@ Motion::Project::App.setup do |app|
 
   app.interface_orientations = [:portrait, :landscape_left, :landscape_right, :portrait_upside_down]
 end
+task :"build:simulator" => :"schema:build"

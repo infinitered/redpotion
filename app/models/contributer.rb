@@ -1,0 +1,2 @@
+class Contributer < CDQManagedObject
+end
