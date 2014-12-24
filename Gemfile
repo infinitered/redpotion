@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
 
-# gemspec
-gem 'redpotion', path: './'
+gemspec
 gem 'cdq'
