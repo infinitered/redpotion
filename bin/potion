@@ -26,8 +26,9 @@ class PotionCommandLine
      > potion create collection_view_controller foos
      > potion create table_view_controller bars 
 
-     You can remove CDQ if your project does not use it
+     You can remove CDQ or afmotion if your project does not use it
      > potion remove cdq
+     > potion remove afmotion
 
      > potion -h, --help
      > potion -v, --version 
@@ -188,12 +189,15 @@ class PotionCommandLine
         remove_lines('app/app_delegate.rb', /include CDQ|cdq.setup/)
         remove_lines('Rakefile', /schema:build/)
         File.delete('schemas/0001_initial.rb')
+      when 'afmotion'
+        remove_lines('Gemfile', /gem 'afmotion'/)
       else
         puts "potion - Invalid command option '#{type}', potion remove only works with cdq"
       end
     end
 
     def remove_lines(file, match)
+      puts "Modifying #{file}"
       data = IO.readlines(file)
       File.open(file, 'w') do |f|
         data.each do |line|
