@@ -26,6 +26,9 @@ class PotionCommandLine
      > potion create collection_view_controller foos
      > potion create table_view_controller bars 
 
+     You can remove CDQ if your project does not use it
+     > potion remove cdq
+
      > potion -h, --help
      > potion -v, --version 
 
@@ -142,7 +145,7 @@ class PotionCommandLine
         @in_app_path = File.dirname(template_file_path_and_name).gsub(@template_path, '')
         @ext = File.extname(template_file_path_and_name)
         @file_name = File.basename(template_file_path_and_name, @ext)
-        
+
         @new_file_name = @file_name.gsub('name', @name)
         @new_file_path_name = "#{Dir.pwd}/#{@in_app_path}/#{@new_file_name}#{@ext}"
 
@@ -177,9 +180,31 @@ class PotionCommandLine
       erb = ERB.new(template_file)
       erb.result(binding)
     end
+
+    def remove(type)
+      case type
+      when 'cdq'
+        remove_lines('Gemfile', /gem 'cdq'/)
+        remove_lines('app/app_delegate.rb', /include CDQ|cdq.setup/)
+        remove_lines('Rakefile', /schema:build/)
+        File.delete('schemas/0001_initial.rb')
+      else
+        puts "potion - Invalid command option '#{type}', potion remove only works with cdq"
+      end
+    end
+
+    def remove_lines(file, match)
+      data = IO.readlines(file)
+      File.open(file, 'w') do |f|
+        data.each do |line|
+          unless line =~ match
+            f.puts line
+          end
+        end
+      end
+    end
   end
 end
-
 
 # Process input, execute actions
 unless ARGV.length > 0
@@ -202,6 +227,8 @@ when 'rmq_docs'
   else
     `open http://rubymotionquery.com/documentation`
   end
+when 'remove'
+  PotionCommandLine.remove(ARGV[1])
 when '--help', '-h'
   puts PotionCommandLine::HELP_TEXT
 when '-v', '--version'
@@ -210,4 +237,5 @@ else
   puts 'potion - Invalid action'
   puts PotionCommandLine::HELP_TEXT
 end
+
 

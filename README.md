@@ -68,6 +68,11 @@ potion create lib foo
 potion create controller foo
 potion create collection_view_controller foos
 potion create table_view_controller bars
+
+# RedPotion includes CDQ by default, but sometimes you don't want to include CDQ
+# in your application.  We've added a task to easily remove CDQ from a template
+# after project creation
+potion remove cdq
 ```
 
 ## New features for RMQ
