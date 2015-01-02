@@ -24,10 +24,14 @@ class PotionCommandLine
      You can still create controllers, but you should create screens instead
      > potion create controller foos
      > potion create collection_view_controller foos
-     > potion create table_view_controller bars 
+     > potion create table_view_controller bars
+
+     You can remove CDQ or afmotion if your project does not use it
+     > potion remove cdq
+     > potion remove afmotion
 
      > potion -h, --help
-     > potion -v, --version 
+     > potion -v, --version
 
      > rmq_docs
      > rmq_docs query
@@ -36,11 +40,11 @@ class PotionCommandLine
   class << self
     VALID_CREATE_TYPES = [
       :screen, :table_screen,
-      :model, :controller, 
-      :view, 
-      :shared, 
-      :lib, 
-      :collection_view_controller, 
+      :model, :controller,
+      :view,
+      :shared,
+      :lib,
+      :collection_view_controller,
       :table_view_controller
     ]
 
@@ -142,13 +146,13 @@ class PotionCommandLine
         @in_app_path = File.dirname(template_file_path_and_name).gsub(@template_path, '')
         @ext = File.extname(template_file_path_and_name)
         @file_name = File.basename(template_file_path_and_name, @ext)
-        
+
         @new_file_name = @file_name.gsub('name', @name)
         @new_file_path_name = "#{Dir.pwd}/#{@in_app_path}/#{@new_file_name}#{@ext}"
 
         if @dry_run
           puts "\n     Instance vars:"
-          self.instance_variables.each{|var| puts "     #{var} = #{self.instance_variable_get(var)}"} 
+          self.instance_variables.each{|var| puts "     #{var} = #{self.instance_variable_get(var)}"}
           puts
         end
 
@@ -177,9 +181,34 @@ class PotionCommandLine
       erb = ERB.new(template_file)
       erb.result(binding)
     end
+
+    def remove(type)
+      case type
+      when 'cdq'
+        remove_lines('Gemfile', /gem 'cdq'/)
+        remove_lines('app/app_delegate.rb', /include CDQ|cdq.setup/)
+        remove_lines('Rakefile', /schema:build/)
+        File.delete('schemas/0001_initial.rb')
+      when 'afmotion'
+        remove_lines('Gemfile', /gem 'afmotion'/)
+      else
+        puts "potion - Invalid command option '#{type}', potion remove only works with cdq"
+      end
+    end
+
+    def remove_lines(file, match)
+      puts "Modifying #{file}"
+      data = IO.readlines(file)
+      File.open(file, 'w') do |f|
+        data.each do |line|
+          unless line =~ match
+            f.puts line
+          end
+        end
+      end
+    end
   end
 end
-
 
 # Process input, execute actions
 unless ARGV.length > 0
@@ -202,6 +231,8 @@ when 'rmq_docs'
   else
     `open http://rubymotionquery.com/documentation`
   end
+when 'remove'
+  PotionCommandLine.remove(ARGV[1])
 when '--help', '-h'
   puts PotionCommandLine::HELP_TEXT
 when '-v', '--version'
@@ -210,4 +241,3 @@ else
   puts 'potion - Invalid action'
   puts PotionCommandLine::HELP_TEXT
 end
-

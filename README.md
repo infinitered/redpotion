@@ -68,6 +68,11 @@ potion create lib foo
 potion create controller foo
 potion create collection_view_controller foos
 potion create table_view_controller bars
+
+# RedPotion includes CDQ and afmotion by default, if you don't need these gems
+# we have provided command line tasks to remove either of them
+potion remove cdq
+potion remove afmotion
 ```
 
 ## New features for RMQ
