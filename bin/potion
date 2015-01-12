@@ -13,6 +13,7 @@ class PotionCommandLine
      Some things you can do with the potion command:
 
      > potion create my_new_app
+     > potion create my_new_app --skip-cdq # Setup application without CDQ
 
      > potion create model foo
      > potion create screen foo
@@ -38,6 +39,8 @@ class PotionCommandLine
      > rmq_docs "background image" }
 
   class << self
+    SKIP_FLAGS = [ "--skip-cdq" ]
+
     VALID_CREATE_TYPES = [
       :screen, :table_screen,
       :model, :controller,
@@ -52,7 +55,12 @@ class PotionCommandLine
       @dry_run = true if options == 'dry_run'
 
       if name
-        if VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
+        if SKIP_FLAGS.include?(name)
+          create_app(template_or_app_name)
+          Dir.chdir("./#{template_or_app_name}")
+          remove('cdq', false)
+          Dir.chdir('..')
+        elsif VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
           insert_from_template(template_or_app_name, name)
         else
           puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
@@ -182,22 +190,22 @@ class PotionCommandLine
       erb.result(binding)
     end
 
-    def remove(type)
+    def remove(type, show_output=true)
       case type
       when 'cdq'
-        remove_lines('Gemfile', /gem 'cdq'/)
-        remove_lines('app/app_delegate.rb', /include CDQ|cdq.setup/)
-        remove_lines('Rakefile', /schema:build/)
-        File.delete('schemas/0001_initial.rb')
+        remove_lines('Gemfile', /gem ('|")cdq('|")/, show_output)
+        remove_lines('app/app_delegate.rb', /include CDQ|cdq.setup/, show_output)
+        remove_lines('Rakefile', /schema:build/, show_output)
+        File.delete('schemas/0001_initial.rb') if File.exists?('schemas/0001_initial.rb')
       when 'afmotion'
-        remove_lines('Gemfile', /gem 'afmotion'/)
+        remove_lines('Gemfile', /gem ('|")afmotion('|")/, show_output)
       else
         puts "potion - Invalid command option '#{type}', potion remove only works with cdq"
       end
     end
 
-    def remove_lines(file, match)
-      puts "Modifying #{file}"
+    def remove_lines(file, match, show_output)
+      puts "Modifying #{file}" if show_output
       data = IO.readlines(file)
       File.open(file, 'w') do |f|
         data.each do |line|
