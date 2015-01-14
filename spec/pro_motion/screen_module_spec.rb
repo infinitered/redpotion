@@ -18,7 +18,7 @@ describe 'ScreenModule' do
   describe "not providing a stylesheet" do
     class TestScreenTwo < PM::Screen; end
 
-    it "should raise exception if the stylesheet is not defined in the class" do
+    it "should not raise exception if the stylesheet is not defined in the class" do
       should.not.raise(RuntimeError) do
         TestScreenTwo.new.view_did_load
       end
