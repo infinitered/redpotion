@@ -71,7 +71,7 @@ class UIViewController
     end
 
     self.originalViewDidLoad
-    unless pm_handles_did_load?
+    unless pm_handles_delegates?
       unless self.class.included_modules.include?(ProMotion::ScreenModule)
         self.view_did_load
       end
@@ -79,14 +79,16 @@ class UIViewController
     end
   end
 
-  def pm_handles_did_load?
+  def pm_handles_delegates?
     self.is_a?(ProMotion::ViewController) || self.is_a?(ProMotion::TableScreen)
   end
 
   def view_will_appear(animated)
   end
   def viewWillAppear(animated)
-    self.view_will_appear(animated)
+    unless pm_handles_delegates?
+      self.view_will_appear(animated)
+    end
   end
 
   def view_did_appear(animated)
