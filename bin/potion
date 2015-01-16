@@ -39,7 +39,7 @@ class PotionCommandLine
      > rmq_docs "background image" }
 
   class << self
-    SKIP_FLAGS = [ "--skip-cdq" ]
+    SKIP_FLAGS = [ "--skip-cdq", "--skip-afmotion" ]
 
     VALID_CREATE_TYPES = [
       :screen, :table_screen,
@@ -51,23 +51,34 @@ class PotionCommandLine
       :table_view_controller
     ]
 
-    def create(template_or_app_name, name, options)
-      @dry_run = true if options == 'dry_run'
+
+    def create(template_or_app_name, *options)
+      # Dry Run option - TODO - change this to --dry_run to streamline
+      if options.first == 'dry_run'
+        @dry_run = true
+        options.slice!(0)
+      end
+
+      unless options.first.include?('--')
+        name = options.slice!(0)
+        unless VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
+          puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
+          return
+        end
+      end
 
       if name
-        if SKIP_FLAGS.include?(name)
-          create_app(template_or_app_name)
-          Dir.chdir("./#{template_or_app_name}")
-          remove('cdq', false)
-          Dir.chdir('..')
-        elsif VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
-          insert_from_template(template_or_app_name, name)
-        else
-          puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
-        end
+        insert_from_template(template_or_app_name, name)
       else
         #ensure_template_dir
         create_app(template_or_app_name)
+        options.each do |option|
+          if SKIP_FLAGS.include?(option)
+            Dir.chdir("./#{template_or_app_name}")
+            remove(option.split('-').last, true)
+            Dir.chdir('..')
+          end
+        end
       end
     end
 
