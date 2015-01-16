@@ -19,6 +19,12 @@ describe 'UIViewController' do
 
       controller.view_will_disappear_count.should.equal(1)
     end
+
+    it 'should call view_will_disappear only once' do
+      controller.viewDidDisappear(true)
+
+      controller.view_did_disappear_count.should.equal(1)
+    end
   end
 
   describe 'when using a PM::Screen' do
