@@ -5,13 +5,25 @@ describe 'UIViewController' do
     end
 
     it 'should call view_did_appear only once' do
-      # we need to check the view to make it 'appear'
-      views(UIView).should.not.be.nil
+      controller.viewDidAppear(true)
+
       controller.view_did_appear_count.should.equal(1)
     end
 
     it 'should call view_did_load only once' do
       controller.view_did_load_count.should.equal(1)
+    end
+
+    it 'should call view_will_disappear only once' do
+      controller.viewWillDisappear(true)
+
+      controller.view_will_disappear_count.should.equal(1)
+    end
+
+    it 'should call view_will_disappear only once' do
+      controller.viewDidDisappear(true)
+
+      controller.view_did_disappear_count.should.equal(1)
     end
   end
 

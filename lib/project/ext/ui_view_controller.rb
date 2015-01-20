@@ -98,13 +98,17 @@ class UIViewController
   def view_will_disappear(animated)
   end
   def viewWillDisappear(animated)
-    self.view_will_disappear(animated)
+    unless pm_handles_delegates?
+      self.view_will_disappear(animated)
+    end
   end
 
   def view_did_disappear(animated)
   end
   def viewDidDisappear(animated)
-    self.view_did_disappear(animated)
+    unless pm_handles_delegates?
+      self.view_did_disappear(animated)
+    end
   end
 
   def should_rotate(orientation)
