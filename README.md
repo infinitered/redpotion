@@ -1,4 +1,4 @@
-![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2014/11/logo_02.png)
+![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2015/01/RedPotion_logo_1000w_padding.png)
 
 # RedPotion
 
@@ -18,7 +18,7 @@ ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 
 You can use both RMQ Plugins and ProMotion Add-ons
 
-![image](https://camo.githubusercontent.com/523372b371be1de2fb2cec421be423e2b89bcfd0/687474703a2f2f69725f77702e73332e616d617a6f6e6177732e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f31392f323031342f30392f726d715f706c7567696e2e706e67)  
+![image](https://camo.githubusercontent.com/523372b371be1de2fb2cec421be423e2b89bcfd0/687474703a2f2f69725f77702e73332e616d617a6f6e6177732e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f31392f323031342f30392f726d715f706c7567696e2e706e67)
 
 ![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2014/11/ProMotion-addon-logo.png)
 
