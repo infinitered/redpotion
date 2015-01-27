@@ -53,17 +53,20 @@ class PotionCommandLine
 
 
     def create(template_or_app_name, *options)
+      options.compact!
       # Dry Run option - TODO - change this to --dry_run to streamline
       if options.first == 'dry_run'
         @dry_run = true
         options.slice!(0)
       end
 
-      unless options.first.include?('--')
-        name = options.slice!(0)
-        unless VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
-          puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
-          return
+      if options.count > 0
+        unless options.first.include?('--')
+          name = options.slice!(0)
+          unless VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
+            puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
+            return
+          end
         end
       end
 
