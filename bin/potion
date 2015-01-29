@@ -18,6 +18,7 @@ class PotionCommandLine
      > potion create model foo
      > potion create screen foo
      > potion create table_screen foo
+     > potion create metal_table_screen foo
      > potion create view bar
      > potion create shared some_class_used_app_wide
      > potion create lib some_class_used_by_multiple_apps
@@ -44,6 +45,7 @@ class PotionCommandLine
     VALID_CREATE_TYPES = [
       :screen, :table_screen,
       :model, :controller,
+      :metal_table_screen,
       :view,
       :shared,
       :lib,
@@ -143,18 +145,16 @@ class PotionCommandLine
     end
 
     def insert_from_template(template_name, name)
-      unless %w{screen table_screen view}.include? template_name
-        puts `rmq create #{template_name} #{name}`
-        return
+      # TODO refactor this, it's less than wonderful
+      if %w{metal_table_screen view}.include? template_name
+        # Do nothing
+      elsif template_name =~ /.*screen/
+        @screen_base = template_name.split('_').collect(&:capitalize).join
+        template_name = 'screen'
       else
-        if template_name =~ /.*screen/
-          @screen_base = template_name.split('_').collect(&:capitalize).join
-          template_name = 'screen'
-        end
+        puts `potion create #{template_name} #{name}`
+        return
       end
-
-      #if [:lib, :collection_view_controller, :shared, :controller].include?(template_name)
-      #end
 
       puts "\n     Creating #{template_name}: #{name}\n\n"
 
