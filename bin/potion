@@ -152,7 +152,8 @@ class PotionCommandLine
         @screen_base = template_name.split('_').collect(&:capitalize).join
         template_name = 'screen'
       else
-        puts `potion create #{template_name} #{name}`
+        # we dont have templates for these fallback to RMQ
+        puts `rmq create #{template_name} #{name}`
         return
       end
 
