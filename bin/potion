@@ -152,7 +152,8 @@ class PotionCommandLine
         @screen_base = template_name.split('_').collect(&:capitalize).join
         template_name = 'screen'
       else
-        puts `potion create #{template_name} #{name}`
+        # we dont have templates for these fallback to RMQ
+        puts `rmq create #{template_name} #{name}`
         return
       end
 
@@ -211,6 +212,8 @@ class PotionCommandLine
         remove_lines('app/app_delegate.rb', /include CDQ|cdq.setup/, show_output)
         remove_lines('Rakefile', /schema:build/, show_output)
         File.delete('schemas/0001_initial.rb') if File.exists?('schemas/0001_initial.rb')
+        File.delete('resources/cdq.yml') if File.exists?('resources/cdq.yml')
+        Dir.delete('schemas') if Dir.exists?('schemas')
       when 'afmotion'
         remove_lines('Gemfile', /gem ('|")afmotion('|")/, show_output)
       else
