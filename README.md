@@ -51,7 +51,7 @@ Do **NOT** use RedPotion from github, we don't know why, but it will throw excep
 
 ## New generators to integrate RMQ & ProMotion nicely ##
 
-Our new generates allow you to create your ProMotion screen and stylesheet template to let you hit the ground running.  Currently the following RedPotion generators exist:
+Our new generators allow you to create your ProMotion screen and stylesheet template to let you hit the ground running.  Currently the following RedPotion generators exist:
 
 ```
 potion create screen foo
