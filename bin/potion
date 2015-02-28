@@ -151,6 +151,9 @@ class PotionCommandLine
       elsif template_name =~ /.*screen/
         @screen_base = template_name.split('_').collect(&:capitalize).join
         template_name = 'screen'
+      elsif template_name == "model" && cdq_included?
+        puts `cdq create model #{name}`
+        return
       else
         # we dont have templates for these fallback to RMQ
         puts `rmq create #{template_name} #{name}`
@@ -231,6 +234,12 @@ class PotionCommandLine
           end
         end
       end
+    end
+
+    def cdq_included?
+      return false unless File.exist?("Gemfile.lock")
+      data = IO.readlines("Gemfile.lock")
+      (data.any?{|l| l.match(/\s.cdq\s\(/) }).inspect
     end
   end
 end
