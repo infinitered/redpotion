@@ -239,7 +239,7 @@ class PotionCommandLine
     def cdq_included?
       return false unless File.exist?("Gemfile.lock")
       data = IO.readlines("Gemfile.lock")
-      (data.any?{|l| l.match(/\s.cdq\s\(/) }).inspect
+      data.any?{|l| l.match(/\s.cdq\s\(/) }
     end
   end
 end
