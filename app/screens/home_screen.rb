@@ -28,6 +28,7 @@ class HomeScreen < PM::Screen
 
   def nav_left_button
     mp 'Left button'
+    append(UIImageView, :grumpy_image)
   end
 
   def nav_right_button

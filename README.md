@@ -145,6 +145,31 @@ class Section < UIView
 end
 ```
 
+### Remote image loading for UIImageView styler
+
+You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [JMImageCache](https://github.com/jakemarsh/JMImageCache).
+
+```ruby
+class MyStylesheet < ApplicationStylesheet
+  def my_ui_image_view(st)
+    # placeholder_image= is just an alias to image=
+    # Set the placeholder image you want from your resources directory
+    st.placeholder_image = image.resource("my_placeholder")
+    # Set the remote URL. It will be applied to the UIImageView
+    # when downloaded or retrieved from the local cache.
+    st.remote_image = "http://www.rubymotion.com/img/rubymotion-logo.png"
+    # or st.remote_image = NSURL.urlWithString(...)
+  end
+end
+```
+
+In order to use this feature, you must add the `JMIMageCache` cocoapod to your project:
+
+```ruby
+app.pods do
+  pod 'JMImageCache'
+end
+```
 
 ## New features for ProMotion
 
