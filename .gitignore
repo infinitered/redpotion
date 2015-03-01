@@ -18,3 +18,4 @@ nbproject
 .dat*.*
 rm_spec_output
 resources/*.xcdatamodeld
+vendor

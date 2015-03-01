@@ -45,4 +45,15 @@ class HomeScreenStylesheet < ApplicationStylesheet
     st.frame = {bp: 10}
     st.text = "Open example controller"
   end
+
+  def grumpy_image(st)
+    st.frame = {
+      w: 200,
+      h: 200,
+      centered: :both
+    }
+    st.corner_radius = 100
+    st.image = image.resource('grumpy_cat')
+    st.remote_image = 'http://placehold.it/400x400'
+  end
 end
