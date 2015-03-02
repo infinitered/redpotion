@@ -4,7 +4,7 @@
 
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 
-RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and MORE!. It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
+RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and [MORE!](#full-listing-of-gems-and-pods-for-redpotion). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 =========
 
@@ -186,16 +186,17 @@ color.my_custom_color.with(a: 0.5)
 
 ## Full listing of Gems and Pods for RedPotion
 **Gems**
-* RMQ
-* ProMotion
-* CDQ
-* motion_print
-* motion-cocoapods
-* (DEV) webstub
-* (DEV) newclear
+* [RMQ](http://rubymotionquery.com/)
+* [ProMotion](https://github.com/clearsightstudio/ProMotion)
+* [CDQ](https://github.com/infinitered/cdq)
+* [AFMotion](https://github.com/clayallsopp/afmotion)
+* [motion_print](https://github.com/OTGApps/motion_print)
+* [motion-cocoapods](https://github.com/HipByte/motion-cocoapods)
+* (DEV) [webstub](https://github.com/nathankot/webstub)
+* (DEV) [newclear](https://github.com/IconoclastLabs/newclear)
 
 **Pods**
-* JMImageCache
+* [JMImageCache](https://github.com/jakemarsh/JMImageCache)
 
 ## Contributing
 
