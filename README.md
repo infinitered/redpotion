@@ -4,7 +4,7 @@
 
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 
-RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and [MotionPrint](https://github.com/MohawkApps/motion_print). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
+RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), and [MotionPrint](https://github.com/OTGApps/motion_print). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 =========
 
