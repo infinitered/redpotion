@@ -49,6 +49,8 @@ add it to your `Gemfile`:
 
 ## Let's build something
 
+Let's start by creating our app, do this:
+
 ```
 > potion create myapp
 > cd myapp
@@ -57,9 +59,9 @@ add it to your `Gemfile`:
 > rake
 ```
 
-Your app should be running now. Type `exit` then enter in console to stop your app.
+Your app should be running now. Type `exit` in console to stop your app.
 
-Let's add a text box, a label, and a image to the main screen:
+Let's add a text field, a button, and an image to the main screen:
 
 Open the `home_screen.rb` file, then add this
 
@@ -77,9 +79,7 @@ Delete this line:
 @hello_world = append!(UILabel, :hello_world)
 ```
 
-This will add a Text edit, button, and image viewer. 
-
-Now we need to style them so you can see them in your screen.
+Now we need to style them so you can see them on your screen.
 
 Open up `home_screen_stylesheet.rb`, then add this:
 
@@ -102,9 +102,9 @@ def sample_image(st)
 end
 ```
 
-Now let's add the logic. Basically when you enter a URL in the text box, press go, it shows the picture in the image below.
+Now let's add the logic. When the user enters a URL to an image in the text field, then tap **Go**, it shows the picture in the image view below.
 
-Let's add the event on the go_button:
+Let's add the event to the go_button:
 
 Replace this:
 ```ruby
@@ -115,6 +115,23 @@ With this:
 ```ruby
 append(UIButton, :go_button).on(:touch) do
   @sample_image.remote_image = @image_url.text
+end
+```
+
+You should end up with this `on_load` method:
+
+```ruby
+def on_load
+  set_nav_bar_button :left, system_item: :camera, action: :nav_left_button
+  set_nav_bar_button :right, title: "Right", action: :nav_right_button
+
+  @image_url = append!(UITextField, :image_url)
+
+  append(UIButton, :go_button).on(:touch) do
+    @sample_image.remote_image = @image_url.text
+  end
+
+  @sample_image = append UIImageView, :sample_image
 end
 ```
 
