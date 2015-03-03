@@ -5,6 +5,7 @@ PATH
       ProMotion (~> 2.2.1)
       motion-cocoapods
       motion_print
+      newclear
       ruby_motion_query (~> 1.1)
 
 GEM
@@ -81,7 +82,6 @@ PLATFORMS
 DEPENDENCIES
   cdq
   motion-cocoapods
-  newclear
   rake
   redpotion!
   webstub

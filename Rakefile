@@ -6,6 +6,7 @@ require "bundler/gem_tasks"
 require "bundler/setup"
 require "motion_print"
 require "webstub"
+
 Bundler.require
 
 Motion::Project::App.setup do |app|
