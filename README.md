@@ -99,6 +99,9 @@ end
 def sample_image(st)
   st.frame = {left: 20, below_prev: 10, from_right: 20, from_bottom: 20}
   st.background_color = color.gray
+
+  # an example of using the view directly
+  st.view.contentMode = UIViewContentModeScaleAspectFit
 end
 ```
 
@@ -113,8 +116,9 @@ append UIButton, :go_button
 
 With this:
 ```ruby
-append(UIButton, :go_button).on(:touch) do
+append(UIButton, :go_button).on(:touch) do |sender|
   @sample_image.remote_image = @image_url.text
+  @image_url.resignFirstResponder # Closes keyboard
 end
 ```
 
@@ -127,8 +131,9 @@ def on_load
 
   @image_url = append!(UITextField, :image_url)
 
-  append(UIButton, :go_button).on(:touch) do
+  append(UIButton, :go_button).on(:touch) do |sender|
     @sample_image.remote_image = @image_url.text
+    @image_url.resignFirstResponder # Closes keyboard
   end
 
   @sample_image = append UIImageView, :sample_image
