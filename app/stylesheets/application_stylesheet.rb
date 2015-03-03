@@ -26,4 +26,13 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     color.add_named :battleship_gray,   '#7F7F7F'
   end
 
+  # Example of using a global styler.
+  # This method is used in both the home screen and
+  # example screen stylesheets
+  def hello_world(st)
+    st.frame = {w: 200, h: 30, centered: :both}
+    st.color = color.black
+    st.font = font.large
+    st.text = "Hello world"
+  end
 end

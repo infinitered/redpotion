@@ -4,12 +4,8 @@ class HomeScreenStylesheet < ApplicationStylesheet
     st.background_color = color.white
   end
 
-  def hello_world(st)
-    st.frame = {w: 200, h: 30, centered: :both}
-    st.color = color.black
-    st.font = font.large
-    st.text = "Hello world"
-  end
+  # hello_world(st)
+  # Defined in ApplicationStylesheet
 
   def section(st)
     st.frame = {t: 100, w: 200, h: 100, centered: :horizontal}
