@@ -2,11 +2,6 @@
 
 # RedPotion
 
-[![Dependency Status](https://gemnasium.com/infinitered/redpotion.png)](https://gemnasium.com/infinitered/redpotion)
-[![Build Status](https://travis-ci.org/infinitered/redpotion.png?branch=master)](https://travis-ci.org/infinitered/redpotion)
-[![Gem Version](https://badge.fury.io/rb/redpotion.png)](http://badge.fury.io/rb/redpotion)
-[![Code Quality](https://codeclimate.com/github/infinitered/redpotion/badges/gpa.svg)](https://codeclimate.com/github/infinitered/redpotion)
-
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 
 RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and [MORE!](#full-listing-of-gems-and-pods-for-redpotion). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
@@ -51,7 +46,80 @@ add it to your `Gemfile`:
 
 - `gem 'redpotion'`
 
-Do **NOT** use RedPotion from github, we don't know why, but it will throw exceptions if you do; we're currently investigating why.
+
+## Let's build something
+
+```
+> potion create myapp
+> cd myapp
+> bundle
+> rake pod:install
+> rake
+```
+
+Your app should be running now. Type `exit` then enter in console to stop your app.
+
+Let's add a text box, a label, and a image to the main screen:
+
+Open the `home_screen.rb` file, then add this
+
+```ruby
+@image_url = append!(UITextField, :image_url)
+
+append UIButton, :go_button
+
+@sample_image = append UIImageView, :sample_image
+```
+
+Delete this line:
+
+```ruby
+@hello_world = append!(UILabel, :hello_world)
+```
+
+This will add a Text edit, button, and image viewer. 
+
+Now we need to style them so you can see them in your screen.
+
+Open up `home_screen_stylesheet.rb`, then add this:
+
+```ruby
+def image_url(st)
+  st.frame = {left: 20, from_right: 20, top: 80, height: 30}
+  st.background_color = color.light_gray
+end
+
+def go_button(st)
+  st.frame = {below_prev: 10, from_right: 20, width: 40, height: 30}
+  st.text = "go"
+  st.background_color = color.blue
+  st.color = color.white
+end
+
+def sample_image(st)
+  st.frame = {left: 20, below_prev: 10, from_right: 20, from_bottom: 20}
+  st.background_color = color.gray
+end
+```
+
+Now let's add the logic. Basically when you enter a URL in the text box, press go, it shows the picture in the image below.
+
+Let's add the event on the go_button:
+
+Replace this:
+```ruby
+append UIButton, :go_button
+```
+
+With this:
+```ruby
+append(UIButton, :go_button).on(:touch) do
+  @sample_image.remote_image = @image_url.text
+end
+```
+
+Now paste this URL in and hit **Go**
+`http://bit.ly/1M3UEZL`
 
 
 ## New generators to integrate RMQ & ProMotion nicely ##
