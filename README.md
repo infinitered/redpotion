@@ -70,7 +70,7 @@ Open the `home_screen.rb` file, then add this
 
 append UIButton, :go_button
 
-@sample_image = append UIImageView, :sample_image
+@sample_image = append!(UIImageView, :sample_image)
 ```
 
 Delete this line:
@@ -136,12 +136,16 @@ def on_load
     @image_url.resignFirstResponder # Closes keyboard
   end
 
-  @sample_image = append UIImageView, :sample_image
+  @sample_image = append!(UIImageView, :sample_image)
 end
 ```
 
 Now paste this URL in and hit **Go**
-`http://bit.ly/1M3UEZL`
+`http://bit.ly/18iMhwc`
+
+You should have this:
+
+![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2015/03/myapp_screenshot.jpg)
 
 
 ## New generators to integrate RMQ & ProMotion nicely ##
