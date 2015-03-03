@@ -32,12 +32,14 @@ class PotionCommandLine
      > potion remove cdq
      > potion remove afmotion
 
+     Misc
      > potion -h, --help
      > potion -v, --version
-
-     > rmq_docs
-     > rmq_docs query
-     > rmq_docs "background image" }
+     
+     Documentation
+     > rmq docs
+     > rmq docs query
+     > rmq docs "background image" }
 
   class << self
     SKIP_FLAGS = [ "--skip-cdq", "--skip-afmotion" ]

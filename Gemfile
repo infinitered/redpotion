@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
 gemspec
-gem 'cdq'
 gem 'motion-cocoapods'
+gem 'cdq'
+gem 'afmotion'

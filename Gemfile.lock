@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    redpotion (0.8.0)
-      ProMotion (~> 2.2)
+    redpotion (1.0.0)
+      ProMotion (~> 2.2.1)
       motion-cocoapods
       motion_print
       ruby_motion_query (~> 1.1)
