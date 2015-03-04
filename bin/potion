@@ -35,7 +35,7 @@ class PotionCommandLine
      Misc
      > potion -h, --help
      > potion -v, --version
-     
+
      Documentation
      > rmq docs
      > rmq docs query
@@ -57,6 +57,11 @@ class PotionCommandLine
 
 
     def create(template_or_app_name, *options)
+      if template_or_app_name.nil?
+        puts "potion - Invalid command, try adding an application name or template name."
+        return
+      end
+
       options.compact!
       # Dry Run option - TODO - change this to --dry_run to streamline
       if options.first == 'dry_run'
