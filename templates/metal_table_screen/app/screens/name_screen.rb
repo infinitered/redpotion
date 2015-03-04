@@ -54,8 +54,6 @@ class <%= @name_camel_case %>Screen < UITableViewController
     cell
   end
 
-  # Remove the following if you're only using portrait
-
   # You don't have to reapply styles to all UIViews, if you want to optimize, another way to do it
   # is tag the views you need to restyle in your stylesheet, then only reapply the tagged views, like so:
   #   def logo(st)
@@ -67,6 +65,8 @@ class <%= @name_camel_case %>Screen < UITableViewController
   #
   # Then in will_animate_rotate
   #   find(:reapply_style).reapply_styles#
+
+  # Remove the following if you're only using portrait
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
