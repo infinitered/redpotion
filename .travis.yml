@@ -11,6 +11,6 @@ gemfile:
 script:
   - bundle install
   - bundle exec rake clean
-  - bundle exec rake pod:install
+  - bundle exec rake pod:install > /dev/null
   - bundle exec rake spec
   - bundle exec rake spec device_name=five
