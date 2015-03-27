@@ -11,6 +11,7 @@ class ContributerScreen < PM::DataTableScreen
   end
 
   def on_refresh
+    stop_refreshing
   end
 
   # Remove if you are only supporting portrait

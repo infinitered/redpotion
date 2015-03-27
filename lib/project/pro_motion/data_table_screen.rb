@@ -33,13 +33,17 @@ module ProMotion
       return [] if data_model.nil?
 
       data_model.send(data_scope).collect do |c|
-        {
-          cell_class: cell_class,
-          properties: properties.inject({}) do |hash, element|
-            hash[element.first] = c.send(element.last)
-            hash
-          end
-        }
+        if c.respond_to?(:cell)
+          c.cell
+        else
+          {
+            cell_class: cell_class,
+            properties: properties.inject({}) do |hash, element|
+              hash[element.first] = c.send(element.last)
+              hash
+            end
+          }
+        end
       end
     end
 
@@ -48,11 +52,11 @@ module ProMotion
     def properties
       @properties ||= cell_properties[:template].reject do |k,v|
         k == :cell_class
-      end
+      end unless cell_properties[:template].nil?
     end
 
     def cell_class
-      @cell_class ||= cell_properties[:template][:cell_class]
+      @cell_class ||= cell_properties[:template].nil? ? nil : cell_properties[:template][:cell_class]
     end
 
     def data_model
