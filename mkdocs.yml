@@ -1,0 +1,15 @@
+site_name: RedPotion
+theme: readthedocs
+pages:
+- [index.md, Docs, Home]
+- [quick_start.md, Docs, Quick start]
+- [new_features_for_rmq_and_promotion.md, Docs, New features in RMQ and ProMotion]
+- [redpotion_specific_features.md, Docs, RedPotion specific features]
+- [contributing.md, Docs, Contributing]
+- [cookbook/command_line.md, Cookbook, Command-line and REPL tools]
+- [cookbook/screens.md, Cookbook, Screens]
+- [cookbook/events_and_gestures.md, Cookbook, Events and Gestures]
+- [cookbook/images.md, Cookbook, Images]
+- [cookbook/fonts.md, Cookbook, Fonts]
+- [cookbook/colors.md, Cookbook, Colors]
+- [cookbook/animations.md, Cookbook, Animating and animations]

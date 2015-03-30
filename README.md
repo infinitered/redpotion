@@ -1,4 +1,4 @@
-![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2015/01/RedPotion_logo_1000w_padding.png)
+![image](http://ir_public.s3.amazonaws.com/projects/redpotion/RedPotion_logo_transparent.png)
 
 # RedPotion
 [![Build Status](https://travis-ci.org/infinitered/redpotion.svg?branch=master)](https://travis-ci.org/infinitered/redpotion)
