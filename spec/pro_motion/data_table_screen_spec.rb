@@ -58,4 +58,21 @@ describe 'DataTableScreen' do
     TestDataTableScreen.new.cell_data[0][:properties][:name].should.equal('one')
     TestDataTableScreen.new.cell_data[1][:properties][:name].should.equal('two')
   end
+
+  it 'should use a the cell method in the model when specified' do
+    class TestModel
+      def cell
+        {
+          cell_class: TestCell,
+          properties: {
+            name: 'one',
+          }
+        }
+      end
+    end
+
+    TestDataTableScreen.cell(model: TestModel)
+    TestDataTableScreen.new.cell_data.count.should.equal(2)
+    TestDataTableScreen.new.cell_data[0][:properties][:name].should.equal('one')
+  end
 end
