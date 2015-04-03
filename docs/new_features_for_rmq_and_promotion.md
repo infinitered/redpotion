@@ -122,5 +122,5 @@ end
 
 ## New features for ProMotion
 
-ProMotion 2.2.0 added on_load and on_styled to match RedPotion
+ProMotion 2.2.0 added on_styled and 2.3.0 added on_load to match RedPotion
 
