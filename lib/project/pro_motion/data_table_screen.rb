@@ -1,15 +1,6 @@
 module ProMotion
-  #TODO ? - set_attributes is called twice - seems like this is in PM core
-  # this is because we call setup when we build the cell and setup when its
-  # about to display - this is because PM wants styling to fire in each case -
-  # and properties was where the styling is done in PM
-  #
-  # if we are going to wire an event when a value is set on a cell, this could
-  # be problematic, especially likely since cells are reused, etc
-  # see my new cell for example, where I have to remove and then add events
-  # because of the double call
-
   class DataTableScreen < TableScreen
+
     def self.cell(cell)
       @cell = cell
     end
