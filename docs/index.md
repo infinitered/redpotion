@@ -36,10 +36,10 @@ You can use both RMQ Plugins and ProMotion Add-ons
 * [ProMotion](https://github.com/clearsightstudio/ProMotion)
 * [CDQ](https://github.com/infinitered/cdq)
 * [AFMotion](https://github.com/clayallsopp/afmotion)
+* [newclear](https://github.com/IconoclastLabs/newclear)
 * [motion_print](https://github.com/OTGApps/motion_print)
 * [motion-cocoapods](https://github.com/HipByte/motion-cocoapods)
 * (DEV) [webstub](https://github.com/nathankot/webstub)
-* (DEV) [newclear](https://github.com/IconoclastLabs/newclear)
 
 **Pods**
 
