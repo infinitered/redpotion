@@ -5,7 +5,7 @@ PATH
       ProMotion (~> 2.3)
       motion-cocoapods
       motion_print
-      ruby_motion_query (~> 1.1)
+      ruby_motion_query (~> 1.2)
 
 GEM
   remote: https://rubygems.org/
