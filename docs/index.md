@@ -32,8 +32,8 @@ You can use both RMQ Plugins and ProMotion Add-ons
 
 **Gems**
 
-* [RMQ](http://rubymotionquery.com/)
-* [ProMotion](https://github.com/clearsightstudio/ProMotion)
+* [RMQ 1.2+](http://rubymotionquery.com/)
+* [ProMotion 2.3+](https://github.com/clearsightstudio/ProMotion)
 * [CDQ](https://github.com/infinitered/cdq)
 * [AFMotion](https://github.com/clayallsopp/afmotion)
 * [newclear](https://github.com/IconoclastLabs/newclear)
