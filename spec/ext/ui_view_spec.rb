@@ -217,4 +217,15 @@ describe 'UIView' do
       @view.rmq.stylesheet.is_a?(TestScreenStylesheet).should.be.true
     end
   end
+
+  describe "find" do
+    before do
+      @view = UIView.alloc.init
+      @view.append(UIButton)
+    end
+
+    it "should set use the proper context to find the children" do
+      @view.find(UIButton).count.should.equal(1)
+    end
+  end
 end

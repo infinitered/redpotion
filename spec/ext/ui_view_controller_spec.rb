@@ -151,6 +151,13 @@ describe 'UIViewController' do
         @view.text.should.equal('style from sheet')
       end
     end
+
+    describe "find" do
+      it "should set use the proper context to find the children" do
+        controller.append(UILabel).tag(:find_me)
+        controller.find(:find_me).count.should.equal(1)
+      end
+    end
   end
 
   describe 'when using a controller' do
