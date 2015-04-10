@@ -52,7 +52,7 @@ class UIViewController
   end
 
   def find(*args)
-    rmq(self.view).find(args)
+    rmq(self.view).find(*args)
   end
 
   def self.stylesheet(style_sheet_class)

@@ -157,6 +157,12 @@ describe 'UIViewController' do
         controller.append(UILabel).tag(:find_me)
         controller.find(:find_me).count.should.equal(1)
       end
+
+      it "should properly work with multiple arguments as well" do
+        controller.append(UILabel).tag(:first)
+        controller.append(UILabel).tag(:second)
+        controller.find(:first, :second).count.should.equal(2)
+      end
     end
   end
 
