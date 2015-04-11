@@ -227,5 +227,10 @@ describe 'UIView' do
     it "should set use the proper context to find the children" do
       @view.find(UIButton).count.should.equal(1)
     end
+
+    it "should properly work with multiple arguments as well" do
+      @view.append(UILabel).tag(:something)
+      @view.find(UIButton, :something).count.should.equal(2)
+    end
   end
 end

@@ -88,6 +88,6 @@ class UIView
   end
 
   def find(*args)
-    rmq(self).find(args)
+    rmq(self).find(*args)
   end
 end
