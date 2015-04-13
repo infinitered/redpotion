@@ -284,6 +284,42 @@ UIColor has a `with` method.  Allowing you to build a color from an existing col
 color.my_custom_color.with(a: 0.5)
 ```
 
+PM::DataTableScreen - added a clean way to integrate a table screen with a custom cell, and data backed model
+
+```ruby
+class ContributerScreen < PM::DataTableScreen
+  title "RedPotion Contributers"
+  refreshable
+  stylesheet ContributerScreenStylesheet
+  model Contributer
+end
+
+class Contributer < CDQManagedObject
+  def cell
+    {
+      cell_class: ContributerCell,
+      properties: {
+        name: name
+      }
+    }
+  end
+end
+
+class ContributerCell < ProMotion::TableViewCell
+  def on_load
+    apply_style :cell
+
+    find(self.contentView).tap do |q|
+      @title = q.append!(UILabel, :cell_title)
+    end
+  end
+
+  def name=(value)
+    @title.text = value
+  end
+end
+```
+
 ## Full listing of Gems and Pods for RedPotion
 **Gems**
 * [RMQ](http://rubymotionquery.com/)

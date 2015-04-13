@@ -2,10 +2,7 @@ class ContributerScreen < PM::DataTableScreen
   title "RedPotion Contributers"
   refreshable
   stylesheet ContributerScreenStylesheet
-  cell model: Contributer, scope: :all, template: {
-    name: :name,
-    cell_class: ContributerCell
-  }
+  model Contributer
 
   def on_load
   end

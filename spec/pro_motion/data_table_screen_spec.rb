@@ -18,6 +18,15 @@ describe 'DataTableScreen' do
         new('one')
       ]
     end
+
+    def cell
+      {
+        cell_class: TestCell,
+        properties: {
+          name: self.name
+        }
+      }
+    end
   end
   class TestCell
     def on_load
@@ -31,17 +40,7 @@ describe 'DataTableScreen' do
   end
 
   class TestDataTableScreen < ProMotion::DataTableScreen
-    cell model: TestModel, scope: :starts_with_o, template: {
-      name: :name,
-      cell_class: TestCell
-    }
-  end
-
-  it 'should set the cell_properties value when we call DataTableScreen.cell' do
-    TestDataTableScreen.new.cell_properties[:model].should.equal(TestModel)
-    TestDataTableScreen.new.cell_properties[:scope].should.equal(:starts_with_o)
-    TestDataTableScreen.new.cell_properties[:template][:cell_class].should.equal(TestCell)
-    TestDataTableScreen.new.cell_properties[:template][:name].should.equal(:name)
+    model TestModel, :starts_with_o
   end
 
   it 'should return items that can be used to build cells from cell_data' do
@@ -50,29 +49,35 @@ describe 'DataTableScreen' do
   end
 
   it 'should default the scope to all, if its not included in the cell definition' do
-    TestDataTableScreen.cell(model: TestModel, template: {
-      name: :name,
-      cell_class: TestCell
-    })
+    class TestDataTableScreen < ProMotion::DataTableScreen
+      model TestModel
+    end
+
     TestDataTableScreen.new.cell_data.count.should.equal(2)
     TestDataTableScreen.new.cell_data[0][:properties][:name].should.equal('one')
     TestDataTableScreen.new.cell_data[1][:properties][:name].should.equal('two')
   end
 
-  it 'should use a the cell method in the model when specified' do
-    class TestModel
-      def cell
-        {
-          cell_class: TestCell,
-          properties: {
-            name: 'one',
-          }
-        }
+  describe ".model" do
+    it "should query the model that was provided to the screen" do
+      TestDataTableScreen.model TestModel
+      TestDataTableScreen.data_model.should.equal(TestModel)
+      TestDataTableScreen.new.cell_data.count.should.equal(2)
+    end
+
+    it "should require the model provided defines the cell method" do
+      class MissingCellMethod; end
+
+      should.raise(RuntimeError) do
+        TestDataTableScreen.model MissingCellMethod
       end
     end
 
-    TestDataTableScreen.cell(model: TestModel)
-    TestDataTableScreen.new.cell_data.count.should.equal(2)
-    TestDataTableScreen.new.cell_data[0][:properties][:name].should.equal('one')
+    it "should accept an optional scope" do
+      TestDataTableScreen.model TestModel, :starts_with_o
+      TestDataTableScreen.data_scope.should.equal(:starts_with_o)
+      TestDataTableScreen.new.cell_data.count.should.equal(1)
+      TestDataTableScreen.new.cell_data[0][:properties][:name].should.equal('one')
+    end
   end
 end
