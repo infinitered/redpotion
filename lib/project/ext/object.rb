@@ -8,6 +8,6 @@ class Object
   end
 
   def find(*args) # Do not alias this, strange bugs happen where classes don't have methods
-    rmq(args)
+    rmq(*args)
   end
 end
