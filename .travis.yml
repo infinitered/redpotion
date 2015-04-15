@@ -8,9 +8,14 @@ before_install:
   - /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/simctl create five com.apple.CoreSimulator.SimDeviceType.iPhone-5 com.apple.CoreSimulator.SimRuntime.iOS-8-1
 gemfile:
   - Gemfile
-script:
-  - bundle install
+cache:
+  directories:
+  - vendor/bundle
+  - vendor/Pods
+install:
+  - bundle install --jobs=3 --retry=3
   - bundle exec rake clean
   - bundle exec rake pod:install > /dev/null
-  - bundle exec rake spec
-  - bundle exec rake spec device_name=five
+script:
+  - bundle exec rake spec output=test_unit
+  - bundle exec rake spec output=test_unit device_name=five

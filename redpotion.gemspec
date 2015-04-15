@@ -27,6 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "ProMotion", "~> 2.3"
   spec.add_runtime_dependency "motion_print"
   spec.add_runtime_dependency "motion-cocoapods"
-  spec.add_development_dependency "rake"
+  spec.add_runtime_dependency "rake"
   spec.add_development_dependency "webstub"
 end
