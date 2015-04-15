@@ -166,6 +166,18 @@ describe 'UIViewController' do
     end
   end
 
+  describe 'when using a PM::TableScreen' do
+    tests TestTableScreen
+
+    behaves_like 'proper delegate caller'
+  end
+
+  describe 'when using a PM::GroupedTableScreen' do
+    tests TestGroupedTableScreen
+
+    behaves_like 'proper delegate caller'
+  end
+
   describe 'when using a controller' do
     tests TestController
 
