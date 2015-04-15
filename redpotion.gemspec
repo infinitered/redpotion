@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.executables << 'potion'
 
-  spec.add_runtime_dependency "ruby_motion_query", "~> 1.3.1"
+  spec.add_runtime_dependency "ruby_motion_query", "~> 1.3.2"
   spec.add_runtime_dependency "ProMotion", "~> 2.3"
   spec.add_runtime_dependency "motion_print"
   spec.add_runtime_dependency "motion-cocoapods"

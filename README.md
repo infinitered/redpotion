@@ -148,6 +148,11 @@ You should have this:
 
 ![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2015/03/myapp_screenshot.jpg)
 
+## Live stylesheet reloading
+
+In REPL, type: `live_stylesheets`
+
+![image](http://clrsight.co/jh/LiveReload4.gif?+)
 
 ## New generators to integrate RMQ & ProMotion nicely ##
 
