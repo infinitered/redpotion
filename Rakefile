@@ -19,5 +19,9 @@ Motion::Project::App.setup do |app|
   app.pods do
     pod "JMImageCache"
   end
+
+  app.development do
+    app.info_plist["ProjectRootPath"] = File.dirname(__FILE__)
+  end
 end
 task :"build:simulator" => :"schema:build"
