@@ -1,17 +1,17 @@
 module ProMotion
   class DataTableScreen < TableScreen
     class << self
-      def model(value, scope=nil)
+      def model(value, opts = {})
         if value.method_defined?(:cell)
           @data_model = value
-          @data_scope = scope || :all
+          @opts = {scope: :all}.merge(opts)
         else
           raise "#{value} must define the cell method"
         end
       end
 
       def data_model; @data_model; end
-      def data_scope; @data_scope; end
+      def data_scope; @opts[:scope]; end
     end
 
     def table_data

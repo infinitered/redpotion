@@ -40,7 +40,7 @@ describe 'DataTableScreen' do
   end
 
   class TestDataTableScreen < ProMotion::DataTableScreen
-    model TestModel, :starts_with_o
+    model TestModel, scope: :starts_with_o
   end
 
   it 'should return items that can be used to build cells from cell_data' do
@@ -74,7 +74,7 @@ describe 'DataTableScreen' do
     end
 
     it "should accept an optional scope" do
-      TestDataTableScreen.model TestModel, :starts_with_o
+      TestDataTableScreen.model TestModel, scope: :starts_with_o
       TestDataTableScreen.data_scope.should.equal(:starts_with_o)
       TestDataTableScreen.new.cell_data.count.should.equal(1)
       TestDataTableScreen.new.cell_data[0][:properties][:name].should.equal('one')
