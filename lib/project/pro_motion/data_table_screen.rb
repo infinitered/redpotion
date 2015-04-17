@@ -3,14 +3,16 @@ module ProMotion
     class << self
       def model(value, opts = {})
         if value.method_defined?(:cell)
-          @data_model = value
-          @opts = {scope: :all}.merge(opts)
+          @opts = {
+            model: value,
+            scope: :all,
+          }.merge(opts)
         else
           raise "#{value} must define the cell method"
         end
       end
 
-      def data_model; @data_model; end
+      def data_model; @opts[:model]; end
       def data_scope; @opts[:scope]; end
     end
 
