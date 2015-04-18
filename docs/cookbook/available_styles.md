@@ -1,8 +1,17 @@
-# A list of styler attributes for each type of view
+## Styles available to you
 
-_I created this list with this command: `rmq.log_stylers true_`
+### Styler
+A styler wraps around a view, augmenting it with styling power and sugar.
 
-## UIViewStyler
+Each UIView subclass can have its own styler (many exist in RMQ, but not all *yet*). There is a UIViewStyler class they all inherit from, and a UIControlStyler controls inherit from. Much of the code is in UIViewStyler.
+
+When you create a "style method", it will be passed the view, wrapped in a styler. You can get the view using st.view.
+
+You can see a list of styler methods using: `rmq.log_stylers`
+
+### List of stylers, their methods, and some examples
+
+#### UIViewStyler
 
 All stylers inherit UIViewStyler, so these are available in any view.
 
@@ -82,8 +91,57 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * z_position
 * z_position=(value)
 
+```ruby
+  st.frame = {l: 1, t: 2, w: 3, h: 4}
+  st.frame = {left: 1, top: 2, width: 3, height: 4}
+  st.frame = {from_right: 1, from_bottom: 2, width: 3, height: 4}
+  st.frame = {fr: 1, fb: 2, w: 3, h: 4}
+  st.center = st.superview.center
+  st.center_x = 50
+  st.center_y = 60
 
-## UIActivityIndicatorViewStyler
+  st.enabled = true
+  st.hidden = false
+  st.z_position = 66
+  st.opaque = false
+  st.clips_to_bounds = false
+  st.hidden = true
+  st.content_mode = UIViewContentModeBottomLeft
+
+  st.background_color = color.red
+
+  st.scale = 1.5
+  st.rotation = 45
+  st.tint_color = color.blue
+  st.layer.cornerRadius = 5
+end
+
+
+#### UIControlStyler
+
+All UIControl stylers, like a UIButton, inherit from UIControlStyler
+
+* content_horizontal_alignment
+* content_horizontal_alignment=(value)
+* content_vertical_alignment
+* content_vertical_alignment=(value)
+* highlighted
+* highlighted=(value)
+* selected
+* selected=(value)
+* state
+
+```ruby
+def ui_control_kitchen_sink(st)
+  st.content_vertical_alignment = UIControlContentVerticalAlignmentFill
+  st.content_horizontal_alignment = UIControlContentHorizontalAlignmentFill
+  st.selected = true
+  st.highlighted = true
+end
+```
+
+
+#### UIActivityIndicatorViewStyler
 
 * activity_indicator_style
 * activity_indicator_style=(value)
@@ -99,7 +157,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * stop_animating
 
 
-## UIButtonStyler
+#### UIButtonStyler
 
 * adjust_image_when_highlighted
 * adjust_image_when_highlighted=(value)
@@ -144,21 +202,16 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * title_edge_insets
 * title_edge_insets=(value)
 
-
-## UIControlStyler
-
-* content_horizontal_alignment
-* content_horizontal_alignment=(value)
-* content_vertical_alignment
-* content_vertical_alignment=(value)
-* highlighted
-* highlighted=(value)
-* selected
-* selected=(value)
-* state
+```ruby
+st.text = 'foo'
+st.font = font.system(12)
+st.color = color.red
+st.image_normal = image.resource('logo')
+st.image_highlighted = image.resource('logo')
+```
 
 
-## UIDatePickerStyler
+#### UIDatePickerStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -173,13 +226,17 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * state
 
 
-## UIImageViewStyler
+#### UIImageViewStyler
 
 * image
 * image=(value)
 
+```ruby
+st.image = image.resource('logo')
+```
 
-## UILabelStyler
+
+#### UILabelStyler
 
 * adjusts_font_size
 * adjusts_font_size=(value)
@@ -207,11 +264,20 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * text_color
 * text_color=(value)
 
+```ruby
+st.text = 'rmq is awesome'
+st.font = font.system(12)
+st.color = color.black
+st.text_alignment = :center
 
-## UINavigationBarStyler
+st.resize_to_fit_text
+st.size_to_fit
+```
+
+#### UINavigationBarStyler
 
 
-## UIPageControlStyler
+#### UIPageControlStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -246,7 +312,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * track_tint_color=(value)
 
 
-## UIRefreshControlStyler
+#### UIRefreshControlStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -259,7 +325,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * state
 
 
-## UIScrollViewStyler
+#### UIScrollViewStyler
 
 * bounces
 * bounces=(value)
@@ -284,8 +350,20 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * shows_vertical_scroll_indicator
 * shows_vertical_scroll_indicator=(value)
 
+```ruby
+st.paging = true
+st.scroll_enabled = true
+st.direction_lock = false
+st.content_offset = CGPointMake(5, 10)
+st.content_inset = CGPointMake(-100, 0)
+st.bounces = false
+st.content_size = CGSizeMake(320, 500)
+st.shows_horizontal_scroll_indicator = true
+st.shows_vertical_scroll_indicator = false
+st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
+```
 
-## UISegmentedControlStyler
+#### UISegmentedControlStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -300,7 +378,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * unshift=(value)
 
 
-## UISliderStyler
+#### UISliderStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -326,7 +404,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * state
 
 
-## UISwitchStyler
+#### UISwitchStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -340,8 +418,11 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * selected=(value)
 * state
 
+```ruby
+st.on = true
+```
 
-## UITabBarStyler
+#### UITabBarStyler
 
 
 ## UITableViewCellStyler
@@ -368,7 +449,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * text_color=(value)
 
 
-## UITableViewStyler
+#### UITableViewStyler
 
 * allows_selection
 * allows_selection=(value)
@@ -403,7 +484,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * shows_vertical_scroll_indicator=(value)
 
 
-## UITextFieldStyler
+#### UITextFieldStyler
 
 * adjusts_font_size
 * adjusts_font_size=(value)
@@ -482,7 +563,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * typing_attributes=(value)
 
 
-## UITextViewStyler
+#### UITextViewStyler
 
 * attributed_text
 * attributed_text=(value)
@@ -524,3 +605,91 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * text_alignment=(value)
 * text_color
 * text_color=(value)
+
+#### Examples
+
+```ruby
+  st.frame = {l: 1, t: 2, w: 3, h: 4}
+  st.frame = {left: 1, top: 2, width: 3, height: 4}
+  st.frame = {from_right: 1, from_bottom: 2, width: 3, height: 4}
+  st.frame = {fr: 1, fb: 2, w: 3, h: 4}
+  st.center = st.superview.center
+  st.center_x = 50
+  st.center_y = 60
+
+  st.enabled = true
+  st.hidden = false
+  st.z_position = 66
+  st.opaque = false
+  st.clips_to_bounds = false
+  st.hidden = true
+  st.content_mode = UIViewContentModeBottomLeft
+
+  st.background_color = color.red
+
+  st.scale = 1.5
+  st.rotation = 45
+  st.tint_color = color.blue
+  st.layer.cornerRadius = 5
+end
+```
+
+##### UIControlStyler
+
+```ruby
+st.content_vertical_alignment = UIControlContentVerticalAlignmentFill
+st.content_horizontal_alignment = UIControlContentHorizontalAlignmentFill
+st.selected = true
+st.highlighted = true
+```
+
+##### UILabelStyler
+
+```ruby
+st.text = 'rmq is awesome'
+st.font = font.system(12)
+st.color = color.black
+st.text_alignment = :center
+
+st.resize_to_fit_text
+st.size_to_fit
+```
+
+##### UIButtonStyler
+
+```ruby
+st.text = 'foo'
+st.font = font.system(12)
+st.color = color.red
+st.image_normal = image.resource('logo')
+st.image_highlighted = image.resource('logo')
+```
+
+##### UIImageViewStyler
+
+```ruby
+st.image = image.resource('logo')
+```
+
+##### UIScrollViewStyler
+
+```ruby
+st.paging = true
+st.scroll_enabled = true
+st.direction_lock = false
+st.content_offset = CGPointMake(5, 10)
+st.content_inset = CGPointMake(-100, 0)
+st.bounces = false
+st.content_size = CGSizeMake(320, 500)
+st.shows_horizontal_scroll_indicator = true
+st.shows_vertical_scroll_indicator = false
+st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
+```
+
+##### UISwitchStyler
+
+* on=(value)
+
+```ruby
+st.on = true
+```
