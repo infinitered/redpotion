@@ -7,6 +7,7 @@ pages:
 - [redpotion_specific_features.md, Docs,              "RedPotion specific features"]
 - [contributing.md, Docs,                             "Contributing"]
 - [cookbook/command_line.md, Cookbook,                "Command-line and REPL tools"]
+- [cookbook/project.md, Cookbook,                     "Find out about the project, are you in the simulator, dev, release, on what OS, what device, etc"]
 - [cookbook/device.md, Cookbook,                      "The device"]
 - [cookbook/app.md, Cookbook,                         "The application and accessing it"]
 - [cookbook/screens.md, Cookbook,                     "Screens"]

@@ -9,10 +9,8 @@ RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://githu
 
 =========
 
-
 ## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
 
-=========
 
 The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creators of ProMotion** at [ClearSight](https://clearsightstudio.com/) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
 
