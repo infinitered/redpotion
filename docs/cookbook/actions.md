@@ -1,5 +1,3 @@
-# Misc actions, such as hiding, focusing, etc
-
 ```ruby
 find(UILabel).send(:some_method, args)
 find(my_view).hide

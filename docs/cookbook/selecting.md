@@ -1,5 +1,3 @@
-# Selecting or finding views
-
 You can select a view using the following:
 
 * Constant

@@ -1,5 +1,3 @@
-# Laying out a screen
-
 This example applies layouts in the stylesheet (thus why it's st.frame =), but you could also apply them using the .layout method.
 
 <img src="http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2014/05/rect_example.png" alt="rect_example" width="770" height="978" class="alignnone size-full wp-image-151" />

@@ -1,5 +1,3 @@
-# Events, gestures: programming behaviour
-
 ## On / Off
 
 To add an event, use .on, to remove it it, use .off

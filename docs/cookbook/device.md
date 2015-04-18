@@ -1,5 +1,3 @@
-# The device 
-
 ```ruby
 device.screen
 device.width # screen width

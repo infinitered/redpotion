@@ -1,5 +1,3 @@
-# The application (app) and accessing it
-
 ```ruby
 app.window
 app.delegate

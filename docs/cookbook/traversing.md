@@ -1,8 +1,6 @@
-# Finding your way around. Traversing the app, screens, and views
-
 Moving around the subview tree.
 
-#### Screen, controller, and root_view
+## Screen, controller, and root_view
 
 ```ruby
 find.screen  # alias to find.view_controller
@@ -10,19 +8,19 @@ find.view_controller
 find.root_view # View of the view_controller
 ```
 
-#### Window of the root_view
+## Window of the root_view
 
 ```ruby
 find.window
 ```
 
-#### All subviews, subviews of subviews, etc for root_view:
+## All subviews, subviews of subviews, etc for root_view:
 
 ```ruby
 find.all
 ```
 
-#### Find
+## Find
 
 Find all children/grandchildren/etc:
 
@@ -36,7 +34,7 @@ More commonly, you are searching for something:
 find(my_view).find(UITextField)
 ```
 
-#### Closest
+## Closest
 
 Closest is interesting, and very useful. It searches through parents/grandparents/etc and finds the **first** occurrence that matches the selectors:
 
@@ -50,20 +48,20 @@ Let's say that someone clicked on a button in a table cell. You want to find and
 find(sender).closest(UITableViewCell).find(UIButton).hide
 ```
 
-#### Children of selected view, views, or root_view
+## Children of selected view, views, or root_view
 
 ```ruby
 find.children  # All children (but not grandchildren) of root_view
 find(:section).children  # All children of any view with the tag or stylename of :section
 ```
 
-##### You can also add selectors
+### You can also add selectors
 
 ```ruby
 find(:section).children(UILabel)  # All children (that are of type UILabel of any view with the tag or stylename of :section
 ```
 
-#### Parent or parents of selected view(s)
+## Parent or parents of selected view(s)
 
 ```ruby
 find(my_view).parent # superview of my_view
@@ -71,7 +69,7 @@ find(my_view).parents # superview of my_view, plus any grandparents, great-grand
 find(UIButton).parent # all parents of all buttons
 ```
 
-#### Siblings 
+## Siblings 
 
 Find all your siblings:
 
@@ -91,7 +89,7 @@ Get the sibling right next to the view, above the view:
 find(my_view).prev
 ```
 
-#### And, not, back, and self
+## And, not, back, and self
 
 These four could be thought of as Selectors, not Traversing. They kind of go in both, anywho.
 
@@ -119,6 +117,6 @@ Back is interesting, it moves you back up the chain one. In this example, we fin
 find(test_view).find(UIImageView).tag(:foo).back.find(UILabel).tag(:bar)
 ```
 
-#### Filter
+## Filter
 
 Filter is what everything else uses (parents, children, find, etc), you typically don't use it yourself.

@@ -1,5 +1,3 @@
-# Tagging views
-
 ```ruby
 # Add tags
 find(my_view).tag(:your_tag)

@@ -1,5 +1,3 @@
-# Using a local database
-
 RedPotion uses Core Data as its local data store. Specifically it uses the [CDQ](https://github.com/infinitered/cdq) gem.
 
 ## Schema

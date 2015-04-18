@@ -1,5 +1,3 @@
-# Fonts
-
 ```ruby
 font.family_list # useful in console
 font.for_family('Helvetica') # useful in console

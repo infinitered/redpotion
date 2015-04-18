@@ -1,5 +1,3 @@
-# Updating data or attributes
-
 RedPotion provides a variety of ways to update a view's data or attributes. All of which are chain-able.
 
 ### Data

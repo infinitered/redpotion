@@ -1,5 +1,3 @@
-# Formatting numbers and dates
-
 A performant way to format numbers and dates.
 
 ```ruby

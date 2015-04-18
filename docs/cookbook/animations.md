@@ -1,5 +1,3 @@
-# Animating and Animations
-
 ## Animating
 
 The most basic:

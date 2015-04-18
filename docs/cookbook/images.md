@@ -1,5 +1,3 @@
-# Images, icons, and photos
-
 ## General images
 
 RedPotion provides various features for dealing with images.

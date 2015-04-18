@@ -1,5 +1,3 @@
-# Command-line and REPL tools
-
 ## Live stylesheet reloading
 
 In REPL, type: `live_stylesheets`

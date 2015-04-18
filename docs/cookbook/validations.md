@@ -1,5 +1,3 @@
-# Validating data, text, text boxes, etc
-
 RedPotion allows a RubyMotion validation library to help you to validate data in a way that makes life easy.
 
 There are two main aspects, so you can utilize RMQ validation to meet your needs:
@@ -14,12 +12,12 @@ rmq.validation.valid?('https://www.infinitered.com', :url) #true
 rmq.validation.valid?(98.6, :number) #true
 
 # Examples of Selection Rules
-rmq.append(UITextField, :user).validates(:email)
-rmq.append(UITextField, :password).validates(:strong_password)
-rmq.append(UITextField, :pin).validates(:digits).validates(:length, exact_length: 5)
+append(UITextField, :user).validates(:email)
+append(UITextField, :password).validates(:strong_password)
+append(UITextField, :pin).validates(:digits).validates(:length, exact_length: 5)
 
-rmq(UITextField).valid? # checks if selected is valid
-rmq(:password).clear_validations! #removes validations on selected
+find(UITextField).valid? # checks if selected is valid
+find(:password).clear_validations! #removes validations on selected
 ```
 
 All validations are tied to RMQ Debugging mode. So you can turn them off in the application by entering debug mode. You can do so by starting your project with the flag set to true `rake rmq_debug=true` OR by setting the flag in the code/REPL with `RubyMotionQuery::RMQ.debugging = true`.
@@ -85,24 +83,24 @@ rmq.validation.valid?(some_url_input, :url, white_list: ['http://localhost:8080'
 For a more robust use of RMQ and validation, there's an arsenal of RMQ integrated validation options and events. ANY utility rule can be used in a selection validation. Simply chain the validation you'd like applied to the UIViews you've selected with RMQ. For example:
 ```ruby
 # attach validation rules to UIViews
-rmq.append(UITextField, :weight).validates(:digits)
-rmq.append(UITextField, :name).validates(:presence)
+append(UITextField, :weight).validates(:digits)
+append(UITextField, :name).validates(:presence)
 
 # Later, you can check these fields to see if they have data that fits their associated validations
-rmq(UITextField).valid?
+find(UITextField).valid?
 ```
 Using the selection rules gets you a lot of validation help.
 ```ruby
 # Get a list of all views that were valid/invalid (updates on every .valid? call)
-rmq(some_selection_criteria).invalid # returns all invalid views in the selected
-rmq(some_selection_criteria).valid # returns all valid views in the selected
+find(some_selection_criteria).invalid # returns all invalid views in the selected
+find(some_selection_criteria).valid # returns all valid views in the selected
 
 # you can remove validations just as easily
-rmq(some_selection).clear_validations!
+find(some_selection).clear_validations!
 ```
 You can attach and fire events on the UIViews in a block.
 ```ruby
-rmq.append(UITextField).validates(:digits).
+append(UITextField).validates(:digits).
 on(:valid) do |valid|
 puts "This field is valid"
 end.
@@ -111,18 +109,18 @@ puts "This field is invalid"
 end
 
 # The above will fire their events when validation gets called
-rmq.all.valid?
+find.all.valid?
 # You can can call valid? during .on(:change) if you'd like your valid/invalid
 # blocks to run instantaneously with given input.
 ```
 Also, you can even get friendly error messages
 ```ruby
 # start off with a validated input
-rmq.append(UITextField, :user).validates(:email)
-rmq.all.valid? #run validation check
+append(UITextField, :user).validates(:email)
+find.all.valid? #run validation check
 
 # Returns array of error messages for every invalid item in selection
-rmq.all.validation_errors
+find.all.validation_errors
 # E.G ["Validation Error - input requires valid email."]
 ```
 You can customize these error messages per validation rule by setting them in the stylesheet
@@ -141,7 +139,7 @@ There are a few excellent ways to add your own validations. If you simply need t
 #### custom rule
 If your validation is specific to a single form, we suggest taking advantage of using the `custom` validation rule.
 ```ruby
-some_field = rmq.append(UITextField).validates(:custom, regex: /^test$/)
+some_field = append(UITextField).validates(:custom, regex: /^test$/)
 some_field.data("test")
 some_field.valid?
 # => true
@@ -156,7 +154,7 @@ end
 ```
 You can then use your new validator in your application:
 ```ruby
-some_field = rmq.append(UITextField).validates(:start_with, prefix: 'x')
+some_field = append(UITextField).validates(:start_with, prefix: 'x')
 some_field.data("test")
 some_field.valid? # => false
 some_field.data("xenophobia")

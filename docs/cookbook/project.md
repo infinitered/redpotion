@@ -1,21 +1,9 @@
-# Find out about the project, are you in the simulator, dev, release, on what OS, what device, etc
-
 ## What is the app name and indentifier?
 
 ```ruby
-app.window
-app.delegate
-app.environment
-app.release? # .production? also
-app.test?
-app.development?
-app.version
 app.name
 app.identifier
-app.resource_path
-app.document_path
 ```
-
 
 ## Can I find out info about for the project at runtime?
 
