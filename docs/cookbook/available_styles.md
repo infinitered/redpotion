@@ -6,97 +6,81 @@ _I created this list with this command: `rmq.log_stylers true_`
 
 All stylers inherit UIViewStyler, so these are available in any view.
 
-* background_gradient=(value)
-* centered=(value)
-* from_right
-* from_right=(value)
-* right
-* right=(value)
-* from_bottom
-* from_bottom=(value)
-* bottom
-* bottom=(value)
-* height
-* height=(value)
-* width
-* width=(value)
-* y
-* top
-* top=(value)
-* x
-* left
-* left=(value)
-* user_interaction_enabled
-* user_interaction_enabled=(value)
-* shadow_path
-* shadow_path=(value)
-* shadow_opacity
-* shadow_opacity=(value)
-* shadow_offset
-* shadow_offset=(value)
-* shadow_color
-* shadow_color=(value)
-* alpha=(value)
-* alpha
-* validation_errors=(value)
+* absolute_frame=(value)
 * accessibility_label=(value)
-* masks_to_bounds
-* masks_to_bounds=(value)
-* corner_radius
-* corner_radius=(value)
-* corner_radius=(value)
+* alpha
+* alpha=(value)
+* background_color
+* background_color=(value)
+* background_gradient=(value)
+* background_image=(value)
 * border=(value)
 * border_color
 * border_color=(value)
 * border_width
 * border_width=(value)
-* opacity
-* opacity=(value)
-* layer
-* tint_color
-* tint_color=(value)
+* bounds
+* bounds=(value)
+* center
+* center=(value)
+* center_x
+* center_x=(value)
+* center_y
+* center_y=(value)
+* centered=(value)
 * clips_to_bounds
 * clips_to_bounds=(value)
 * content_mode
 * content_mode=(value)
-* transform
-* transform=(value)
-* rotation=(value)
-* scale=(value)
+* copyWithZone
+* corner_radius
+* corner_radius=(value)
+* corner_radius=(value)
 * enabled
 * enabled=(value)
-* hidden
-* hidden=(value)
-* opaque
-* opaque=(value)
-* z_position
-* z_position=(value)
-* background_image=(value)
-* background_color
-* background_color=(value)
-* center_y
-* center_y=(value)
-* center_x
-* center_x=(value)
-* center
-* center=(value)
-* tag
-* super_width
-* super_height
-* parent
-* superview
-* bounds
-* bounds=(value)
-* prev_view
-* prev_frame
-* absolute_frame=(value)
 * frame
 * frame=(value)
-* view_has_been_styled?
 * get
+* hidden
+* hidden=(value)
+* layer
+* masks_to_bounds
+* masks_to_bounds=(value)
+* opacity
+* opacity=(value)
+* opaque
+* opaque=(value)
+* parent
+* prev_frame
+* prev_view
+* right
+* right=(value)
+* rotation=(value)
+* scale=(value)
+* shadow_color
+* shadow_color=(value)
+* shadow_offset
+* shadow_offset=(value)
+* shadow_opacity
+* shadow_opacity=(value)
+* shadow_path
+* shadow_path=(value)
+* super_height
+* super_width
+* superview
+* tag
+* tint_color
+* tint_color=(value)
+* transform
+* transform=(value)
+* user_interaction_enabled
+* user_interaction_enabled=(value)
+* validation_errors=(value)
 * view
 * view=(value)
-* copyWithZone
+* view_has_been_styled?
+* z_position
+* z_position=(value)
 
 
 ## UIActivityIndicatorViewStyler
@@ -225,8 +209,6 @@ All stylers inherit UIViewStyler, so these are available in any view.
 
 
 ## UINavigationBarStyler
-
-*
 
 
 ## UIPageControlStyler
@@ -360,8 +342,6 @@ All stylers inherit UIViewStyler, so these are available in any view.
 
 
 ## UITabBarStyler
-
-*
 
 
 ## UITableViewCellStyler
