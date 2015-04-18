@@ -132,12 +132,10 @@ All UIControl stylers, like a UIButton, inherit from UIControlStyler
 * state
 
 ```ruby
-def ui_control_kitchen_sink(st)
-  st.content_vertical_alignment = UIControlContentVerticalAlignmentFill
-  st.content_horizontal_alignment = UIControlContentHorizontalAlignmentFill
-  st.selected = true
-  st.highlighted = true
-end
+st.content_vertical_alignment = UIControlContentVerticalAlignmentFill
+st.content_horizontal_alignment = UIControlContentHorizontalAlignmentFill
+st.selected = true
+st.highlighted = true
 ```
 
 

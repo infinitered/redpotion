@@ -7,12 +7,22 @@
 [![image](http://ir_public.s3.amazonaws.com/projects/redpotion/Octocat_100.png)**github repo**](https://github.com/infinitered/redpotion)
 
 
-
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 
 RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and [MORE!](#full-listing-of-gems-and-pods-for-redpotion). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 ---
+
+## Other documentation
+
+Until these docs are complete, please also use RMQ's and ProMotion's docs
+
+* [RMQ](http://rubymotionquery.com/documentation/)
+* [ProMotion](http://promotion.readthedocs.org/en/master/)
+
+---
+
+
 
 The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creators of ProMotion** at [ClearSight](https://clearsightstudio.com/) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
 
