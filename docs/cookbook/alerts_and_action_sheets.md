@@ -1,8 +1,8 @@
-<img src="./_art/screen.png" alt="Screen Shot" width="500" />
+<img src="https://raw.githubusercontent.com/GantMan/RedAlert/master/_art/screen.png" alt="Screen Shot" width="500" />
 
 **Did you know that UIAlertView and UIActionSheet (as well as their respective delegate protocols) are deprecated in iOS 8?**
 
-Apple requests you start using the new `UIAlertController`.  RedPotion supports for antiquated `UIAlertView`s for the gnostalgic.
+Apple requests you start using the new `UIAlertController`.  RedPotion supports the antiquated `UIAlertView`s for the gnostalgic.
 
 ## Usage
 

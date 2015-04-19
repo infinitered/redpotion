@@ -49,6 +49,7 @@ You can use both RMQ Plugins and ProMotion Add-ons
 * [newclear](https://github.com/IconoclastLabs/newclear)
 * [motion_print](https://github.com/OTGApps/motion_print)
 * [motion-cocoapods](https://github.com/HipByte/motion-cocoapods)
+* [RedAlert](https://github.com/GantMan/RedAlert)
 * (DEV) [webstub](https://github.com/nathankot/webstub)
 
 **Pods**
