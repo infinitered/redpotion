@@ -10,6 +10,7 @@ pages:
 - [cookbook/project.md, Cookbook,                     "Find out about the project, are you in the simulator, dev, release, on what OS, what device, etc"]
 - [cookbook/device.md, Cookbook,                      "The device"]
 - [cookbook/app.md, Cookbook,                         "The application and accessing it"]
+- [cookbook/app_delegate.md, Cookbook,                "The device"]
 - [cookbook/screens.md, Cookbook,                     "Screens"]
 - [cookbook/stylesheets.md, Cookbook,                 "Using stylesheets to style and layout your screens and views"]
 - [cookbook/layout_a_screen.md, Cookbook,             "Laying out a screen"]

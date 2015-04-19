@@ -1,6 +1,4 @@
-## Styles available to you
-
-### Styler
+### What is a Styler?
 A styler wraps around a view, augmenting it with styling power and sugar.
 
 Each UIView subclass can have its own styler (many exist in RMQ, but not all *yet*). There is a UIViewStyler class they all inherit from, and a UIControlStyler controls inherit from. Much of the code is in UIViewStyler.
@@ -9,9 +7,11 @@ When you create a "style method", it will be passed the view, wrapped in a style
 
 You can see a list of styler methods using: `rmq.log_stylers`
 
-### List of stylers, their methods, and some examples
+-----
 
-#### UIViewStyler
+## List of stylers, their methods, and some examples
+
+### UIViewStyler
 
 All stylers inherit UIViewStyler, so these are available in any view.
 
@@ -117,7 +117,7 @@ All stylers inherit UIViewStyler, so these are available in any view.
 end
 
 
-#### UIControlStyler
+### UIControlStyler
 
 All UIControl stylers, like a UIButton, inherit from UIControlStyler
 
@@ -139,7 +139,7 @@ st.highlighted = true
 ```
 
 
-#### UIActivityIndicatorViewStyler
+### UIActivityIndicatorViewStyler
 
 * activity_indicator_style
 * activity_indicator_style=(value)
@@ -155,7 +155,7 @@ st.highlighted = true
 * stop_animating
 
 
-#### UIButtonStyler
+### UIButtonStyler
 
 * adjust_image_when_highlighted
 * adjust_image_when_highlighted=(value)
@@ -209,7 +209,7 @@ st.image_highlighted = image.resource('logo')
 ```
 
 
-#### UIDatePickerStyler
+### UIDatePickerStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -224,7 +224,7 @@ st.image_highlighted = image.resource('logo')
 * state
 
 
-#### UIImageViewStyler
+### UIImageViewStyler
 
 * image
 * image=(value)
@@ -234,7 +234,7 @@ st.image = image.resource('logo')
 ```
 
 
-#### UILabelStyler
+### UILabelStyler
 
 * adjusts_font_size
 * adjusts_font_size=(value)
@@ -272,10 +272,10 @@ st.resize_to_fit_text
 st.size_to_fit
 ```
 
-#### UINavigationBarStyler
+### UINavigationBarStyler
 
 
-#### UIPageControlStyler
+### UIPageControlStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -296,7 +296,7 @@ st.size_to_fit
 * state
 
 
-## UIProgressViewStyler
+### UIProgressViewStyler
 
 * progress_image
 * progress_image=(value)
@@ -310,7 +310,7 @@ st.size_to_fit
 * track_tint_color=(value)
 
 
-#### UIRefreshControlStyler
+### UIRefreshControlStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -323,7 +323,7 @@ st.size_to_fit
 * state
 
 
-#### UIScrollViewStyler
+### UIScrollViewStyler
 
 * bounces
 * bounces=(value)
@@ -361,7 +361,7 @@ st.shows_vertical_scroll_indicator = false
 st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 ```
 
-#### UISegmentedControlStyler
+### UISegmentedControlStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -376,7 +376,7 @@ st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 * unshift=(value)
 
 
-#### UISliderStyler
+### UISliderStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -389,7 +389,7 @@ st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 * state
 
 
-## UIStepperStyler
+### UIStepperStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -402,7 +402,7 @@ st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 * state
 
 
-#### UISwitchStyler
+### UISwitchStyler
 
 * content_horizontal_alignment
 * content_horizontal_alignment=(value)
@@ -420,7 +420,7 @@ st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 st.on = true
 ```
 
-#### UITabBarStyler
+### UITabBarStyler
 
 
 ## UITableViewCellStyler
@@ -447,7 +447,7 @@ st.on = true
 * text_color=(value)
 
 
-#### UITableViewStyler
+### UITableViewStyler
 
 * allows_selection
 * allows_selection=(value)
@@ -482,7 +482,7 @@ st.on = true
 * shows_vertical_scroll_indicator=(value)
 
 
-#### UITextFieldStyler
+### UITextFieldStyler
 
 * adjusts_font_size
 * adjusts_font_size=(value)
@@ -561,7 +561,7 @@ st.on = true
 * typing_attributes=(value)
 
 
-#### UITextViewStyler
+### UITextViewStyler
 
 * attributed_text
 * attributed_text=(value)
@@ -604,35 +604,32 @@ st.on = true
 * text_color
 * text_color=(value)
 
-#### Examples
-
 ```ruby
-  st.frame = {l: 1, t: 2, w: 3, h: 4}
-  st.frame = {left: 1, top: 2, width: 3, height: 4}
-  st.frame = {from_right: 1, from_bottom: 2, width: 3, height: 4}
-  st.frame = {fr: 1, fb: 2, w: 3, h: 4}
-  st.center = st.superview.center
-  st.center_x = 50
-  st.center_y = 60
+st.frame = {l: 1, t: 2, w: 3, h: 4}
+st.frame = {left: 1, top: 2, width: 3, height: 4}
+st.frame = {from_right: 1, from_bottom: 2, width: 3, height: 4}
+st.frame = {fr: 1, fb: 2, w: 3, h: 4}
+st.center = st.superview.center
+st.center_x = 50
+st.center_y = 60
 
-  st.enabled = true
-  st.hidden = false
-  st.z_position = 66
-  st.opaque = false
-  st.clips_to_bounds = false
-  st.hidden = true
-  st.content_mode = UIViewContentModeBottomLeft
+st.enabled = true
+st.hidden = false
+st.z_position = 66
+st.opaque = false
+st.clips_to_bounds = false
+st.hidden = true
+st.content_mode = UIViewContentModeBottomLeft
 
-  st.background_color = color.red
+st.background_color = color.red
 
-  st.scale = 1.5
-  st.rotation = 45
-  st.tint_color = color.blue
-  st.layer.cornerRadius = 5
-end
+st.scale = 1.5
+st.rotation = 45
+st.tint_color = color.blue
+st.layer.cornerRadius = 5
 ```
 
-##### UIControlStyler
+### UIControlStyler
 
 ```ruby
 st.content_vertical_alignment = UIControlContentVerticalAlignmentFill
@@ -641,7 +638,7 @@ st.selected = true
 st.highlighted = true
 ```
 
-##### UILabelStyler
+### UILabelStyler
 
 ```ruby
 st.text = 'rmq is awesome'
@@ -653,7 +650,7 @@ st.resize_to_fit_text
 st.size_to_fit
 ```
 
-##### UIButtonStyler
+### UIButtonStyler
 
 ```ruby
 st.text = 'foo'
@@ -663,13 +660,13 @@ st.image_normal = image.resource('logo')
 st.image_highlighted = image.resource('logo')
 ```
 
-##### UIImageViewStyler
+### UIImageViewStyler
 
 ```ruby
 st.image = image.resource('logo')
 ```
 
-##### UIScrollViewStyler
+### UIScrollViewStyler
 
 ```ruby
 st.paging = true
@@ -684,13 +681,15 @@ st.shows_vertical_scroll_indicator = false
 st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 ```
 
-##### UISwitchStyler
+### UISwitchStyler
 
 * on=(value)
 
 ```ruby
 st.on = true
 ```
+
+-----
 
 ## Adding your own styler
 
