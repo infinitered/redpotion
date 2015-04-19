@@ -9,6 +9,9 @@ RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://githu
 
 =========
 
+## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
+
+
 The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creators of ProMotion** at [ClearSight](https://clearsightstudio.com/) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
 
 [![image](https://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2013/08/InfiniteRed_logo_100h.png)](http://infinitered.com/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [![image](https://clearsightstudio.com/assets/images/clearsight-logos/color-logo@2x-458a9655.png)](https://clearsightstudio.com/)
@@ -268,7 +271,7 @@ class MyStylesheet < ApplicationStylesheet
 end
 ```
 
-In order to use this feature, you must add the `JMIMageCache` cocoapod to your project:
+In order to use this feature, you must add the `JMIMageCache` cocoapod to your project (this is included in a new project):
 
 ```ruby
 app.pods do
@@ -347,3 +350,6 @@ end
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
