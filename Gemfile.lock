@@ -3,6 +3,7 @@ PATH
   specs:
     redpotion (1.1.1)
       ProMotion (~> 2.3)
+      RedAlert
       motion-cocoapods
       motion_print
       rake
@@ -13,6 +14,8 @@ GEM
   specs:
     ProMotion (2.3.0)
       methadone (~> 1.7)
+    RedAlert (0.3)
+      ruby_motion_query (>= 1.2.0)
     activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
@@ -77,6 +80,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedAlert
   cdq
   motion-cocoapods
   redpotion!
