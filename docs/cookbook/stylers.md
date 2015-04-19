@@ -92,29 +92,29 @@ All stylers inherit UIViewStyler, so these are available in any view.
 * z_position=(value)
 
 ```ruby
-  st.frame = {l: 1, t: 2, w: 3, h: 4}
-  st.frame = {left: 1, top: 2, width: 3, height: 4}
-  st.frame = {from_right: 1, from_bottom: 2, width: 3, height: 4}
-  st.frame = {fr: 1, fb: 2, w: 3, h: 4}
-  st.center = st.superview.center
-  st.center_x = 50
-  st.center_y = 60
+st.frame = {l: 1, t: 2, w: 3, h: 4}
+st.frame = {left: 1, top: 2, width: 3, height: 4}
+st.frame = {from_right: 1, from_bottom: 2, width: 3, height: 4}
+st.frame = {fr: 1, fb: 2, w: 3, h: 4}
+st.center = st.superview.center
+st.center_x = 50
+st.center_y = 60
 
-  st.enabled = true
-  st.hidden = false
-  st.z_position = 66
-  st.opaque = false
-  st.clips_to_bounds = false
-  st.hidden = true
-  st.content_mode = UIViewContentModeBottomLeft
+st.enabled = true
+st.hidden = false
+st.z_position = 66
+st.opaque = false
+st.clips_to_bounds = false
+st.hidden = true
+st.content_mode = UIViewContentModeBottomLeft
 
-  st.background_color = color.red
+st.background_color = color.red
 
-  st.scale = 1.5
-  st.rotation = 45
-  st.tint_color = color.blue
-  st.layer.cornerRadius = 5
-end
+st.scale = 1.5
+st.rotation = 45
+st.tint_color = color.blue
+st.layer.cornerRadius = 5
+```
 
 
 ### UIControlStyler

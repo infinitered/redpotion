@@ -37,7 +37,7 @@ end
 
 Lots of methods exist for adding/building/adjusting views add styles.  You can apply a style in multiple locations.
 
-[caption id="attachment_243" align="alignnone" width="300"]<a href="http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2014/05/rmq.png"><img src="http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2014/05/rmq-300x103.png" alt="RMQ method sequence stack" width="300" height="103" class="size-medium wp-image-243" /></a> rmq method sequence.[/caption]
+![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2014/05/rmq.png)
 
 #### Reapply styles - If your view updates
 
