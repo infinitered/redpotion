@@ -1,4 +1,24 @@
+## Fancy printing
+
+RedPotion uses [motion_print](https://github.com/OTGApps/motion_print) for fancy console output.
+
+Instead of `puts`, use `mp`:
+
+```ruby
+> mp({b: "bee", a: 'a', see: 4})
+
+{
+  a     => a,
+  b     => bee,
+  see   => 4
+}
+```
+------
+
+## RMQ Debug
+
 Adding rmq_debug=true to rake turns on some debugging features that are too slow or verbose to include in a normal build.  It's great for normal use in the simulator, but you'll want to leave it off if you're measuring performance.
+
 ```
 rake rmq_debug=true
 ```

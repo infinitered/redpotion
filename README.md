@@ -271,7 +271,7 @@ class MyStylesheet < ApplicationStylesheet
 end
 ```
 
-In order to use this feature, you must add the `JMIMageCache` cocoapod to your project:
+In order to use this feature, you must add the `JMIMageCache` cocoapod to your project (this is included in a new project):
 
 ```ruby
 app.pods do

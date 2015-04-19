@@ -33,6 +33,34 @@ image.resource_resizable('foo', left: 10, top: 10, right: 10, bottom: 10)
 image.from_view(my_view)
 ```
 
+------
+
+## Remote images
+
+You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [JMImageCache](https://github.com/jakemarsh/JMImageCache).
+
+```ruby
+class MyStylesheet < ApplicationStylesheet
+  def my_ui_image_view(st)
+    # placeholder_image= is just an alias to image=
+    # Set the placeholder image you want from your resources directory
+    st.placeholder_image = image.resource("my_placeholder")
+    # Set the remote URL. It will be applied to the UIImageView
+    # when downloaded or retrieved from the local cache.
+    st.remote_image = "http://www.rubymotion.com/img/rubymotion-logo.png"
+    # or st.remote_image = NSURL.urlWithString(...)
+  end
+end
+```
+
+To assign a remote image to a UIImageView:
+
+```ruby
+your_ui_image_view.remote_image = "http://bit.ly/18iMhwc"
+```
+
+------
+
 ## Capped Images
 
 Sometimes when you apply a background_image to a view you want the image to stretch to the size of the view without stretching the corners of the image, for example if you're making a rounded button. The SDK has a nice feature for this, called UIImage#resizableImageWithCapInsets. It stretches the center of your image, but not the corners.
