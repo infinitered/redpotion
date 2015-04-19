@@ -691,3 +691,28 @@ st.scroll_indicator_insets = UIEdgeInsetsMake (10, 0, 20, 0)
 ```ruby
 st.on = true
 ```
+
+## Adding your own styler
+
+In the example app, look in **/app/stylers**, you can just copy that whole folder to start. Then add methods to the appropriate class.
+
+Here is an example of adding a method to all stylers:
+
+```ruby
+module RubyMotionQuery
+  module Stylers
+    class UIViewStyler
+
+      def border_width=(value)
+        @view.layer.borderWidth = value
+      end
+      def border_width
+        @view.layer.borderWidth
+      end
+
+    end
+  end
+end
+```
+
+You can also include all of your custom stylers in one file, which works well if you don't have a lot.
