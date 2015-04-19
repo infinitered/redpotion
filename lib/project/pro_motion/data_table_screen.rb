@@ -16,10 +16,20 @@ module ProMotion
       def data_scope; @opts[:scope]; end
     end
 
+    def screen_setup
+      @cell_data ||= cell_data
+      super
+    end
+
     def table_data
       [{
-        cells: cell_data
+        cells: @cell_data
       }]
+    end
+
+    def update_table_data(args = {})
+      @cell_data = cell_data
+      super
     end
 
     def cell_data
