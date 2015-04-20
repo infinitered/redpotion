@@ -1,6 +1,6 @@
 if RUBYMOTION_ENV == "development"
   module Kernel
-    def live_stylesheets(interval = 0.5, debug=false)
+    def live(interval = 1.0, debug=false)
       rmq_live_stylesheets interval, debug
     end
 
