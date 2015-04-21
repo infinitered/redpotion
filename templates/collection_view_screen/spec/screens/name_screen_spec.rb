@@ -1,4 +1,4 @@
-describe '<%= @name_camel_case %>Controller' do
+describe '<%= @name_camel_case %>Screen' do
 
   before do
   end
