@@ -1,10 +1,10 @@
 class <%= @name_camel_case %>Cell < UICollectionViewCell
   attr_reader :reused
 
-  def rmq_build
-    rmq(self).apply_style :<%= @name %>_cell
+  def on_load
+    find(self).apply_style :<%= @name %>_cell
 
-    q = rmq(self.contentView)
+    q = find(self.contentView)
     # Add your subviews, init stuff here
     # @foo = q.append!(UILabel, :foo)
   end
