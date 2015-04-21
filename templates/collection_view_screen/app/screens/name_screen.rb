@@ -16,23 +16,18 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
 
   def on_load
     collectionView.tap do |cv|
-      cv.registerClass(ImagesCell, forCellWithReuseIdentifier: IMAGES_CELL_ID)
+      cv.registerClass(<%= @name_camel_case %>Cell, forCellWithReuseIdentifier: <%= @name.upcase %>_CELL_ID)
       cv.delegate = self
       cv.dataSource = self
       cv.allowsSelection = true
       cv.allowsMultipleSelection = false
-      rmq(cv).apply_style :collection_view
+      find(cv).apply_style :collection_view
     end
   end
 
-  # Remove if you are only supporting portrait
-  def supportedInterfaceOrientations
-    UIInterfaceOrientationMaskAll
-  end
-
-  # Remove if you are only supporting portrait
-  def willAnimateRotationToInterfaceOrientation(orientation, duration: duration)
-    rmq(:reapply_style).reapply_styles
+  # Remove the following if you're only using portrait
+  def will_animate_rotate(orientation, duration)
+    reapply_styles
   end
 
   def numberOfSectionsInCollectionView(view)
@@ -45,7 +40,7 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
     view.dequeueReusableCellWithReuseIdentifier(<%= @name.upcase %>_CELL_ID, forIndexPath: index_path).tap do |cell|
-      rmq.build(cell) unless cell.reused
+      build(cell) unless cell.reused
 
       # Update cell's data here
     end
