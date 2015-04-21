@@ -19,6 +19,7 @@ class PotionCommandLine
      > potion create screen foo
      > potion create table_screen foo
      > potion create metal_table_screen foo
+     > potion create collection_view_screen
      > potion create view bar
      > potion create shared some_class_used_app_wide
      > potion create lib some_class_used_by_multiple_apps
@@ -48,10 +49,11 @@ class PotionCommandLine
       :screen, :table_screen,
       :model, :controller,
       :metal_table_screen,
+      :collection_view_screen,
       :view,
       :shared,
       :lib,
-      :collection_view_controller,
+      :collection_view_screen,
       :table_view_controller
     ]
 
@@ -153,7 +155,7 @@ class PotionCommandLine
 
     def insert_from_template(template_name, name)
       # TODO refactor this, it's less than wonderful
-      if %w{metal_table_screen view}.include? template_name
+      if %w{metal_table_screen view collection_view_screen}.include? template_name
         # Do nothing
       elsif template_name =~ /.*screen/
         @screen_base = template_name.split('_').collect(&:capitalize).join
