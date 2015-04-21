@@ -74,7 +74,7 @@ class UIViewController
   def viewDidLoad
     if self.class.rmq_style_sheet_class
       self.rmq.stylesheet = self.class.rmq_style_sheet_class
-      self.view.rmq.apply_style :root_view
+      self.view.rmq.apply_style(:root_view) if self.rmq.stylesheet.respond_to?(:root_view)
     end
 
     self.originalViewDidLoad
