@@ -21,7 +21,6 @@ Motion::Project::App.setup do |app|
   end
 
   app.development do
-    app.info_plist["ProjectRootPath"] = File.dirname(__FILE__)
   end
 end
 task :"build:simulator" => :"schema:build"

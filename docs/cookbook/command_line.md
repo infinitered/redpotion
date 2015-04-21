@@ -1,6 +1,6 @@
 ## Live stylesheet reloading
 
-In REPL, type: `live_stylesheets`
+In REPL, type: `live`
 
 ![image](http://clrsight.co/jh/LiveReload4.gif?+)
 
