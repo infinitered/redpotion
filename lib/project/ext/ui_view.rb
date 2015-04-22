@@ -86,8 +86,4 @@ class UIView
   def stylesheet=(value)
     rmq.stylesheet = value
   end
-
-  def find(*args)
-    rmq(self).find(*args)
-  end
 end

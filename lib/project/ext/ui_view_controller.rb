@@ -51,10 +51,6 @@ class UIViewController
     rmq.stylesheet = value
   end
 
-  def find(*args)
-    rmq(self.view).find(*args)
-  end
-
   def self.stylesheet(style_sheet_class)
     @rmq_style_sheet_class = style_sheet_class
   end
