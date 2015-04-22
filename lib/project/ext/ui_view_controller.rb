@@ -157,6 +157,6 @@ class UIViewController
   private
 
   def pm_handles_delegates?
-    self.is_a?(ProMotion::ViewController) || self.is_a?(ProMotion::TableScreen)
+    self.is_a?(ProMotion::ViewController) || self.is_a?(ProMotion::TableViewController)
   end
 end
