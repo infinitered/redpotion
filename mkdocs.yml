@@ -33,3 +33,5 @@ pages:
 - [cookbook/validations.md, Cookbook,                 "Validating data, text, text boxes, etc"]
 - [cookbook/debugging.md, Cookbook,                   "Debugging"]
 - [cookbook/testing.md, Cookbook,                     "Testing"]
+- [cookbook/troubleshooting.md, Cookbook,             "Troubleshooting"]
+
