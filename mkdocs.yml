@@ -12,7 +12,7 @@ pages:
 - [cookbook/app_delegate.md, Cookbook,                "The app delegate"]
 - [cookbook/app.md, Cookbook,                         "The app and how to get to it"]
 - [cookbook/screens.md, Cookbook,                     "Screens"]
-- [cookbook/stylesheets.md, Cookbook,                 "Using stylesheets to style and layout your screens and views"]
+- [cookbook/stylesheets.md, Cookbook,                 "Stylesheets: style and layout your screens and views"]
 - [cookbook/layout_a_screen.md, Cookbook,             "Laying out a screen"]
 - [cookbook/stylers.md, Cookbook,                     "Styles and stylers"]
 - [cookbook/traversing.md, Cookbook,                  "Finding your way around. Traversing the app, screens, and views"]
@@ -32,3 +32,4 @@ pages:
 - [cookbook/networking.md, Cookbook,                  "Networking, JSON, remote images"]
 - [cookbook/validations.md, Cookbook,                 "Validating data, text, text boxes, etc"]
 - [cookbook/debugging.md, Cookbook,                   "Debugging"]
+- [cookbook/testing.md, Cookbook,                     "Testing"]
