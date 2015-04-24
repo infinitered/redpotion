@@ -8,9 +8,13 @@ describe 'DataTableScreen' do
     model Contributer
   end
 
+  def contributors
+    %w{twerth squidpunch GantMan shreeve chunlea markrickert}
+  end
+
   def init_contributors
     Contributer.destroy_all
-    %w{twerth squidpunch GantMan shreeve chunlea markrickert}.each do |c|
+    contributors.each do |c|
       Contributer.new(name: c)
     end
     cdq.save
@@ -44,6 +48,44 @@ describe 'DataTableScreen' do
       path = NSIndexPath.indexPathForRow(index, inSection:0)
       cell_data = @controller_s.cell_at(path)
       cell_data[:properties][:name].should == entity.name
+    end
+  end
+
+  describe "live reloading" do
+    it "should delete cells when deleted form CoreData" do
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count
+      Contributer.first.destroy
+      cdq.save
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count - 1
+    end
+
+    it "should add cells when added to CoreData" do
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count
+      Contributer.new(name: "clayallsopp") # a man can dream, can't he?
+      cdq.save
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count + 1
+      Contributer.new(name: "mattt")
+      cdq.save
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count + 2
+    end
+
+    it "should update cells when data is changed in CoreData" do
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count
+
+      path = NSIndexPath.indexPathForRow(2, inSection:0)
+      cell_data = @controller.cell_at(path)
+      name_to_change = cell_data[:properties][:name]
+
+      # Change the name
+      # Just append somethign to the name so we don't mess with
+      # the order of the sorted cells.
+      c = Contributer.where(name: name_to_change).first
+      c.name = "#{name_to_change} new"
+
+      cell_data = @controller.cell_at(path)
+      cell_data[:properties][:name].should == "#{name_to_change} new"
+
+      @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count
     end
   end
 
