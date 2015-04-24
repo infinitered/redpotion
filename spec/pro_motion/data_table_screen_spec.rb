@@ -28,22 +28,31 @@ describe 'DataTableScreen' do
 
   it "should default the scope to all, if its not included in the cell definition" do
     @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == Contributer.count
-    @controller.tableView(@controller.table_view, cellForRowAtIndexPath: NSIndexPath.indexPathForRow(0, inSection:0)).class.should == ContributerCell
+  end
+
+  it "should initialize like a normal PM::TableScreen cell" do
+    path = NSIndexPath.indexPathForRow(0, inSection:0)
+    cell_data = @controller.cell_at(path)
+
+    expected_keys = [:properties, :cell_style, :cell_identifier]
+    (expected_keys & cell_data.keys).should == expected_keys
+
+    @controller.tableView(@controller.table_view, cellForRowAtIndexPath: path).class.should == ContributerCell
   end
 
   it "should properly use scopes to generate cells" do
     @controller_s.tableView(@controller.table_view, numberOfRowsInSection: 0).should == Contributer.where(:name).begins_with('s').count
   end
 
-  it "should have correct cell definition data" do
-    # For :all scope
-    Contributer.sort_by(:name).each_with_index do |entity, index|
+  it "should sort by :created_at when the :all scope is not defined" do
+    Contributer.sort_by(:created_at).each_with_index do |entity, index|
       path = NSIndexPath.indexPathForRow(index, inSection:0)
       cell_data = @controller.cell_at(path)
       cell_data[:properties][:name].should == entity.name
     end
+  end
 
-    # For :starts_with_s scope
+  it "should sort by the scope properly" do
     Contributer.where(:name).begins_with('s').sort_by(:name).each_with_index do |entity, index|
       path = NSIndexPath.indexPathForRow(index, inSection:0)
       cell_data = @controller_s.cell_at(path)
