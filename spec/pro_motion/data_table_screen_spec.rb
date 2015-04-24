@@ -86,7 +86,7 @@ describe 'DataTableScreen' do
       name_to_change = cell_data[:properties][:name]
 
       # Change the name
-      # Just append somethign to the name so we don't mess with
+      # Just append something to the name so we don't mess with
       # the order of the sorted cells.
       c = Contributer.where(name: name_to_change).first
       c.name = "#{name_to_change} new"
