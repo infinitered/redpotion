@@ -1,5 +1,5 @@
 site_name: RedPotion
-theme: readthedocs
+#theme: readthedocs 
 pages:
 - [index.md, Docs, Home]
 - [quick_start.md, Docs, Quick start]
@@ -35,4 +35,3 @@ pages:
 - [cookbook/debugging.md, Cookbook,                   "Debugging"]
 - [cookbook/testing.md, Cookbook,                     "Testing"]
 - [cookbook/troubleshooting.md, Cookbook,             "Troubleshooting"]
-

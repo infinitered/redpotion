@@ -1,1 +1,0 @@
-html_theme = 'basicstrap'

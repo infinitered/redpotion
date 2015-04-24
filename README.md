@@ -16,8 +16,11 @@ ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 
 =========
 
-## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
+<br />
 
+## Read the documentation at [docs.redpotion.org](http://docs.redpotion.org)
+
+<br />
 
 ## Quick start
 
@@ -53,4 +56,8 @@ add it to your `Gemfile`:
 5. Create new Pull Request
 
 
-## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
+<br />
+
+## Read the documentation at [docs.redpotion.org](http://docs.redpotion.org)
+
+<br />
