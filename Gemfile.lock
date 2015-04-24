@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redpotion (1.1.2)
+    redpotion (1.1.3)
       ProMotion (~> 2.3)
       RedAlert
       motion-cocoapods
