@@ -1,6 +1,5 @@
 class ContributerScreen < PM::DataTableScreen
   title "RedPotion Contributers"
-  refreshable
   stylesheet ContributerScreenStylesheet
   model Contributer
 
