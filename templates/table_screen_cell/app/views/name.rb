@@ -31,10 +31,10 @@ You can use this like so in your table_screen:
   def table_data
     [
       {
-        title: "Section"
+        title: "Section",
         cells: [
-          { cell_class: <%= @name_camel_case %>, height: stylesheet.<%= @name %>_height, title: "Foo"}
-          { cell_class: <%= @name_camel_case %>, height: stylesheet.<%= @name %>_height, title: "Bar"}
+          { cell_class: BarCell, height: stylesheet.bar_cell_height, title: "Foo"},
+          { cell_class: BarCell, height: stylesheet.bar_cell_height, title: "Bar"}
         ]
       }
     ]
