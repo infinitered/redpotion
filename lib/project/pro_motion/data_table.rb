@@ -1,6 +1,8 @@
 module ProMotion
   module DataTable
     include ProMotion::Styling
+    include ProMotion::TableBuilder
+    include ProMotion::TableDataBuilder
     include ProMotion::Table::Utils
 
     def table_view
@@ -118,51 +120,6 @@ module ProMotion
     def object_at_index(i)
       fetch_controller.objectAtIndexPath(i)
     end
-
-    # TODO - extract these methods out from Promotion into a module perhaps?
-    def create_table_cell(data_cell)
-      new_cell = nil
-      table_cell = table_view.dequeueReusableCellWithIdentifier(data_cell[:cell_identifier]) || begin
-        new_cell = data_cell[:cell_class].alloc.initWithStyle(data_cell[:cell_style], reuseIdentifier:data_cell[:cell_identifier])
-        new_cell.extend(PM::TableViewCellModule) unless new_cell.is_a?(PM::TableViewCellModule)
-        new_cell.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin
-        new_cell.clipsToBounds = true # fix for changed default in 7.1
-        new_cell.send(:on_load) if new_cell.respond_to?(:on_load)
-        new_cell
-      end
-      table_cell.setup(data_cell, self) if table_cell.respond_to?(:setup)
-      table_cell.send(:on_reuse) if !new_cell && table_cell.respond_to?(:on_reuse)
-      table_cell
-    end
-
-    def set_data_cell_defaults(data_cell)
-      data_cell[:cell_style] ||= begin
-        data_cell[:subtitle] ? UITableViewCellStyleSubtitle : UITableViewCellStyleDefault
-      end
-      data_cell[:cell_class] ||= PM::TableViewCell
-      data_cell[:cell_identifier] ||= build_cell_identifier(data_cell)
-      data_cell[:properties] ||= data_cell[:style] || data_cell[:styles]
-
-      data_cell[:accessory] = {
-        view: data_cell[:accessory],
-        value: data_cell[:accessory_value],
-        action: data_cell[:accessory_action],
-        arguments: data_cell[:accessory_arguments]
-      } unless data_cell[:accessory].nil? || data_cell[:accessory].is_a?(Hash)
-
-      data_cell
-    end
-
-    def build_cell_identifier(data_cell)
-      ident = "#{data_cell[:cell_class].to_s}"
-      ident << "-#{data_cell[:stylename].to_s}" if data_cell[:stylename] # For Teacup
-      ident << "-accessory" if data_cell[:accessory]
-      ident << "-subtitle" if data_cell[:subtitle]
-      ident << "-remoteimage" if data_cell[:remote_image]
-      ident << "-image" if data_cell[:image]
-      ident
-    end
-    # end TODO
 
     def data_model
       self.class.data_model
