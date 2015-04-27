@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/clearsightstudio/ProMotion.git
-  revision: a861d1317a075961b69370b53533b1cfb5fd08a2
+  revision: fcc599266cdf577ebc20949cb2900021853be606
   branch: extract-table-methods
   specs:
     ProMotion (2.3.0)
@@ -20,8 +20,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    RedAlert (0.3)
-      ruby_motion_query (>= 1.2.0)
+    RedAlert (1.0)
+      ruby_motion_query (>= 1.3.4)
     activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
@@ -30,10 +30,10 @@ GEM
       motion-yaml
       ruby-xcdm (~> 0.0, >= 0.0.8)
     claide (0.8.1)
-    cocoapods (0.36.3)
+    cocoapods (0.36.4)
       activesupport (>= 3.2.15)
       claide (~> 0.8.1)
-      cocoapods-core (= 0.36.3)
+      cocoapods-core (= 0.36.4)
       cocoapods-downloader (~> 0.9.0)
       cocoapods-plugins (~> 0.4.1)
       cocoapods-trunk (~> 0.6.0)
@@ -44,7 +44,7 @@ GEM
       nap (~> 0.8)
       open4 (~> 1.3)
       xcodeproj (~> 0.23.1)
-    cocoapods-core (0.36.3)
+    cocoapods-core (0.36.4)
       activesupport (>= 3.2.15)
       fuzzy_match (~> 2.0.4)
       nap (~> 0.8.0)
