@@ -18,4 +18,4 @@ install:
   - bundle exec rake pod:install > /dev/null
 script:
   - bundle exec rake spec output=test_unit
-  - bundle exec rake spec output=test_unit device_name=five
+  
