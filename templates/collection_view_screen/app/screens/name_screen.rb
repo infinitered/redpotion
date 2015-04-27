@@ -25,11 +25,6 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
     end
   end
 
-  # Remove the following if you're only using portrait
-  def will_animate_rotate(orientation, duration)
-    reapply_styles
-  end
-
   def numberOfSectionsInCollectionView(view)
     1
   end
@@ -51,4 +46,8 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
   end
 
+  # Remove the following if you're only using portrait
+  def will_animate_rotate(orientation, duration)
+    reapply_styles
+  end
 end
