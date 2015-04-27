@@ -45,10 +45,6 @@ module ProMotion
       fetch_controller.sections[section].numberOfObjects
     end
 
-    def tableView(table_view, heightForRowAtIndexPath: index_path)
-      (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
-    end
-
     def tableView(table_view, didSelectRowAtIndexPath: index_path)
       data_cell = cell_at(index_path)
       table_view.deselectRowAtIndexPath(index_path, animated: true) unless data_cell[:keep_selection] == true
@@ -60,6 +56,16 @@ module ProMotion
       data_cell = cell_at(index_path)
       return UITableViewCell.alloc.init unless data_cell
       create_table_cell(data_cell)
+    end
+
+    def tableView(_, willDisplayCell: table_cell, forRowAtIndexPath: index_path)
+      data_cell = cell_at(index_path)
+      table_cell.send(:will_display) if table_cell.respond_to?(:will_display)
+      table_cell.send(:restyle!) if table_cell.respond_to?(:restyle!) # Teacup compatibility
+    end
+
+    def tableView(table_view, heightForRowAtIndexPath: index_path)
+      (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
     end
 
     def cell_at(index_path)
