@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/clearsightstudio/ProMotion.git
+  revision: a861d1317a075961b69370b53533b1cfb5fd08a2
+  branch: extract-table-methods
+  specs:
+    ProMotion (2.3.0)
+      methadone (~> 1.7)
+
 PATH
   remote: .
   specs:
@@ -12,8 +20,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ProMotion (2.3.0)
-      methadone (~> 1.7)
     RedAlert (0.3)
       ruby_motion_query (>= 1.2.0)
     activesupport (3.2.21)
@@ -80,6 +86,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ProMotion!
   RedAlert
   cdq
   motion-cocoapods
