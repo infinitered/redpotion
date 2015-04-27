@@ -1,7 +1,7 @@
-class ContributerScreen < PM::DataTableScreen
-  title "RedPotion Contributers"
-  stylesheet ContributerScreenStylesheet
-  model Contributer
+class ContributorScreen < PM::DataTableScreen
+  title "RedPotion Contributors"
+  stylesheet ContributorScreenStylesheet
+  model Contributor
 
   def on_load
   end

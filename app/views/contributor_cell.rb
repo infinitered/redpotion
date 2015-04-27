@@ -1,4 +1,4 @@
-class ContributerCell < ProMotion::TableViewCell
+class ContributorCell < ProMotion::TableViewCell
   def on_load
     apply_style :cell
 

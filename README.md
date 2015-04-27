@@ -295,17 +295,17 @@ color.my_custom_color.with(a: 0.5)
 PM::DataTableScreen - added a clean way to integrate a table screen with a custom cell, and data backed model
 
 ```ruby
-class ContributerScreen < PM::DataTableScreen
-  title "RedPotion Contributers"
+class ContributorScreen < PM::DataTableScreen
+  title "RedPotion Contributors"
   refreshable
-  stylesheet ContributerScreenStylesheet
-  model Contributer
+  stylesheet ContributorScreenStylesheet
+  model Contributor
 end
 
-class Contributer < CDQManagedObject
+class Contributor < CDQManagedObject
   def cell
     {
-      cell_class: ContributerCell,
+      cell_class: ContributorCell,
       properties: {
         name: name
       }
@@ -313,7 +313,7 @@ class Contributer < CDQManagedObject
   end
 end
 
-class ContributerCell < ProMotion::TableViewCell
+class ContributorCell < ProMotion::TableViewCell
   def on_load
     apply_style :cell
 
