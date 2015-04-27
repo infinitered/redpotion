@@ -5,6 +5,8 @@ class AppDelegate < PM::Delegate
   def on_load(app, options)
     cdq.setup
 
+    return true if RUBYMOTION_ENV == 'test'
+
     load_contributors
 
     open HomeScreen.new(nav_bar: true)
