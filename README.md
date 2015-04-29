@@ -1,4 +1,4 @@
-![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2015/04/RedPotion_logo_transparent.png)
+[![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2015/04/RedPotion_logo_transparent.png)](http://docs.redpotion.org)
 
 # RedPotion
 [![Dependency Status](https://gemnasium.com/infinitered/redpotion.svg)](https://gemnasium.com/infinitered/redpotion)
