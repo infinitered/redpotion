@@ -7,6 +7,10 @@ describe 'ScreenModule' do
 
   class TestScreen < PM::Screen
     stylesheet TestScreenStylesheet
+
+    def grab_app
+      app
+    end
   end
 
   tests TestScreen
@@ -22,6 +26,10 @@ describe 'ScreenModule' do
       should.not.raise(RuntimeError) do
         TestScreenTwo.new.view_did_load
       end
+    end
+
+    it 'should return RubyMotionQuery::App when using app inside a screen' do
+      TestScreen.new.grab_app.should == RubyMotionQuery::App
     end
   end
 end
