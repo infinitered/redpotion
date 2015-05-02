@@ -49,7 +49,9 @@ Some things you can do with the potion command:
 > potion create model foo
 > potion create screen foo
 > potion create table_screen foo
+> potion create table_screen_cell bar_cell
 > potion create metal_table_screen foo
+> potion create collection_view_screen foos
 > potion create view bar
 > potion create shared some_class_used_app_wide
 > potion create lib some_class_used_by_multiple_apps

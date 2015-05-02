@@ -51,10 +51,6 @@ class UIViewController
     rmq.stylesheet = value
   end
 
-  def find(*args)
-    rmq(self.view).find(*args)
-  end
-
   def self.stylesheet(style_sheet_class)
     @rmq_style_sheet_class = style_sheet_class
   end
@@ -74,7 +70,7 @@ class UIViewController
   def viewDidLoad
     if self.class.rmq_style_sheet_class
       self.rmq.stylesheet = self.class.rmq_style_sheet_class
-      self.view.rmq.apply_style :root_view
+      self.view.rmq.apply_style(:root_view) if self.rmq.stylesheet.respond_to?(:root_view)
     end
 
     self.originalViewDidLoad
@@ -161,6 +157,6 @@ class UIViewController
   private
 
   def pm_handles_delegates?
-    self.is_a?(ProMotion::ViewController) || self.is_a?(ProMotion::TableScreen)
+    self.is_a?(ProMotion::ViewController) || self.is_a?(ProMotion::TableViewController)
   end
 end

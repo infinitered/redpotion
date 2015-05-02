@@ -1,11 +1,11 @@
-![image](http://ir_public.s3.amazonaws.com/projects/redpotion/RedPotion_logo_transparent.png)
+[![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2015/04/RedPotion_logo_transparent.png)](http://docs.redpotion.org)
+
+# RedPotion
+[![Dependency Status](https://gemnasium.com/infinitered/redpotion.svg)](https://gemnasium.com/infinitered/redpotion) [![Build Status](https://travis-ci.org/infinitered/redpotion.svg)](https://travis-ci.org/infinitered/redpotion) [![Gem Version](https://badge.fury.io/rb/redpotion.png)](http://badge.fury.io/rb/redpotion)
 
 # RedPotion
 
-[![Build Status](https://travis-ci.org/infinitered/redpotion.svg?branch=master)](https://travis-ci.org/infinitered/redpotion)
-
 [![image](http://ir_public.s3.amazonaws.com/projects/redpotion/Octocat_100.png)**github repo**](https://github.com/infinitered/redpotion)
-
 
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 

@@ -1,15 +1,13 @@
-![image](http://ir_public.s3.amazonaws.com/projects/redpotion/RedPotion_logo_transparent.png)
+[![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2015/04/RedPotion_logo_transparent.png)](http://docs.redpotion.org)
 
 # RedPotion
-[![Build Status](https://travis-ci.org/infinitered/redpotion.svg?branch=master)](https://travis-ci.org/infinitered/redpotion)
+[![Dependency Status](https://gemnasium.com/infinitered/redpotion.svg)](https://gemnasium.com/infinitered/redpotion)
+[![Build Status](https://travis-ci.org/infinitered/redpotion.svg)](https://travis-ci.org/infinitered/redpotion)
+[![Gem Version](https://badge.fury.io/rb/redpotion.png)](http://badge.fury.io/rb/redpotion)
 
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**
 
 RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and [MORE!](#full-listing-of-gems-and-pods-for-redpotion). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
-
-=========
-
-## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
 
 
 The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creators of ProMotion** at [ClearSight](https://clearsightstudio.com/) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
@@ -18,14 +16,23 @@ The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creato
 
 ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 
-## Plugins and Add-ons
+<br />
 
-You can use both RMQ Plugins and ProMotion Add-ons
+----------
 
-![image](https://camo.githubusercontent.com/523372b371be1de2fb2cec421be423e2b89bcfd0/687474703a2f2f69725f77702e73332e616d617a6f6e6177732e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f31392f323031342f30392f726d715f706c7567696e2e706e67)
+<br />
+<br />
 
-![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2014/11/ProMotion-addon-logo.png)
+[![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2015/04/rp_docs.png)](http://docs.redpotion.org)
 
+**Read the [RedPotion Documentation](http://docs.redpotion.org) here**
+
+<br />
+<br />
+
+----------
+
+<br />
 
 ## Quick start
 
@@ -49,7 +56,6 @@ If you use rbenv
 add it to your `Gemfile`:
 
 - `gem 'redpotion'`
-
 
 ## Let's build something
 
@@ -352,4 +358,8 @@ end
 5. Create new Pull Request
 
 
-## Read the [documentation](http://redpotion.readthedocs.org/en/latest) [here](http://redpotion.readthedocs.org/en/latest)
+<br />
+
+## Read the documentation at [docs.redpotion.org](http://docs.redpotion.org)
+
+<br />

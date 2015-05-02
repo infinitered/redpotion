@@ -18,7 +18,9 @@ class PotionCommandLine
      > potion create model foo
      > potion create screen foo
      > potion create table_screen foo
+     > potion create table_screen_cell bar_cell
      > potion create metal_table_screen foo
+     > potion create collection_view_screen
      > potion create view bar
      > potion create shared some_class_used_app_wide
      > potion create lib some_class_used_by_multiple_apps
@@ -46,8 +48,10 @@ class PotionCommandLine
 
     VALID_CREATE_TYPES = [
       :screen, :table_screen,
+      :table_screen_cell,
       :model, :controller,
       :metal_table_screen,
+      :collection_view_screen,
       :view,
       :shared,
       :lib,
@@ -153,7 +157,7 @@ class PotionCommandLine
 
     def insert_from_template(template_name, name)
       # TODO refactor this, it's less than wonderful
-      if %w{metal_table_screen view}.include? template_name
+      if %w{metal_table_screen view collection_view_screen table_screen_cell}.include? template_name
         # Do nothing
       elsif template_name =~ /.*screen/
         @screen_base = template_name.split('_').collect(&:capitalize).join
