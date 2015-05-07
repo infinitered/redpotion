@@ -103,11 +103,14 @@ class PotionCommandLine
 
       `motion create --template=git@github.com:infinitered/redpotion-template.git #{app_name}`
 
+      ["bundle", "rake pod:install"].each do |command|
+        puts "Running #{command}..."
+
+        system("cd #{app_name}; #{command}")
+      end
+
       puts %{
-      Complete. Things you should do:
-      > cd #{app_name}
-      > bundle
-      > rake pod:install
+      Complete. Things you can do:
       > rake spec
       > rake
       (main)> exit
