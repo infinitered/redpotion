@@ -1,54 +1,54 @@
 class UIViewController
   def append(view_or_constant, style=nil, opts = {})
-    view.append(view_or_constant, style, opts)
+    self.rmq.append(view_or_constant, style, opts)
   end
   def append!(view_or_constant, style=nil, opts = {})
-    view.append!(view_or_constant, style, opts)
+    self.rmq.append!(view_or_constant, style, opts)
   end
 
   def prepend(view_or_constant, style=nil, opts = {})
-    view.prepend(view_or_constant, style, opts)
+    self.rmq.prepend(view_or_constant, style, opts)
   end
   def prepend!(view_or_constant, style=nil, opts = {})
-    view.prepend!(view_or_constant, style, opts)
+    self.rmq.prepend!(view_or_constant, style, opts)
   end
 
   def create(view_or_constant, style=nil, opts = {})
-    view.create(view_or_constant, style, opts)
+    self.rmq.create(view_or_constant, style, opts)
   end
   def create!(view_or_constant, style=nil, opts = {})
-    view.create!(view_or_constant, style, opts)
+    self.rmq.create!(view_or_constant, style, opts)
   end
 
   def build(view_or_constant, style = nil, opts = {})
-    view.build(view_or_constant, style, opts)
+    self.rmq.build(view_or_constant, style, opts)
   end
   def build!(view_or_constant, style = nil, opts = {})
-    view.build!(view_or_constant, style, opts)
+    self.rmq.build!(view_or_constant, style, opts)
   end
 
   def reapply_styles
-    rmq.all.reapply_styles
+    self.rmq.all.reapply_styles
   end
 
   def color
-    rmq.color
+    self.rmq.color
   end
 
   def font
-    rmq.font
+    self.rmq.font
   end
 
   def image
-    rmq.image
+    self.rmq.image
   end
 
   def stylesheet
-    rmq.stylesheet
+    self.rmq.stylesheet
   end
 
   def stylesheet=(value)
-    rmq.stylesheet = value
+    self.rmq.stylesheet = value
   end
 
   def self.stylesheet(style_sheet_class)
