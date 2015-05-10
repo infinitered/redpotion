@@ -14,6 +14,9 @@ Motion::Project::App.setup do |app|
   app.identifier = "com.infinitered.redpotion"
   app.name = "RedPotion"
 
+  app.icons = Dir.glob("resources/icon*.png").map{|icon| icon.split("/").last}
+
+  app.device_family = [:iphone, :ipad]
   app.interface_orientations = [:portrait, :landscape_left, :landscape_right, :portrait_upside_down]
 
   app.pods do
