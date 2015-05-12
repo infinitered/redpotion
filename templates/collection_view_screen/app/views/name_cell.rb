@@ -10,6 +10,7 @@ class <%= @name_camel_case %>Cell < UICollectionViewCell
   end
 
   def prepareForReuse
+    super
     @reused = true
   end
 
