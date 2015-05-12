@@ -5,6 +5,8 @@ module ProMotion
     include ProMotion::TableDataBuilder
     include ProMotion::Table::Utils
 
+    include ProMotion::Table::Refreshable
+
     def table_view
       self.view
     end
@@ -12,6 +14,8 @@ module ProMotion
     def screen_setup
       set_up_reload_notification
       set_up_fetch_controller
+
+      set_up_refreshable
 
       # TODO - implement dynamic row height
       # set_up_row_height
@@ -30,6 +34,16 @@ module ProMotion
 
       unless fetch_controller.performFetch(error_ptr)
         raise "Error performing fetch: #{error_ptr[2].description}"
+      end
+    end
+
+    def set_up_refreshable
+      if self.class.respond_to?(:get_refreshable) && self.class.get_refreshable
+        if defined?(UIRefreshControl)
+          self.make_refreshable(self.class.get_refreshable_params)
+        else
+          PM.logger.warn "To use the refresh control on < iOS 6, you need to include the CocoaPod 'CKRefreshControl'."
+        end
       end
     end
 
