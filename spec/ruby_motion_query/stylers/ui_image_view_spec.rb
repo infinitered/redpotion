@@ -24,12 +24,10 @@ class StyleSheetForUIImageViewStylerTests < RubyMotionQuery::Stylesheet
 
 end
 
-describe 'RubyMotionQuery styler: UIImageView' do
+describe "RubyMotionQuery styler: UIImageView" do
   extend WebStub::SpecHelpers
 
   before do
-    SDWebImageManager.sharedManager.imageCache.clearMemory
-
     @vc = UIViewController.alloc.init
     @vc.rmq.stylesheet = StyleSheetForUIImageViewStylerTests
     @view_klass = UIImageView
@@ -38,6 +36,10 @@ describe 'RubyMotionQuery styler: UIImageView' do
     @grumpy_cat = UIImage.imageNamed('grumpy_cat')
     @url = 'http://somehost/image'
     WebStub::API.stub_request(:get, @url).to_return(body: load_image('homer'), content_type: "image/jpeg")
+  end
+
+  after do
+    SDWebImageManager.sharedManager.imageCache.clearMemory
   end
 
   it "should set a placeholder image" do
@@ -78,6 +80,20 @@ describe 'RubyMotionQuery styler: UIImageView' do
 
     wait 0.1 do
       view.image.should.not == nil
+    end
+  end
+
+  it "should fetch the image from memory" do
+    view = @vc.rmq.append!(@view_klass, :ui_image_view_remote)
+    view.image.should == @grumpy_cat
+
+    wait 0.1 do
+      view.image.should.not == @grumpy_cat
+      view.image = nil
+      view.image.should.be.nil
+      view.apply_style(:ui_image_view_remote)
+      # This should be instant since we have not cleared the cache
+      view.image.should.not.be.nil
     end
   end
 end
