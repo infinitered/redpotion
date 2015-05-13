@@ -107,12 +107,10 @@ module ProMotion
 
     def fetch_controller
       @_data ||= begin
-        if data_scope
-          data_with_scope = data_model.send(data_scope)
-        elsif respond_to?(:model_query)
+        if respond_to?(:model_query)
           data_with_scope = model_query
         else
-          PM.logger.error("You must specify a model scope or a model method that returns a CDQTargetedQuery with a sort included.")
+          data_with_scope = data_model.send(data_scope)
         end
 
         if data_with_scope.sort_descriptors.empty?

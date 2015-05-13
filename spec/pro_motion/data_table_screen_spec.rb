@@ -1,3 +1,15 @@
+def contributors
+  %w{twerth squidpunch GantMan shreeve chunlea markrickert}
+end
+
+def init_contributors
+  Contributor.destroy_all
+  contributors.each do |c|
+    Contributor.new(name: c)
+  end
+  cdq.save
+end
+
 describe 'DataTableScreen' do
 
   class TestDataTableScreenScope < ProMotion::DataTableScreen
@@ -6,24 +18,21 @@ describe 'DataTableScreen' do
 
   class TestDataTableScreen < ProMotion::DataTableScreen
     model Contributor
-  end
+    refreshable
+    attr_accessor :refreshed
 
-  def contributors
-    %w{twerth squidpunch GantMan shreeve chunlea markrickert}
-  end
-
-  def init_contributors
-    Contributor.destroy_all
-    contributors.each do |c|
-      Contributor.new(name: c)
+    def on_refresh
+      @refreshed = true
     end
-    cdq.save
   end
 
   before do
     init_contributors
     @controller = TestDataTableScreen.new
+    @controller.on_load
+
     @controller_s = TestDataTableScreenScope.new
+    @controller_s.on_load
   end
 
   it "should default the scope to all, if its not included in the cell definition" do

@@ -8,7 +8,7 @@ module ProMotion
         if value.method_defined?(:cell)
           @opts = {
             model: value,
-            scope: nil,
+            scope: :all,
           }.merge(opts)
         else
           raise "#{value} must define the cell method"
@@ -16,11 +16,11 @@ module ProMotion
       end
 
       def data_model
-        @opts.nil? ? nil : @opts[:model]
+        @opts[:model]
       end
 
       def data_scope
-        @opts.nil? ? nil : @opts[:scope]
+        @opts[:scope]
       end
     end
 
