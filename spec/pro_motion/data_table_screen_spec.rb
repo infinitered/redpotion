@@ -96,6 +96,27 @@ describe 'DataTableScreen' do
 
       @controller.tableView(@controller.table_view, numberOfRowsInSection: 0).should == contributors.count
     end
+
+    describe "refreshable" do
+      it "should be refreshable" do
+        @controller.class.get_refreshable.should == true
+      end
+
+      it "should create a refresh object" do
+        @controller.instance_variable_get("@refresh_control").should.be.kind_of UIRefreshControl
+      end
+
+      it "should respond to start_refreshing and end_refreshing" do
+        @controller.respond_to?(:start_refreshing).should == true
+        @controller.respond_to?(:end_refreshing).should == true
+      end
+
+      it "should call on_refresh" do
+        @controller.refreshed.should.be.nil
+        @controller.refreshView(UIRefreshControl.alloc.init)
+        @controller.refreshed.should == true
+      end
+    end
   end
 
   describe ".model" do
