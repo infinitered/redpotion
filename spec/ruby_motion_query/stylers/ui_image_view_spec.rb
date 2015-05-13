@@ -28,6 +28,7 @@ describe "RubyMotionQuery styler: UIImageView" do
   extend WebStub::SpecHelpers
 
   before do
+    WebStub::Protocol.disable_network_access!
     @vc = UIViewController.alloc.init
     @vc.rmq.stylesheet = StyleSheetForUIImageViewStylerTests
     @view_klass = UIImageView
@@ -39,6 +40,7 @@ describe "RubyMotionQuery styler: UIImageView" do
   end
 
   after do
+    WebStub::Protocol.enable_network_access!
     SDWebImageManager.sharedManager.imageCache.clearMemory
   end
 
