@@ -164,6 +164,7 @@ module ProMotion
 
     def self.included(base)
       base.extend(DataTableClassMethods)
+      base.extend(TableClassMethods)
     end
 
   end
