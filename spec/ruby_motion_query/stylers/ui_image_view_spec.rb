@@ -28,6 +28,8 @@ describe 'RubyMotionQuery styler: UIImageView' do
   extend WebStub::SpecHelpers
 
   before do
+    SDWebImageManager.sharedManager.imageCache.clearMemory
+
     @vc = UIViewController.alloc.init
     @vc.rmq.stylesheet = StyleSheetForUIImageViewStylerTests
     @view_klass = UIImageView
