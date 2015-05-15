@@ -2,13 +2,13 @@ RedPotion uses the following for networking:
 
 * AFNetworking pod
 * AFMotion gem
-* JMImageCache
+* SDWebImage
 
 -------
 
 ## Remote images
 
-You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [JMImageCache](https://github.com/jakemarsh/JMImageCache).
+You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [SDWebImage](https://github.com/rs/SDWebImage).
 
 You should always use `remote_image` for any image you download, it will cache it to memory and out to disk when it's appropriate. It does it async and is performant, even for a large table of images.
 

@@ -1,3 +1,3 @@
-def load_image(path)
-  NSData.dataWithContentsOfFile(NSBundle.mainBundle.pathForResource(path, ofType:'jpeg'))
+def load_image(path, type = "jpeg")
+  NSData.dataWithContentsOfFile(NSBundle.mainBundle.pathForResource(path, ofType:type))
 end
