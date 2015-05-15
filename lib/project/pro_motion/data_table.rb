@@ -1,24 +1,34 @@
 module ProMotion
   module DataTable
+    include TableClassMethods
     include ProMotion::Styling
+    include ProMotion::Table
     include ProMotion::TableBuilder
     include ProMotion::TableDataBuilder
     include ProMotion::Table::Utils
 
+    include ProMotion::Table::Searchable
     include ProMotion::Table::Refreshable
+    include ProMotion::Table::Indexable
+    include ProMotion::Table::Longpressable
 
     def table_view
       self.view
+    end
+
+    def table_data
+      [{cells:[]}]
     end
 
     def screen_setup
       set_up_reload_notification
       set_up_fetch_controller
 
+      set_up_header_footer_views
+      set_up_searchable
       set_up_refreshable
-
-      # TODO - implement dynamic row height
-      # set_up_row_height
+      set_up_longpressable
+      set_up_row_height
     end
 
     def set_up_reload_notification
@@ -37,16 +47,6 @@ module ProMotion
       end
     end
 
-    def set_up_refreshable
-      if self.class.respond_to?(:get_refreshable) && self.class.get_refreshable
-        if defined?(UIRefreshControl)
-          self.make_refreshable(self.class.get_refreshable_params)
-        else
-          PM.logger.warn "To use the refresh control on < iOS 6, you need to include the CocoaPod 'CKRefreshControl'."
-        end
-      end
-    end
-
     def update_table_data(notification = nil)
       Dispatch::Queue.main.async do
         fetch_controller.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
@@ -54,25 +54,29 @@ module ProMotion
     end
 
     # UITableViewDelegate methods
+    def numberOfSectionsInTableView(_)
+      fetch_controller.sections.count
+    end
+
     def tableView(table_view, numberOfRowsInSection: section)
       fetch_controller.sections[section].numberOfObjects
     end
 
     def tableView(table_view, didSelectRowAtIndexPath: index_path)
-      data_cell = cell_at(index_path)
+      data_cell = cell_at(index_path: index_path)
       table_view.deselectRowAtIndexPath(index_path, animated: true) unless data_cell[:keep_selection] == true
       trigger_action(data_cell[:action], data_cell[:arguments], index_path) if data_cell[:action]
     end
 
     def tableView(_, cellForRowAtIndexPath: index_path)
       params = index_path_to_section_index(index_path: index_path)
-      data_cell = cell_at(index_path)
+      data_cell = cell_at(index_path: index_path)
       return UITableViewCell.alloc.init unless data_cell
       create_table_cell(data_cell)
     end
 
     def tableView(_, willDisplayCell: table_cell, forRowAtIndexPath: index_path)
-      data_cell = cell_at(index_path)
+      data_cell = cell_at(index_path: index_path)
       table_cell.send(:will_display) if table_cell.respond_to?(:will_display)
       table_cell.send(:restyle!) if table_cell.respond_to?(:restyle!) # Teacup compatibility
     end
@@ -81,8 +85,8 @@ module ProMotion
       (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
     end
 
-    def cell_at(index_path)
-      c = object_at_index(index_path).cell
+    def cell_at(args = {})
+      c = object_at_index(args[:index_path]).cell
       set_data_cell_defaults c
     end
 
@@ -153,15 +157,7 @@ module ProMotion
       self.class.data_scope
     end
 
-    # TODO - TableClassMethods class after it's extracted to it's own module file in ProMotion.
-    module DataTableClassMethods
-      def table_style
-        UITableViewStylePlain
-      end
-    end
-
     def self.included(base)
-      base.extend(DataTableClassMethods)
       base.extend(TableClassMethods)
     end
 
