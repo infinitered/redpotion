@@ -1,8 +1,9 @@
-<img src="https://raw.githubusercontent.com/GantMan/RedAlert/master/_art/screen.png" alt="Screen Shot" width="500" />
+Provided by the RedAlert Gem, which is included in RedPotion
+<img src="https://raw.githubusercontent.com/GantMan/RedAlert/master/_art/demo.gif" alt="Screen Shot" width="500" />
 
 **Did you know that UIAlertView and UIActionSheet (as well as their respective delegate protocols) are deprecated in iOS 8?**
 
-Apple requests you start using the new `UIAlertController`.  RedPotion supports the antiquated `UIAlertView`s for the gnostalgic.
+Apple requests you start using the new `UIAlertController`.  RedPotion gives you a clean way to use `UIAlertController`s that will automatically fail over to `UIAlertView` and `UIActionSheet` for iOS 7.
 
 ## Usage
 
@@ -35,6 +36,18 @@ Apple requests you start using the new `UIAlertController`.  RedPotion supports 
   end
 ```
 
+You can pass in symbols or strings and we'll build the buttons for you:
+
+```ruby
+rmq.app.alert title: "Hey!", actions: [ "Go ahead", :cancel, :delete ] do |button_tag|
+  case button_tag
+  when :cancel then puts "Canceled!"
+  when :delete then puts "Deleted!"
+  when "Go ahead" then puts "Going ahead!"
+  end
+end
+```
+
 You can even use the `make_button` helper to create custom UIAction buttons to add:
 ```ruby
   # Use custom UIAction buttons and add them
@@ -64,22 +77,4 @@ Feel free to read up on UIAlertController to see what all is wrapped up in this 
 * [Hayageek](http://hayageek.com/uialertcontroller-example-ios/)
 * [NSHipster](http://nshipster.com/uialertcontroller/)
 
-## Classic UIAlertView Helpers
 
-If you'd like to still support pre-iOS8, you can easily use `app.alert_view` with a similar syntax, and instead of actions you'll used the predefined delegates.
-
-**`UIAlertView` Classic:**
-```ruby
-  # support the elderly
-  app.alert_view("Hey look at this old trick")
- 
-  # Still feels like magic!
-  app.alert_view({
-    title: "Hey There",
-    message: "Check out this complex alert!",
-    cancel_button: 'Nevermind',
-    other_buttons: ['Log In'],
-    delegate: nil,
-    view_style: UIAlertViewStyleLoginAndPasswordInput
-  })  
-```
