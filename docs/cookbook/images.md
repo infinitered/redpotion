@@ -37,7 +37,7 @@ image.from_view(my_view)
 
 ## Remote images
 
-You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [JMImageCache](https://github.com/jakemarsh/JMImageCache).
+You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [SDWebImage](https://github.com/rs/SDWebImage).
 
 ```ruby
 class MyStylesheet < ApplicationStylesheet

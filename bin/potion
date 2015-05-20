@@ -101,7 +101,7 @@ class PotionCommandLine
     def create_app(app_name)
       puts '     Creating app'
 
-      `motion create --template=git@github.com:infinitered/redpotion-template.git #{app_name}`
+      `motion create --template=https://github.com/infinitered/redpotion-template.git #{app_name}`
 
       ["bundle", "rake pod:install"].each do |command|
         puts "Running #{command}..."
@@ -137,7 +137,7 @@ class PotionCommandLine
     # TODO Disabling for now, this needs to get latest template
     def ensure_template_dir
       return if Dir.exists?(template_dir)
-      `git clone git@github.com:infinitered/potion-template.git #{template_dir}`
+      `git clone https://github.com/infinitered/redpotion-template.git #{template_dir}`
     end
 
     def template_path(template_name)

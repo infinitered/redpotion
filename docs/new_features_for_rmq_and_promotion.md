@@ -96,7 +96,7 @@ end
 
 ### Remote image loading for UIImageView styler
 
-You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [JMImageCache](https://github.com/jakemarsh/JMImageCache).
+You can set `remote_image` to a URL string or an instance of `NSURL` and it will automatically fetch the image and set the image (with caching) using the power of [SDWebImage](https://github.com/rs/SDWebImage).
 
 ```ruby
 class MyStylesheet < ApplicationStylesheet
@@ -112,11 +112,11 @@ class MyStylesheet < ApplicationStylesheet
 end
 ```
 
-In order to use this feature, you must add the `JMIMageCache` cocoapod to your project:
+In order to use this feature, you must add the `SDWebImage` cocoapod to your project:
 
 ```ruby
 app.pods do
-  pod 'JMImageCache'
+  pod 'SDWebImage'
 end
 ```
 

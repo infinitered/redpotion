@@ -55,4 +55,4 @@ You can use both RMQ Plugins and ProMotion Add-ons
 
 **Pods**
 
-* [JMImageCache](https://github.com/jakemarsh/JMImageCache)
+* [SDWebImage](https://github.com/rs/SDWebImage)
