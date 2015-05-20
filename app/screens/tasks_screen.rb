@@ -18,7 +18,8 @@ class TasksScreen < PM::TableScreen
           cell_class: TaskCell,
           properties: {
             my_title: "First task"
-          }
+          },
+          editing_style: :delete
         },
         {
           cell_class: TaskCell,
