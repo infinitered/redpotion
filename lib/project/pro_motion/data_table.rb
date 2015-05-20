@@ -16,6 +16,7 @@ module ProMotion
       self.view
     end
 
+    # This has to be defined in order to inherit everything from TableScreen
     def table_data
       [{cells:[]}]
     end
@@ -25,7 +26,6 @@ module ProMotion
       set_up_fetch_controller
 
       set_up_header_footer_views
-      set_up_searchable
       set_up_refreshable
       set_up_longpressable
       set_up_row_height
@@ -87,7 +87,7 @@ module ProMotion
 
     def cell_at(args = {})
       c = object_at_index(args[:index_path]).cell
-      set_data_cell_defaults c
+      set_data_cell_defaults(c)
     end
 
     def controllerWillChangeContent(controller)
