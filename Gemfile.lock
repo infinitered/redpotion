@@ -2,18 +2,19 @@ PATH
   remote: .
   specs:
     redpotion (1.2.0)
-      ProMotion (~> 2.3.1)
+      ProMotion (>= 2.4.2)
       RedAlert
       motion-cocoapods
       motion_print
       rake
-      ruby_motion_query (~> 1.4.0)
+      ruby_motion_query (>= 1.4.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    ProMotion (2.3.1)
+    ProMotion (2.4.2)
       methadone (~> 1.7)
+      motion_print (~> 1.0)
     RedAlert (1.1)
       ruby_motion_query (>= 1.3.4)
     activesupport (3.2.21)
