@@ -233,4 +233,25 @@ describe 'UIView' do
       find(@view).find(UIButton, :something).count.should.equal(2)
     end
   end
+
+  describe "#find!" do
+    before do
+      @view = UIView.alloc.init
+    end
+
+    it "should return the view when there is a single result" do
+      btn = @view.append!(FakeView)
+      @view.append(UIButton)
+
+      find(@view).find!(FakeView).should.equal(btn)
+    end
+
+    it "should return an array of views when there is multiple results" do
+      btn = @view.append!(FakeView)
+      btn2 = @view.append!(FakeView)
+      @view.append(UIButton)
+
+      find(@view).find!(FakeView).should.equal([btn, btn2])
+    end
+  end
 end
