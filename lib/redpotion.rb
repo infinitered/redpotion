@@ -7,6 +7,7 @@ end
 require 'ruby_motion_query'
 require 'ProMotion'
 require 'motion_print'
+require 'redalert'
 
 lib_dir_path = File.dirname(File.expand_path(__FILE__))
 Motion::Project::App.setup do |app|

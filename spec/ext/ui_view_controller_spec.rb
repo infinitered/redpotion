@@ -1,4 +1,11 @@
 describe 'UIViewController' do
+  class FakeView < UIView; end
+
+  after do
+    #cleanup between tests
+    controller.find(FakeView).remove
+  end
+
   shared 'proper delegate caller' do
     it 'should call view_will_appear only once' do
       controller.view_will_appear_count.should.equal(1)
@@ -162,6 +169,23 @@ describe 'UIViewController' do
         controller.append(UILabel).tag(:first)
         controller.append(UILabel).tag(:second)
         controller.find(:first, :second).count.should.equal(2)
+      end
+    end
+
+    describe "#find!" do
+      it "should return the view when there is a single result" do
+        btn = controller.append!(FakeView)
+        controller.append(UIButton)
+
+        controller.find!(FakeView).should.equal(btn)
+      end
+
+      it "should return an array of views when there is multiple results" do
+        btn = controller.append!(FakeView)
+        btn2 = controller.append!(FakeView)
+        controller.append(UIButton)
+
+        controller.find!(FakeView).should.equal([btn, btn2])
       end
     end
   end
