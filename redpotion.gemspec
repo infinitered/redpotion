@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hello@infinitered.com", "hello@clearsightstudio.com" ]
   spec.description   = %q{RedPotion - The best combination of RubyMotion tools and libraries}
   spec.summary       = %q{RedPotion combines RMQ, ProMotion, CDQ, AFMotion, and more for the perfect mix to develop in RubyMotion fast}
-  spec.homepage      = "https://github.com/infinitered/redpotion"
+  spec.homepage      = "http://redpotion.org"
   spec.license       = "MIT"
 
   files = []
