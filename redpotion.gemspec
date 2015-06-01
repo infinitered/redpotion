@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hello@infinitered.com", "hello@clearsightstudio.com" ]
   spec.description   = %q{RedPotion - The best combination of RubyMotion tools and libraries}
   spec.summary       = %q{RedPotion combines RMQ, ProMotion, CDQ, AFMotion, and more for the perfect mix to develop in RubyMotion fast}
-  spec.homepage      = "https://github.com/infinitered/redpotion"
+  spec.homepage      = "http://redpotion.org"
   spec.license       = "MIT"
 
   files = []
@@ -23,8 +23,8 @@ Gem::Specification.new do |spec|
 
   spec.executables << 'potion'
 
-  spec.add_runtime_dependency "ruby_motion_query", "~> 1.4.0"
-  spec.add_runtime_dependency "ProMotion", "~> 2.4.0"
+  spec.add_runtime_dependency "ruby_motion_query", ">= 1.4.0"
+  spec.add_runtime_dependency "ProMotion", ">= 2.4.2"
   spec.add_runtime_dependency "motion_print"
   spec.add_runtime_dependency "motion-cocoapods"
   spec.add_runtime_dependency "RedAlert"

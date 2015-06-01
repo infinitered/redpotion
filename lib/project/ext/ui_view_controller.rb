@@ -65,13 +65,9 @@ class UIViewController
   def view_did_load
   end
 
-  # Monkey patch because I think that overriding viewDidLoad like this may be problematic
   alias :originalViewDidLoad :viewDidLoad
   def viewDidLoad
-    if self.class.rmq_style_sheet_class
-      self.rmq.stylesheet = self.class.rmq_style_sheet_class
-      self.view.rmq.apply_style(:root_view) if self.rmq.stylesheet.respond_to?(:root_view)
-    end
+    set_stylesheet
 
     self.originalViewDidLoad
     unless pm_handles_delegates?
@@ -152,6 +148,15 @@ class UIViewController
 
   def willAnimateRotationToInterfaceOrientation(orientation, duration: duration)
     self.will_animate_rotate(orientation, duration)
+  end
+
+  protected
+
+  def set_stylesheet
+    if self.class.rmq_style_sheet_class
+      self.rmq.stylesheet = self.class.rmq_style_sheet_class
+      self.view.rmq.apply_style(:root_view) if self.rmq.stylesheet.respond_to?(:root_view)
+    end
   end
 
   private
