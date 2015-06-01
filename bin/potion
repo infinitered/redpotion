@@ -3,9 +3,7 @@
 require "erb"
 require "rubygems"
 require 'open-uri'
-
-$:.unshift(File.join(File.dirname(__FILE__), "/../lib/project"))
-require "version"
+require_relative "../lib/project/version"
 
 class PotionCommandLine
   HELP_TEXT = %{     potion version #{RedPotion::VERSION}
@@ -58,7 +56,6 @@ class PotionCommandLine
       :collection_view_controller,
       :table_view_controller
     ]
-
 
     def create(template_or_app_name, *options)
       if template_or_app_name.nil?
