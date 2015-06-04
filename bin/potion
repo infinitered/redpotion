@@ -230,6 +230,7 @@ class PotionCommandLine
         remove_lines('Rakefile', /schema:build/, show_output)
         File.delete('schemas/0001_initial.rb') if File.exists?('schemas/0001_initial.rb')
         File.delete('resources/cdq.yml') if File.exists?('resources/cdq.yml')
+        File.delete('spec/helpers/cdq.rb') if File.exists?('spec/helpers/cdq.rb')
         Dir.delete('schemas') if Dir.exists?('schemas')
       when 'afmotion'
         remove_lines('Gemfile', /gem ('|")afmotion('|")/, show_output)
