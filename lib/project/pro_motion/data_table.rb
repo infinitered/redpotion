@@ -94,7 +94,7 @@ module ProMotion
     def tableView(_, cellForRowAtIndexPath: index_path)
       params = index_path_to_section_index(index_path: index_path)
       data_cell = cell_at(index_path: index_path)
-      return UITableViewCell.alloc.init unless data_cell
+      return self.rmq.create(UITableViewCell) unless data_cell
       create_table_cell(data_cell)
     end
 
