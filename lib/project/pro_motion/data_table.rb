@@ -22,7 +22,6 @@ module ProMotion
     end
 
     def screen_setup
-      set_up_reload_notification
       set_up_fetch_controller
 
       set_up_header_footer_views
@@ -31,11 +30,35 @@ module ProMotion
       set_up_row_height
     end
 
-    def set_up_reload_notification
+    def view_will_appear(animated)
+      table_view.reloadData
+      add_reload_notification
+
+      resolve_status_bar
+      self.will_appear
+
+      self.will_present if isMovingToParentViewController
+    end
+
+    def view_will_disappear(animated)
+      remove_reload_notification
+
+      self.will_disappear
+
+      self.will_dismiss if isMovingFromParentViewController
+    end
+
+    def add_reload_notification
       NSNotificationCenter.defaultCenter.addObserver(self,
         selector: "update_table_data:",
         name: NSManagedObjectContextDidSaveNotification,
         object: nil)
+    end
+
+    def remove_reload_notification
+      NSNotificationCenter.defaultCenter.removeObserver(self,
+        name:NSManagedObjectContextDidSaveNotification,
+        object:nil)
     end
 
     def set_up_fetch_controller
@@ -50,7 +73,7 @@ module ProMotion
     def update_table_data(notification = nil)
       Dispatch::Queue.main.async do
         fetch_controller.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
-      end
+      end unless notification.nil?
     end
 
     # UITableViewDelegate methods
