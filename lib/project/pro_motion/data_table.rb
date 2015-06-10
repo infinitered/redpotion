@@ -95,7 +95,13 @@ module ProMotion
       params = index_path_to_section_index(index_path: index_path)
       data_cell = cell_at(index_path: index_path)
       return self.rmq.create(UITableViewCell) unless data_cell
+
       create_table_cell(data_cell)
+    end
+
+    def on_cell_created(cell, data)
+      # Do not call super here
+      self.rmq.build(cell)
     end
 
     def tableView(_, willDisplayCell: table_cell, forRowAtIndexPath: index_path)
