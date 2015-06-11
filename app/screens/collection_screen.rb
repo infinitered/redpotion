@@ -38,7 +38,7 @@ class CollectionScreen < UICollectionViewController
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
     view.dequeueReusableCellWithReuseIdentifier(COLLECTION_CELL_ID, forIndexPath: index_path).tap do |cell|
-      build(cell) unless cell.reused
+      self.rmq.build(cell) unless cell.reused
 
       # Update cell's data here
     end
@@ -50,4 +50,3 @@ class CollectionScreen < UICollectionViewController
   end
 
 end
-
