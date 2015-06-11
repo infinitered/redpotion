@@ -14,8 +14,4 @@ class UICollectionViewCell
     super
     @reused = true
   end
-
-  def parent_screen
-    rmq.view_controller
-  end
 end

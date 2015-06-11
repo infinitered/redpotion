@@ -23,7 +23,7 @@ describe 'UICollectionViewController' do
     path = NSIndexPath.indexPathForRow(0, inSection:0)
     cell = @controller.collectionView(@controller.collectionView, cellForItemAtIndexPath: path)
 
-    cell.parent_screen.should == @controller
+    cell.find.screen.should == @controller
   end
 
 end
