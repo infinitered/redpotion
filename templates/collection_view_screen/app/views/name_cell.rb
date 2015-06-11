@@ -1,4 +1,6 @@
 class <%= @name_camel_case %>Cell < UICollectionViewCell
+  attr_accessor :collection_screen
+
   def on_load
     find(self).apply_style :<%= @name %>_cell
 
