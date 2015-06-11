@@ -1,6 +1,4 @@
 class CollectionCell < UICollectionViewCell
-  attr_accessor :collection_screen
-
   def on_load
     find(self).apply_style :collection_cell
 
