@@ -155,11 +155,11 @@ module ProMotion
           end
 
           if sort_attribute
-            PM.logger.warn("The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope. Currently sorting by :#{sort_attribute}.")
+            mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope. Currently sorting by :#{sort_attribute}.", force_color: :yellow
             data_model.send(data_scope).sort_by(sort_attribute)
           else
             # This is where the application says goodbye and dies in a fiery crash.
-            PM.logger.error("The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope.")
+            mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope.", force_color: :yellow
           end
         else
           data_with_scope
