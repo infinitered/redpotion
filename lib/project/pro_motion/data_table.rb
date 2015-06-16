@@ -115,7 +115,8 @@ module ProMotion
     end
 
     def cell_at(args = {})
-      c = object_at_index(args[:index_path]).cell
+      index_path = args.is_a?(Hash) ? args[:index_path] : args
+      c = object_at_index(index_path).cell        
       set_data_cell_defaults(c)
     end
 
