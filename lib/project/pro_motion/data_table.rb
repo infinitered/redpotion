@@ -89,7 +89,7 @@ module ProMotion
 
     def cell_at(args = {})
       index_path = args.is_a?(Hash) ? args[:index_path] : args
-      c = object_at_index(index_path).cell        
+      c = object_at_index(index_path).cell
       set_data_cell_defaults(c)
     end
 
@@ -112,8 +112,8 @@ module ProMotion
       table_view.endUpdates
     end
 
-    def fetch_controller
-      @_data ||= begin
+    def fetch_scope
+      @_fetch_scope ||= begin
         if respond_to?(:model_query)
           data_with_scope = model_query
         else
@@ -139,13 +139,15 @@ module ProMotion
           data_with_scope
         end
       end
+    end
 
-      @fetch_controller ||= NSFetchedResultsController.alloc.initWithFetchRequest(
-        @_data.fetch_request,
-        managedObjectContext: @_data.context,
-        sectionNameKeyPath: nil,
-        cacheName: nil
-      )
+    def fetch_controller
+        @fetch_controller ||= NSFetchedResultsController.alloc.initWithFetchRequest(
+          fetch_scope.fetch_request,
+          managedObjectContext: fetch_scope.context,
+          sectionNameKeyPath: nil,
+          cacheName: nil
+        )
     end
 
     def object_at_index(i)
