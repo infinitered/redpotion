@@ -3,6 +3,7 @@ class ContributorScreen < PM::DataTableScreen
   stylesheet ContributorScreenStylesheet
   model Contributor
   refreshable
+  searchable fields: [:name, :city]
 
   def on_load
     @refreshed = false

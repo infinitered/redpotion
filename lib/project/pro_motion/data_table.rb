@@ -25,6 +25,7 @@ module ProMotion
       set_up_fetch_controller
 
       set_up_header_footer_views
+      set_up_searchable
       set_up_refreshable
       set_up_longpressable
       set_up_row_height
@@ -37,6 +38,18 @@ module ProMotion
       unless fetch_controller.performFetch(error_ptr)
         raise "Error performing fetch: #{error_ptr[2].description}"
       end
+    end
+
+    def searching?
+      @_data_table_searching || false
+    end
+
+    def search_string
+      @_data_table_search_string || ""
+    end
+
+    def original_search_string
+      search_string
     end
 
     def update_table_data(notification = nil)
@@ -142,12 +155,16 @@ module ProMotion
     end
 
     def fetch_controller
+      if searching?
+        search_fetch_controller
+      else
         @fetch_controller ||= NSFetchedResultsController.alloc.initWithFetchRequest(
           fetch_scope.fetch_request,
           managedObjectContext: fetch_scope.context,
           sectionNameKeyPath: nil,
           cacheName: nil
         )
+      end
     end
 
     def object_at_index(i)
