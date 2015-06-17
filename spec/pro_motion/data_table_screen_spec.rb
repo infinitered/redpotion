@@ -1,14 +1,4 @@
-def contributors
-  %w{twerth squidpunch GantMan shreeve chunlea markrickert}
-end
-
-def init_contributors
-  Contributor.destroy_all
-  contributors.each do |c|
-    Contributor.new(name: c)
-  end
-  cdq.save
-end
+include ContributorsModule
 
 describe 'DataTableScreen' do
 
