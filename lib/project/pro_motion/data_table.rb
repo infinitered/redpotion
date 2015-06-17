@@ -40,9 +40,13 @@ module ProMotion
     end
 
     def update_table_data(notification = nil)
-      Dispatch::Queue.main.async do
-        fetch_controller.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
-      end unless notification.nil?
+      if notification.nil?
+        table_view.reloadData
+      else
+        Dispatch::Queue.main.async do
+          fetch_controller.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
+        end
+      end
     end
 
     # UITableViewDelegate methods
