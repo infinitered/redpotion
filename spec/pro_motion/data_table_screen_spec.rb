@@ -1,6 +1,5 @@
-include ContributorsModule
-
 describe 'DataTableScreen' do
+  extend ContributorsModule
 
   class TestDataTableScreen < ProMotion::DataTableScreen
     model Contributor
