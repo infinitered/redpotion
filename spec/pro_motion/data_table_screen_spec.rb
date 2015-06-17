@@ -19,6 +19,16 @@ describe 'DataTableScreen' do
     end
   end
 
+  class TestDataTableScreenSearchableNoFields < ProMotion::DataTableScreen
+    model Contributor
+    searchable
+  end
+
+  class TestDataTableScreenSearchable < ProMotion::DataTableScreen
+    model Contributor
+    searchable fields: [:name]
+  end
+
   class TestDataTableScreenModelQuery < ProMotion::DataTableScreen
     model Contributor
 
@@ -173,6 +183,32 @@ describe 'DataTableScreen' do
       @controller.refreshed.should.be.nil
       @controller.refreshView(UIRefreshControl.alloc.init)
       @controller.refreshed.should == true
+    end
+  end
+
+  describe "searchable" do
+    before do
+      @controller = TestDataTableScreenSearchable.new
+      @controller.on_load
+    end
+
+    it "should raise an error when initializing without model field specifications" do
+      lambda do
+        no_fields = TestDataTableScreenSearchableNoFields.new
+        no_fields.on_load
+      end.should.raise
+    end
+
+    it "should be searchable" do
+      @controller.class.get_searchable.should == true
+    end
+
+    it "should create a search header" do
+      @controller.tableView.tableHeaderView.should.be.kind_of UISearchBar
+    end
+
+    it "should not hide the search bar initally by default" do
+      @controller.tableView.contentOffset.should == CGPointMake(0,0)
     end
   end
 

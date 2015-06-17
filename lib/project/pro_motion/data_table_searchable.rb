@@ -11,7 +11,7 @@ module ProMotion
           if params[:search_bar][:fields].nil?
             raise "ERROR: You must specify fields:[:example] for your searchable DataTableScreen. It should be an array of fields you want searched in CDQ."
           else
-            @data_table_predicate_fields = all_params[:search_bar].delete(:fields)
+            @data_table_predicate_fields = all_params[:search_bar][:fields]
           end
         end
 
