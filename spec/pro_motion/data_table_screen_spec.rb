@@ -210,6 +210,29 @@ describe 'DataTableScreen' do
     it "should not hide the search bar initally by default" do
       @controller.tableView.contentOffset.should == CGPointMake(0,0)
     end
+
+    it "should toggle searching?" do
+      @controller.searching?.should == false
+      @controller.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.searching?.should == true
+    end
+
+    it "should store the search_string" do
+      @controller.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.searchDisplayController(@controller, shouldReloadTableForSearchString: "ma")
+      @controller.search_string.should == "ma"
+      @controller.searchDisplayControllerWillEndSearch(@controller)
+      @controller.search_string.should.be.nil
+    end
+
+    it "should filter results in a new fetched results controller" do
+      frc = @controller.fetch_controller
+      frc.fetchRequest.predicate.class.should == NSTruePredicate
+      @controller.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.searchDisplayController(@controller, shouldReloadTableForSearchString: "ma")
+      @controller.fetch_controller.should.not == frc
+      @controller.fetch_controller.fetchRequest.predicate.class.should == NSComparisonPredicate
+    end
   end
 
   describe ".model" do

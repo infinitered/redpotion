@@ -45,7 +45,7 @@ module ProMotion
     end
 
     def search_string
-      @_data_table_search_string || ""
+      @_data_table_search_string
     end
 
     def original_search_string

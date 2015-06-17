@@ -19,7 +19,7 @@ module ProMotion
       end
 
       def search_fetch_controller
-        @_search_fetch_controller ||= new_frc_with_search(self.tableView.tableHeaderView.text)
+        @_search_fetch_controller ||= new_frc_with_search(search_string)
       end
 
       def new_frc_with_search(search_string)
@@ -64,6 +64,7 @@ module ProMotion
         @_data_table_searching = false
         @_search_fetch_controller.delegate = nil unless @_search_fetch_controller.nil?
         @_search_fetch_controller = nil
+        @_data_table_search_string = nil
         self.table_view.setScrollEnabled true
         @table_search_display_controller.delegate.will_end_search if @table_search_display_controller.delegate.respond_to? "will_end_search"
       end
