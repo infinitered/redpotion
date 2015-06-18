@@ -40,18 +40,6 @@ module ProMotion
       end
     end
 
-    def searching?
-      @_data_table_searching || false
-    end
-
-    def search_string
-      @_data_table_search_string
-    end
-
-    def original_search_string
-      search_string
-    end
-
     def update_table_data(notification = nil)
       if notification.nil?
         table_view.reloadData
@@ -60,75 +48,6 @@ module ProMotion
           fetch_controller.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
         end
       end
-    end
-
-    # UITableViewDelegate methods
-    def numberOfSectionsInTableView(_)
-      fetch_controller.sections.count
-    end
-
-    def tableView(table_view, numberOfRowsInSection: section)
-      fetch_controller.sections[section].numberOfObjects
-    end
-
-    def tableView(table_view, didSelectRowAtIndexPath: index_path)
-      data_cell = cell_at(index_path: index_path)
-      table_view.deselectRowAtIndexPath(index_path, animated: true) unless data_cell[:keep_selection] == true
-      trigger_action(data_cell[:action], data_cell[:arguments], index_path) if data_cell[:action]
-    end
-
-    def tableView(_, cellForRowAtIndexPath: index_path)
-      params = index_path_to_section_index(index_path: index_path)
-      data_cell = cell_at(index_path: index_path)
-      return self.rmq.create(UITableViewCell) unless data_cell
-
-      create_table_cell(data_cell)
-    end
-
-    def on_cell_created(cell, data)
-      # Do not call super here
-      self.rmq.build(cell)
-    end
-
-    def tableView(_, willDisplayCell: table_cell, forRowAtIndexPath: index_path)
-      data_cell = cell_at(index_path: index_path)
-      table_cell.send(:will_display) if table_cell.respond_to?(:will_display)
-      table_cell.send(:restyle!) if table_cell.respond_to?(:restyle!) # Teacup compatibility
-    end
-
-    def tableView(table_view, heightForRowAtIndexPath: index_path)
-      (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
-    end
-
-    def cell_at(args = {})
-      index_path = args.is_a?(Hash) ? args[:index_path] : args
-      c = object_at_index(index_path).cell
-      set_data_cell_defaults(c)
-    end
-
-    def controllerWillChangeContent(controller)
-      # TODO - we should update the search results table when a new record is added
-      # or deleted or changed. For now, when the data changes, the search doesn't
-      # update. Closing the search will update the data and then searching again
-      # will show the new or changed content.
-      table_view.beginUpdates unless searching?
-    end
-
-    def controller(controller, didChangeObject: task, atIndexPath: index_path, forChangeType: change_type, newIndexPath: new_index_path)
-      unless searching?
-        case change_type
-        when NSFetchedResultsChangeInsert
-          table_view.insertRowsAtIndexPaths([new_index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
-        when NSFetchedResultsChangeDelete
-          table_view.deleteRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
-        when NSFetchedResultsChangeUpdate
-          table_view.reloadRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
-        end
-      end
-    end
-
-    def controllerDidChangeContent(controller)
-      table_view.endUpdates unless searching?
     end
 
     def fetch_scope
@@ -173,6 +92,17 @@ module ProMotion
       end
     end
 
+    def on_cell_created(cell, data)
+      # Do not call super here
+      self.rmq.build(cell)
+    end
+
+    def cell_at(args = {})
+      index_path = args.is_a?(Hash) ? args[:index_path] : args
+      c = object_at_index(index_path).cell
+      set_data_cell_defaults(c)
+    end
+
     def object_at_index(i)
       fetch_controller.objectAtIndexPath(i)
     end
@@ -185,8 +115,78 @@ module ProMotion
       self.class.data_scope
     end
 
+    def searching?
+      @_data_table_searching || false
+    end
+
+    def search_string
+      @_data_table_search_string
+    end
+
+    def original_search_string
+      search_string
+    end
+
     def self.included(base)
       base.extend(TableClassMethods)
+    end
+
+    # UITableViewDelegate methods
+    def numberOfSectionsInTableView(_)
+      fetch_controller.sections.count
+    end
+
+    def tableView(table_view, numberOfRowsInSection: section)
+      fetch_controller.sections[section].numberOfObjects
+    end
+
+    def tableView(table_view, didSelectRowAtIndexPath: index_path)
+      data_cell = cell_at(index_path: index_path)
+      table_view.deselectRowAtIndexPath(index_path, animated: true) unless data_cell[:keep_selection] == true
+      trigger_action(data_cell[:action], data_cell[:arguments], index_path) if data_cell[:action]
+    end
+
+    def tableView(_, cellForRowAtIndexPath: index_path)
+      params = index_path_to_section_index(index_path: index_path)
+      data_cell = cell_at(index_path: index_path)
+      return self.rmq.create(UITableViewCell) unless data_cell
+
+      create_table_cell(data_cell)
+    end
+
+    def tableView(_, willDisplayCell: table_cell, forRowAtIndexPath: index_path)
+      data_cell = cell_at(index_path: index_path)
+      table_cell.send(:will_display) if table_cell.respond_to?(:will_display)
+      table_cell.send(:restyle!) if table_cell.respond_to?(:restyle!) # Teacup compatibility
+    end
+
+    def tableView(table_view, heightForRowAtIndexPath: index_path)
+      (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
+    end
+
+    def controllerWillChangeContent(controller)
+      # TODO - we should update the search results table when a new record is added
+      # or deleted or changed. For now, when the data changes, the search doesn't
+      # update. Closing the search will update the data and then searching again
+      # will show the new or changed content.
+      table_view.beginUpdates unless searching?
+    end
+
+    def controller(controller, didChangeObject: task, atIndexPath: index_path, forChangeType: change_type, newIndexPath: new_index_path)
+      unless searching?
+        case change_type
+        when NSFetchedResultsChangeInsert
+          table_view.insertRowsAtIndexPaths([new_index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+        when NSFetchedResultsChangeDelete
+          table_view.deleteRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+        when NSFetchedResultsChangeUpdate
+          table_view.reloadRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+        end
+      end
+    end
+
+    def controllerDidChangeContent(controller)
+      table_view.endUpdates unless searching?
     end
 
   end
