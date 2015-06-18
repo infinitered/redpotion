@@ -2,14 +2,17 @@ describe 'DataTableScreen' do
   extend ContributorsModule
 
   class TestDataTableScreen < ProMotion::DataTableScreen
+    stylesheet ContributorScreenStylesheet
     model Contributor
   end
 
   class TestDataTableScreenScope < ProMotion::DataTableScreen
+    stylesheet ContributorScreenStylesheet
     model Contributor, scope: :starts_with_s
   end
 
   class TestDataTableScreenRefreshable < ProMotion::DataTableScreen
+    stylesheet ContributorScreenStylesheet
     model Contributor
     refreshable
     attr_accessor :refreshed
@@ -20,16 +23,19 @@ describe 'DataTableScreen' do
   end
 
   class TestDataTableScreenSearchableNoFields < ProMotion::DataTableScreen
+    stylesheet ContributorScreenStylesheet
     model Contributor
     searchable
   end
 
   class TestDataTableScreenSearchable < ProMotion::DataTableScreen
+    stylesheet ContributorScreenStylesheet
     model Contributor
     searchable fields: [:name]
   end
 
   class TestDataTableScreenModelQuery < ProMotion::DataTableScreen
+    stylesheet ContributorScreenStylesheet
     model Contributor
 
     def model_query
