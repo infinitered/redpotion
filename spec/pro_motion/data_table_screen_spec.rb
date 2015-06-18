@@ -239,6 +239,20 @@ describe 'DataTableScreen' do
       @controller.fetch_controller.should.not == frc
       @controller.fetch_controller.fetchRequest.predicate.class.should == NSComparisonPredicate
     end
+
+    it "should have the proper results for a search" do
+      search_string = "ma"
+
+      @controller.tableView(@controller, numberOfRowsInSection:0).should == Contributor.count
+      @controller.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.searchDisplayController(@controller, shouldReloadTableForSearchString: search_string)
+
+      searched = Contributor.where("name CONTAINS[cd] '#{search_string}' OR city CONTAINS[cd] '#{search_string}'")
+      @controller.tableView(@controller, numberOfRowsInSection:0).should == searched.count
+
+      @controller.searchDisplayControllerWillEndSearch(@controller)
+      @controller.tableView(@controller, numberOfRowsInSection:0).should == Contributor.count
+    end
   end
 
   describe ".model" do
