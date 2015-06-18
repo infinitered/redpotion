@@ -107,22 +107,28 @@ module ProMotion
     end
 
     def controllerWillChangeContent(controller)
-      table_view.beginUpdates
+      # TODO - we should update the search results table when a new record is added
+      # or deleted or changed. For now, when the data changes, the search doesn't
+      # update. Closing the search will update the data and then searching again
+      # will show the new or changed content.
+      table_view.beginUpdates unless searching?
     end
 
     def controller(controller, didChangeObject: task, atIndexPath: index_path, forChangeType: change_type, newIndexPath: new_index_path)
-      case change_type
-      when NSFetchedResultsChangeInsert
-        table_view.insertRowsAtIndexPaths([new_index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
-      when NSFetchedResultsChangeDelete
-        table_view.deleteRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
-      when NSFetchedResultsChangeUpdate
-        table_view.reloadRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+      unless searching?
+        case change_type
+        when NSFetchedResultsChangeInsert
+          table_view.insertRowsAtIndexPaths([new_index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+        when NSFetchedResultsChangeDelete
+          table_view.deleteRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+        when NSFetchedResultsChangeUpdate
+          table_view.reloadRowsAtIndexPaths([index_path], withRowAnimation: UITableViewRowAnimationAutomatic)
+        end
       end
     end
 
     def controllerDidChangeContent(controller)
-      table_view.endUpdates
+      table_view.endUpdates unless searching?
     end
 
     def fetch_scope

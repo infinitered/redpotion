@@ -67,6 +67,7 @@ module ProMotion
         @_data_table_search_string = nil
         self.table_view.setScrollEnabled true
         @table_search_display_controller.delegate.will_end_search if @table_search_display_controller.delegate.respond_to? "will_end_search"
+        update_table_data
       end
 
       def searchDisplayControllerWillBeginSearch(controller)
