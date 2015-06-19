@@ -231,6 +231,11 @@ describe 'DataTableScreen' do
       @controller.search_string.should.be.nil
     end
 
+    it "should have a delegate object that isn't ProMotion" do
+      @controller.search_delegate.class.should.not == @controller.class
+      @controller.search_delegate.is_a?(DataTableSeachDelegate).should == true
+    end
+
     it "should filter results in a new fetched results controller" do
       frc = @controller.fetch_controller
       frc.fetchRequest.predicate.class.should == NSTruePredicate
