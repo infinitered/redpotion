@@ -219,23 +219,23 @@ describe 'DataTableScreen' do
 
     it "should toggle searching?" do
       @controller.searching?.should == false
-      @controller.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.search_delegate.searchDisplayControllerWillBeginSearch(@controller)
       @controller.searching?.should == true
     end
 
     it "should store the search_string" do
-      @controller.searchDisplayControllerWillBeginSearch(@controller)
-      @controller.searchDisplayController(@controller, shouldReloadTableForSearchString: "ma")
+      @controller.search_delegate.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.search_delegate.searchDisplayController(@controller, shouldReloadTableForSearchString: "ma")
       @controller.search_string.should == "ma"
-      @controller.searchDisplayControllerWillEndSearch(@controller)
+      @controller.search_delegate.searchDisplayControllerWillEndSearch(@controller)
       @controller.search_string.should.be.nil
     end
 
     it "should filter results in a new fetched results controller" do
       frc = @controller.fetch_controller
       frc.fetchRequest.predicate.class.should == NSTruePredicate
-      @controller.searchDisplayControllerWillBeginSearch(@controller)
-      @controller.searchDisplayController(@controller, shouldReloadTableForSearchString: "ma")
+      @controller.search_delegate.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.search_delegate.searchDisplayController(@controller, shouldReloadTableForSearchString: "ma")
       @controller.fetch_controller.should.not == frc
       @controller.fetch_controller.fetchRequest.predicate.class.should == NSComparisonPredicate
     end
@@ -244,13 +244,13 @@ describe 'DataTableScreen' do
       search_string = "ma"
 
       @controller.tableView(@controller, numberOfRowsInSection:0).should == Contributor.count
-      @controller.searchDisplayControllerWillBeginSearch(@controller)
-      @controller.searchDisplayController(@controller, shouldReloadTableForSearchString: search_string)
+      @controller.search_delegate.searchDisplayControllerWillBeginSearch(@controller)
+      @controller.search_delegate.searchDisplayController(@controller, shouldReloadTableForSearchString: search_string)
 
       searched = Contributor.where("name CONTAINS[cd] '#{search_string}' OR city CONTAINS[cd] '#{search_string}'")
       @controller.tableView(@controller, numberOfRowsInSection:0).should == searched.count
 
-      @controller.searchDisplayControllerWillEndSearch(@controller)
+      @controller.search_delegate.searchDisplayControllerWillEndSearch(@controller)
       @controller.tableView(@controller, numberOfRowsInSection:0).should == Contributor.count
     end
   end

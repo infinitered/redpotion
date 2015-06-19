@@ -15,6 +15,7 @@ module ProMotion
           end
         end
 
+        all_params[:delegate] = search_delegate
         all_params
       end
 
@@ -34,7 +35,7 @@ module ProMotion
           sectionNameKeyPath: nil,
           cacheName: nil
         )
-        search.delegate = self
+        search.delegate = search_delegate
 
         # Perform the fetch
         error_ptr = Pointer.new(:object)
@@ -52,15 +53,23 @@ module ProMotion
         @_search_fetch_controller = nil
       end
 
+      def search_delegate
+        @_search_delegate ||= begin
+          d = DataTableSeachDelegate.new
+          d.parent = WeakRef.new(self)
+          d
+        end
+      end
+
       ######### iOS methods, headless camel case #######
 
-      def searchDisplayController(controller, shouldReloadTableForSearchString:search_string)
+      def dt_searchDisplayController(controller, shouldReloadTableForSearchString:search_string)
         @_data_table_search_string = search_string
         reset_search_frc
         true
       end
 
-      def searchDisplayControllerWillEndSearch(controller)
+      def dt_searchDisplayControllerWillEndSearch(controller)
         @_data_table_searching = false
         @_search_fetch_controller.delegate = nil unless @_search_fetch_controller.nil?
         @_search_fetch_controller = nil
@@ -70,7 +79,7 @@ module ProMotion
         update_table_data
       end
 
-      def searchDisplayControllerWillBeginSearch(controller)
+      def dt_searchDisplayControllerWillBeginSearch(controller)
         @_data_table_searching = true
         self.table_view.setScrollEnabled false
         @table_search_display_controller.delegate.will_begin_search if @table_search_display_controller.delegate.respond_to? "will_begin_search"
