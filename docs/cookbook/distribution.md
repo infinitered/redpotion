@@ -65,7 +65,9 @@ To build your app for distribution, run the following command:
 
 ## Uploading to iTunes Connect
 
-First, create the app in iTunes Connect. There are two different ways that you can upload to iTunes Connect: use the Application Loader application or use the `motion-appstore` gem.
+The first step in preparing to upload to iTunes Connect is to create the App record in iTunes Connect.
+
+Once you've created the App record, there are two different ways that you can upload to iTunes Connect: use the Application Loader application to manually upload a build, or use the [`motion-appstore`](https://github.com/HipByte/motion-appstore) gem to upload from the command line. Note that the `motion-appstore` gem still uses the Application Loader application behind the scenes.
 
 ### Using the motion-appstore gem
 
@@ -78,4 +80,30 @@ This will add the following commands:
     motion validate appleid@example.com
     motion upload appleid@example.com
 
-Use the `validate` command if you want to see if your build will upload successfully. Use the `upload` command to upload the build to iTunes Connect. Use your email address that you used to log into the Developer Center.
+Use the `validate` command if you want to see if your build will upload successfully. Use the `upload` command to upload the build to iTunes Connect. Use the email address that you used to log into the Developer Center.
+
+### Using Application Loader
+
+Alternatively, you can manually upload your build using Application Loader.
+
+1. To launch Application Loader, use spotlight search, or from the Xcode menu, choose Open Developer Tool > Application Loader.
+2. Sign In using your Developer Center credentials.
+3. Choose "Deliver Your App"
+4. Select the `.ipa` file from your `build/iPhoneOS-*-Release` directory (assuming you already ran `rake archive:distribution`)
+5. Continue through the steps to upload your build. It will conclude with some messaging that makes it sound like your app has been uploaded to the App Store, but don't worry. Your build has simply been uploaded to iTunes Connect.
+
+The build will have an initial state of "Pending". Once the build transitions to a sort of ready state, it will allow you to enable it for TestFlight Beta Testing.
+
+## Enable Build for TestFlight
+
+Now that you have uploaded your build to iTunes Connect, you can enable the build for TestFlight for distributing to test users. TestFlight allows two different types of testers: internal and external.
+
+* Internal testers are meant for other members of your team. However, you can simply invite anyone by their email address. If they don't have a Apple account, they will be asked to create a TestFlight user account. A team admin will need to add these users to the team and give them a "technical" role in order to be a TestFlight internal tester.
+* External testers are intended to be other people who are not on your team. However, your build must be approved by Apple before it can be sent to your External testers.
+
+Once you've added your test users, to enable your build for TestFlight beta testing:
+
+1. Navigate to your app in iTunes Connect.
+2. Navigate to the Prerelease tab.
+3. Find the build that you want to enable for tesing and click the toggle on the right side of the page (you can only enable one build at a time).
+
