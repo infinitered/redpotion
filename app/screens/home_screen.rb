@@ -18,7 +18,11 @@ class HomeScreen < PM::Screen
     end
 
     append(UIButton, :open_data_table_button).on(:touch) do
-      open ContributerScreen.new(nav_bar: true)
+      open ContributorScreen.new(nav_bar: true)
+    end
+
+    append(UIButton, :open_collection_screen_button).on(:touch) do
+      open CollectionScreen.new(nav_bar: true)
     end
 
     append(UIButton, :open_example_controller_button).on(:touch) do

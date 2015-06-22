@@ -53,7 +53,7 @@ GEM
     escape (0.0.4)
     fuzzy_match (2.0.4)
     i18n (0.7.0)
-    methadone (1.9.0)
+    methadone (1.9.1)
       bundler
     molinillo (0.2.3)
     motion-cocoapods (1.7.1)

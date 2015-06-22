@@ -23,7 +23,7 @@ class HomeScreenStylesheet < ApplicationStylesheet
   end
 
   def open_table_button(st)
-    st.frame = {centered: :horizontal, fb: 120, w: 200, h: 20}
+    st.frame = {centered: :horizontal, fb: 140, w: 200, h: 20}
     st.color = color.tint
     st.text = "Open table screen"
   end
@@ -38,6 +38,12 @@ class HomeScreenStylesheet < ApplicationStylesheet
     open_table_button st
     st.frame = {bp: 10}
     st.text = "Open data table screen"
+  end
+
+  def open_collection_screen_button(st)
+    open_table_button st
+    st.frame = {bp: 10}
+    st.text = "Open collection screen"
   end
 
   def open_example_controller_button(st)

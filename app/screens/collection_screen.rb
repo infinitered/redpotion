@@ -1,13 +1,11 @@
-class <%= @name_camel_case %>Screen < UICollectionViewController
+class CollectionScreen < UICollectionViewController
   include ProMotion::ScreenModule
 
-  title "Your title here"
-  stylesheet <%= @name_camel_case %>ScreenStylesheet
-
-  <%= @name.upcase %>_CELL_ID = "<%= @name_camel_case %>Cell"
+  stylesheet CollectionScreenStylesheet
+  title 'Collection View'
+  COLLECTION_CELL_ID = "CollectionCell"
 
   def self.new(args = {})
-    # Set layout
     layout = UICollectionViewFlowLayout.alloc.init
     s = self.alloc.initWithCollectionViewLayout(layout)
     s.screen_init(args) if s.respond_to?(:screen_init)
@@ -16,13 +14,18 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
 
   def on_load
     collectionView.tap do |cv|
-      cv.registerClass(<%= @name_camel_case %>Cell, forCellWithReuseIdentifier: <%= @name.upcase %>_CELL_ID)
+      cv.registerClass(CollectionCell, forCellWithReuseIdentifier: COLLECTION_CELL_ID)
       cv.delegate = self
       cv.dataSource = self
       cv.allowsSelection = true
       cv.allowsMultipleSelection = false
       find(cv).apply_style :collection_view
     end
+  end
+
+  # Remove if you are only supporting portrait
+  def will_animate_rotate(orientation, duration)
+    reapply_styles
   end
 
   def numberOfSectionsInCollectionView(view)
@@ -34,7 +37,7 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
   end
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
-    view.dequeueReusableCellWithReuseIdentifier(<%= @name.upcase %>_CELL_ID, forIndexPath: index_path).tap do |cell|
+    view.dequeueReusableCellWithReuseIdentifier(COLLECTION_CELL_ID, forIndexPath: index_path).tap do |cell|
       self.rmq.build(cell) unless cell.reused
 
       # Update cell's data here
@@ -46,8 +49,4 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
   end
 
-  # Remove the following if you're only using portrait
-  def will_animate_rotate(orientation, duration)
-    reapply_styles
-  end
 end
