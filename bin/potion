@@ -10,23 +10,23 @@ class PotionCommandLine
 
      Some things you can do with the potion command:
 
-     > potion create my_new_app
-     > potion create my_new_app --skip-cdq # Setup application without CDQ
+     > potion new my_new_app
+     > potion new my_new_app --skip-cdq # Setup application without CDQ
 
-     > potion create model foo
-     > potion create screen foo
-     > potion create table_screen foo
-     > potion create table_screen_cell bar_cell
-     > potion create metal_table_screen foo
-     > potion create collection_view_screen
-     > potion create view bar
-     > potion create shared some_class_used_app_wide
-     > potion create lib some_class_used_by_multiple_apps
+     > potion g model foo
+     > potion g screen foo
+     > potion g table_screen foo
+     > potion g table_screen_cell bar_cell
+     > potion g metal_table_screen foo
+     > potion g collection_view_screen
+     > potion g view bar
+     > potion g shared some_class_used_app_wide
+     > potion g lib some_class_used_by_multiple_apps
 
      You can still create controllers, but you should create screens instead
-     > potion create controller foos
-     > potion create collection_view_controller foos
-     > potion create table_view_controller bars
+     > potion g controller foos
+     > potion g collection_view_controller foos
+     > potion g table_view_controller bars
 
      You can remove CDQ or afmotion if your project does not use it
      > potion remove cdq
@@ -57,41 +57,44 @@ class PotionCommandLine
       :table_view_controller
     ]
 
-    def create(template_or_app_name, *options)
-      if template_or_app_name.nil?
-        puts "potion - Invalid command, try adding an application name or template name."
+    def new(app_name, *options)
+      if app_name.nil?
+        puts "potion - Invalid command, try adding an application name. (ex: potion new my_app)\n"
         return
       end
 
       options.compact!
+      #ensure_template_dir
+      create_app(app_name)
+      options.each do |option|
+        if SKIP_FLAGS.include?(option)
+          Dir.chdir("./#{app_name}")
+          remove(option.split('-').last, true)
+          Dir.chdir('..')
+        end
+      end
+    end
+
+    def generate(template, *options)
+      name = options.slice!(0)
+      if VALID_CREATE_TYPES.include?(template.to_sym)
+        insert_from_template(template, name)
+      else
+        puts "potion - Invalid command, do something like this: potion g controller my_controller\n"
+      end
+    end
+
+    def create(template_or_app_name, *options)
       # Dry Run option - TODO - change this to --dry_run to streamline
       if options.first == 'dry_run'
         @dry_run = true
         options.slice!(0)
       end
 
-      if options.count > 0
-        unless options.first.include?('--')
-          name = options.slice!(0)
-          unless VALID_CREATE_TYPES.include?(template_or_app_name.to_sym)
-            puts "potion - Invalid command, do something like this: potion create controller my_controller\n"
-            return
-          end
-        end
-      end
-
-      if name
-        insert_from_template(template_or_app_name, name)
+      if options.first.include?('--')
+        new(template_or_app_name, *options)
       else
-        #ensure_template_dir
-        create_app(template_or_app_name)
-        options.each do |option|
-          if SKIP_FLAGS.include?(option)
-            Dir.chdir("./#{template_or_app_name}")
-            remove(option.split('-').last, true)
-            Dir.chdir('..')
-          end
-        end
+        generate(template_or_app_name, *options)
       end
     end
 
@@ -267,7 +270,19 @@ action = ARGV[0]
 query = ARGV[1]
 
 case action
+when 'new'
+  PotionCommandLine.new(ARGV[1], ARGV[2], ARGV[3])
+when 'g', 'generate'
+  PotionCommandLine.generate(ARGV[1], ARGV[2], ARGV[3])
 when 'create'
+  # TODO: remove in the future
+  # provided for backwards compatibility
+  options = ARGV[2..-1]
+  if options.first && options.first.include?('--')
+    puts "**NOTICE** potion create is deprecated; please use 'potion new my_app'\n"
+  else
+    puts "**NOTICE** potion create is deprecated; please use 'potion g screen my_screen'\n"
+  end
   PotionCommandLine.create(ARGV[1], ARGV[2], ARGV[3])
 when 'rmq_docs'
   if query
