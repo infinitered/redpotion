@@ -12,6 +12,7 @@ class PotionCommandLine
 
      > potion new my_new_app
      > potion new my_new_app --skip-cdq # Setup application without CDQ
+     > potion new my_new_app --skip-afmotion # Setup application without afmotion
 
      > potion g model foo
      > potion g screen foo
