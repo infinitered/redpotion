@@ -66,14 +66,7 @@ class PotionCommandLine
 
       options.compact!
       #ensure_template_dir
-      create_app(app_name)
-      options.each do |option|
-        if SKIP_FLAGS.include?(option)
-          Dir.chdir("./#{app_name}")
-          remove(option.split('-').last, true)
-          Dir.chdir('..')
-        end
-      end
+      create_app(app_name, options)
     end
 
     def generate(template, *options)
@@ -92,17 +85,25 @@ class PotionCommandLine
         options.slice!(0)
       end
 
-      if options.first.include?('--')
+      if options.first && options.first.include?('--')
         new(template_or_app_name, *options)
       else
         generate(template_or_app_name, *options)
       end
     end
 
-    def create_app(app_name)
+    def create_app(app_name, options)
       puts '     Creating app'
 
       `motion create --template=https://github.com/infinitered/redpotion-template.git #{app_name}`
+
+      options.each do |option|
+        if SKIP_FLAGS.include?(option)
+          Dir.chdir("./#{app_name}")
+          remove(option.split('-').last, true)
+          Dir.chdir('..')
+        end
+      end
 
       ["bundle", "rake pod:install"].each do |command|
         puts "Running #{command}..."
