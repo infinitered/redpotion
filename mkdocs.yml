@@ -8,6 +8,7 @@ pages:
 - [contributing.md, Docs,                             "Contributing"]
 - [cookbook/command_line.md, Cookbook,                "Command-line and REPL tools"]
 - [cookbook/project.md, Cookbook,                     "Project info, are you in the simulator, dev, release, on what OS, what device, etc"]
+- [cookbook/misc.md, Cookbook,                        "Misc"]
 - [cookbook/device.md, Cookbook,                      "The device"]
 - [cookbook/app_delegate.md, Cookbook,                "App delegate"]
 - [cookbook/app.md, Cookbook,                         "App object: access the app from anywhere"]

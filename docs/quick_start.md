@@ -29,8 +29,6 @@ Let's start by creating our app, do this:
 ```
 > potion create myapp
 > cd myapp
-> bundle
-> rake pod:install
 > rake
 ```
 
