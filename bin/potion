@@ -277,14 +277,7 @@ when 'new'
 when 'g', 'generate'
   PotionCommandLine.generate(ARGV[1], ARGV[2], ARGV[3])
 when 'create'
-  # TODO: remove in the future
-  # provided for backwards compatibility
-  options = ARGV[2..-1]
-  if options.first && options.first.include?('--')
-    puts "**NOTICE** potion create is deprecated; please use 'potion new my_app'\n"
-  else
-    puts "**NOTICE** potion create is deprecated; please use 'potion g screen my_screen'\n"
-  end
+  # create provided as an alias for backwards compatibility
   PotionCommandLine.create(ARGV[1], ARGV[2], ARGV[3])
 when 'rmq_docs'
   if query
