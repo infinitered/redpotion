@@ -1,6 +1,6 @@
 ## Accessibility
 
-### motion-Accessibility gem
+### motion-accessibility gem
 
 [motion-accessibility](https://github.com/austinseraphin/motion-accessibility) gem.
 
