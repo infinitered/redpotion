@@ -20,6 +20,9 @@ GEM
     activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    afmotion (2.5)
+      motion-cocoapods (>= 1.4.1)
+      motion-require (>= 0.1)
     builder (3.2.2)
     cdq (1.0.2)
       motion-yaml
@@ -58,6 +61,7 @@ GEM
     molinillo (0.2.3)
     motion-cocoapods (1.7.1)
       cocoapods (>= 0.34)
+    motion-require (0.2.0)
     motion-yaml (1.4)
     motion_print (1.1.2)
     multi_json (1.11.0)
@@ -83,8 +87,12 @@ PLATFORMS
 
 DEPENDENCIES
   RedAlert
+  afmotion
   cdq
   motion-cocoapods
   newclear
   redpotion!
   webstub
+
+BUNDLED WITH
+   1.10.5

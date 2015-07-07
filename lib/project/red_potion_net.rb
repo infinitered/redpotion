@@ -48,13 +48,19 @@
 #     # request.object is a hash, parsed from the json
 #     temp_kelvin = request.object["list"].first["main"]["temp"]
 #   end
+#
+#   # Log responses
+#   app.net.debug = true
 class RedPotionNet
   class << self
+    attr_accessor :debug
+
     def session_client
       @_session_client ||= AFMotion::SessionClient
     end
 
     def session(force_json = false)
+      # TODO use AFMotions's single use methods
       session_client.shared ? session_client.shared : single_use_session(force_json)
     end
 
@@ -109,6 +115,53 @@ class RedPotionNet
         end
       end
     end
+
   end
 end
 
+
+__END__
+
+    def log_response(respose)
+      header_string = if (h = headers)
+        h.map{|k,v| "  #{k} = #{v}"}.join("\n")
+      else
+        "none"
+      end
+
+      params_string = if @request_params
+        @request_params.map{|k,v| "  #{k} = #{v}"}.join("\n")
+      else
+        "none"
+      end
+
+      %(
+
+Request -------------------------
+
+URL: #{@request_url}
+Method: #{method_description}
+Params:
+#{params_string}
+
+Response -------------------------
+
+Status code: #{status_code}
+Not modified?: #{not_modified?}
+Success: #{success?}
+
+Error: #{error.toString if error}
+
+Headers:
+#{header_string}
+
+Body:
+#{body}
+-----------------------------------
+
+)
+    end
+
+
+  end
+end

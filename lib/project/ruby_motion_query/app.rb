@@ -8,6 +8,10 @@ module RubyMotionQuery
       def data(*args) # Do not alias this
         CDQ.cdq(*args)
       end
+
+      def net
+        RedPotionNet
+      end
     end
   end
 end
