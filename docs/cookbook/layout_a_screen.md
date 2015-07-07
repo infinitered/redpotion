@@ -13,6 +13,57 @@ st.frame = {l: 5, t: 5, fr: 5, fb: 5}
 
 <img src="http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2014/05/layout.png" alt="layout" width="770" height="642" class="alignnone size-full wp-image-167" />
 
+## Techniques for dealing with multiple size devices
+
+### Develop the app using the smallest device first
+
+You should build the app and do the layout on the smallest size device, which is usually an iPhone 4s or iPhone 5.
+
+When I design, I take the smaller sizes, then find views that I want to expand on larger devices. For example if you're designing a **compose email** screen, the part that you could expand would be the body of the email. Making everything just larger is poor design. The user has a bigger device to see more data and UI, not make it bigger (although there is a zoom mode, but that just makes the device have the same resolution as a smaller device. So this has no effect on how you'd do layout)
+
+If designed correctly, then the larger sizes will mostly work automatically (assuming you're using the relative layout features (such as :from_right and :below_prev).
+
+Lastly you can do small tweaks for certain size devices.
+
+Some designers will design every size exactly. In this case I'd still do the smallest first.
+
+###
+
+In your stylesheets you can use the following to make tweaks for different devices:
+
+* `ipad?`
+* `iPhone?`
+* `device.width` screen width, orientation doesn't matter
+* `device.height` screen height, orientation doesn't matter
+* `three_point_five_inch?`
+* `four_inch?`
+* `four_point_seven_inch?`
+* `five_point_five_inch?`
+* `landscape?`
+* `portrait?`
+
+Here is an example in a stylesheet:
+
+```
+st.frame = {t: 10, bp: 10, fr: 10, h: four_inch? 150 : 180}
+```
+
+Or you can have completely different hashes per size and/or orientation:
+
+```
+st.frame = if four_inch?
+  {left: 10, below_prev: 10, from_right: 10, height: 150}
+elsif four_point_seven_inch?
+  {left: 15, below_prev: 15, from_right: 15, height: 150}
+else
+  {left: 18, below_prev: 18, from_right: 18, height: 150}
+end
+```
+
+If you're not in your stylesheet, then you can get to these in `device`, for example: `device.iPad?`.
+
+
+
 ## Update a view(s) frame or bounds
 
 You can update the rectangle of a view in various ways, each way can take any of the types below (hash, array, CGRect, etc):
