@@ -107,6 +107,19 @@ end
 
 ```
 
+## Custom events
+
+To add a custom event, use `.on` with a custom symbol. Call `.trigger` to trigger your block.
+
+```ruby
+
+# this code allows you to add a custom event and trigger it
+rmq.append(UIView, :my_view).on(:custom_event) do |sender|
+    puts "custom_event has been triggered"
+end
+rmq(:my_view).trigger(:custom_event)
+```
+
 ## RubyMotionQuery::Events
 
 The internal store of events in a UIView. It's rmq.events, you won't use it too often
