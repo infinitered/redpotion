@@ -114,10 +114,10 @@ To add a custom event, use `.on` with a custom symbol. Call `.trigger` to trigge
 ```ruby
 
 # this code allows you to add a custom event and trigger it
-rmq.append(UIView, :my_view).on(:custom_event) do |sender|
+append(UIView, :my_view).on(:custom_event) do |sender|
     puts "custom_event has been triggered"
 end
-rmq(:my_view).trigger(:custom_event)
+find(:my_view).trigger(:custom_event)
 ```
 
 ## RubyMotionQuery::Events
