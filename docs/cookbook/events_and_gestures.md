@@ -7,7 +7,7 @@ To add an event, use .on, to remove it it, use .off
 append(UIView).on(:tap){|sender| find(sender).hide}
 
 # Adding an Event during creation
-view_q = find.append(UIView).on(:tap) do |sender, event|
+view_q = append(UIView).on(:tap) do |sender, event|
 # do something here
 end
 
