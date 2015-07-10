@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    redpotion (1.3.0)
+    redpotion (1.3.1)
       ProMotion (>= 2.4.2)
       RedAlert
       motion-cocoapods
       motion_print
       rake
-      ruby_motion_query (>= 1.4.0)
+      ruby_motion_query (>= 1.6.0)
 
 GEM
   remote: https://rubygems.org/
