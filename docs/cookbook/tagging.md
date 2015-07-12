@@ -21,8 +21,9 @@ find(view_a, view_b).untag(:foo, bar)
 find(my_view).tag(your_tag: 22)
 find(my_view).tag(your_tag: 22, your_other_tag: 'Hello world')
 
-# Or, dig deep into rmq_data to see tags on a single view
-your_view.rmq_data.tag_names
-your_view.rmq_data.tags
+# You can query the data from your tags if you have stored values in them
+find(my_view).tags(:your_tag)
 
+# You can also get a hash of tag and values by simply calling `tags`
+find(my_view).tags
 ```
