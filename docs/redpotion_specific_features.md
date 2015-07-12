@@ -66,3 +66,75 @@ This is true for all these:
 * color
 * font
 * image
+
+### ProMotion::DataTableScreen
+
+This is a feature that RubyMotion developers have wanted for some time now: easily binding a TableScreen to CoreData.
+
+Now all you have to do is use [CDQ](https://github.com/infinitered/cdq) to define your CoreData schema and implement the model like so:
+
+```ruby
+schema "0001 initial" do
+  entity "MyModel" do
+    # Define anything you want to here
+    string :name, optional: false
+    integer32 :something_else, default: 5
+
+    # These are special CDQ properties that get populated automatically.
+    # They are not required, but are very helpful.
+    datetime :created_at
+    datetime :updated_at
+  end
+end
+```
+
+```ruby
+class MyModel < CDQManagedObject
+  # Scopes need to be sorted. We'll try and figure out how you
+  # want it sorted automatically if it's not, and give you a
+  # warning in the REPL.
+  scope :sort_name, sort_by(:name)
+
+  # This is just a ProMotion TableScreen cell definition.
+  # All cell options are available here. See the PM docs for details.
+  def cell
+    {
+      # Use the model's properties to populate data in the hash
+      title: name,
+      subtitle: "Something else: #{something_else}"
+    }
+  end
+end
+```
+
+#### Then create your `DataTableScreen`
+
+The `model` class method accepts an optional `scope:` parameter where you an specify a scope as defined in your model. If you _do not_ specify a scope or the scope is not sorted, the `DataTableScreen` will attempt to sort your model data by the following properties (in this order): `:updated_at`, `:created_at`, `:id`.  If your model doesn't include any of these properties you should add a `sort_by(:property)` to the chosen scope or the DataTableScreen will not work.
+
+```ruby
+class SomeModelScreen < PM::DataTableScreen
+  title "Cool Implementation of CoreData"
+  model MyModel, scope: :sort_name
+end
+```
+
+You could also use a specific query like this:
+
+```ruby
+class SomeModelScreen < PM::DataTableScreen
+  title "Cool Implementation of CoreData"
+  # Tells DataTableScreen what cell definitions to use.
+  model MyModel
+
+  def model_query
+    # You can use this space to return any CDQTargetedQuery
+    # This is useful because you can use relationships here,
+    # so long as the result contains all `MyModel` objects.
+    MyModel.where(:name).contains("Emily")
+      .and(:something_else).gt(4)
+      .sort_by(:name)
+  end
+end
+```
+
+Once everything is in place, the new screen will mirror your CoreData database and build the cells based on the `cell` definition in the model. Whenever you update the data in CoreData the table will automatically update to reflect the new data! It automatically handles additions, deletions, and updates to existing model data.
