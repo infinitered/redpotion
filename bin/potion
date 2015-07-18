@@ -78,6 +78,10 @@ class PotionCommandLine
       end
     end
 
+    def include_skip_option?(options)
+      (options.first && options.first.include?('--'))
+    end
+
     def create(template_or_app_name, *options)
       # Dry Run option - TODO - change this to --dry_run to streamline
       if options.first == 'dry_run'
@@ -85,7 +89,7 @@ class PotionCommandLine
         options.slice!(0)
       end
 
-      if options.first && options.first.include?('--')
+      if options.compact.empty? || include_skip_option?(options)
         new(template_or_app_name, *options)
       else
         generate(template_or_app_name, *options)
