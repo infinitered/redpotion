@@ -42,9 +42,7 @@ ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 ```
 gem install redpotion
 
-potion create my_app
-bundle
-rake pod:install
+potion new my_app
 rake
 ```
 
