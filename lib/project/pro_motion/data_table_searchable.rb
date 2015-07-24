@@ -3,14 +3,12 @@ module ProMotion
     module Searchable
 
       def make_data_table_searchable(params={})
-        if self.is_a?(ProMotion::DataTableScreen)
-          if params[:search_bar][:fields].nil?
-            raise "ERROR: You must specify fields:[:example] for your searchable DataTableScreen. It should be an array of fields you want searched in CDQ."
-          else
-            @data_table_predicate_fields = params[:search_bar][:fields]
-          end
-          params[:delegate] = search_delegate
+        if params[:search_bar][:fields].nil?
+          raise "ERROR: You must specify fields:[:example] for your searchable DataTableScreen. It should be an array of fields you want searched in CDQ."
+        else
+          @data_table_predicate_fields = params[:search_bar][:fields]
         end
+        params[:delegate] = search_delegate
 
         make_searchable(params)
       end
