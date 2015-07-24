@@ -209,6 +209,10 @@ describe 'DataTableScreen' do
       @controller.class.get_searchable.should == true
     end
 
+    it "should have the correct delegate" do
+      @controller.tableView.delegate.search_delegate.class.should == DataTableSeachDelegate
+    end
+
     it "should create a search header" do
       @controller.tableView.tableHeaderView.should.be.kind_of UISearchBar
     end
