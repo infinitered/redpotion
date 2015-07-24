@@ -13,9 +13,9 @@ module ProMotion
           else
             @data_table_predicate_fields = all_params[:search_bar][:fields]
           end
+          all_params[:delegate] = search_delegate
         end
 
-        all_params[:delegate] = search_delegate
         all_params
       end
 
