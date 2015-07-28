@@ -18,4 +18,8 @@ class Object
   def find!(*args)
     rmq(*args).get
   end
+
+  def screen
+    rmq.screen
+  end
 end
