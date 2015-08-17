@@ -42,6 +42,7 @@ describe "RubyMotionQuery styler: UIImageView" do
   after do
     WebStub::Protocol.enable_network_access!
     SDWebImageManager.sharedManager.imageCache.clearMemory
+    SDWebImageManager.sharedManager.imageCache.clearDisk
   end
 
   it "should set a placeholder image" do
@@ -97,5 +98,20 @@ describe "RubyMotionQuery styler: UIImageView" do
       # This should be instant since we have not cleared the cache
       view.image.should.not.be.nil
     end
+  end
+
+  it "should clear the image cache" do
+    SDImageCache.sharedImageCache.getSize.should == 0.0
+
+    SDWebImageManager.sharedManager.downloadWithURL(NSURL.URLWithString('http://somehost/image'),
+      options:SDWebImageRefreshCached,
+      progress:nil,
+      completed: -> image, error, cacheType, finished {
+        SDImageCache.sharedImageCache.getSize.should > 0.0
+        rmq.app.reset_image_cache!
+        wait 0.1 do
+          SDImageCache.sharedImageCache.getSize.should == 0.0
+        end
+    })
   end
 end

@@ -59,6 +59,12 @@ To assign a remote image to a UIImageView:
 your_ui_image_view.remote_image = "http://bit.ly/18iMhwc"
 ```
 
+We also provide an easy way to reset all images cached by SDWebImage. If you're using ProMotion screens, you should probably do this in your `on_memory_warning` method on each screen. If using standard `UIViewController` subclasses, add this to your `didReceiveMemoryWarning` method.
+
+```ruby
+app.reset_image_cache!
+```
+
 ------
 
 ## Capped Images
