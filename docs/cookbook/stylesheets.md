@@ -53,7 +53,7 @@ end
 
 #### Layouts
 
-Anything that can be applied using the grid or rect system (see Layout below). Can be applied with st.frame = 
+Anything that can be applied using the grid or rect system (see Layout below). Can be applied with st.frame =
 
 ```ruby
 find(your_view).style do |st|
@@ -119,7 +119,7 @@ end
 
 You'll probably want an application-wide stylesheet. Simple create one, and then inherit it in all your stylesheets.
 
-If you use potion to create your app, it will automatically create this for you. Even if you don't, I'd create a test app to see how it is all setup: `potion create test_app`
+If you use potion to create your app, it will automatically create this for you. Even if you don't, I'd create a test app to see how it is all setup: `potion new test_app`
 
 **application_stylesheet.rb**
 
@@ -152,28 +152,28 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     app.grid.tap do |g|
       g.content_left_margin = 10
       g.content_right_margin = 10
-      g.content_top_margin = 74 
-      g.content_bottom_margin = 10 
-      g.num_columns =  12 
-      g.column_gutter = 10 
-      g.num_rows = 18 
-      g.row_gutter = 10 
+      g.content_top_margin = 74
+      g.content_bottom_margin = 10
+      g.num_columns =  12
+      g.column_gutter = 10
+      g.num_rows = 18
+      g.row_gutter = 10
     end
 
     # Named fonts
     font_family = 'Helvetica Neue'
     font.add_named :very_large,     font_family, 56
-    font.add_named :large,          font_family, 24 
-    font.add_named :medium,         font_family, 18 
-    font.add_named :standard,       font_family, 16 
-    font.add_named :small,          font_family, 14 
-    font.add_named :tiny,           font_family, 12 
+    font.add_named :large,          font_family, 24
+    font.add_named :medium,         font_family, 18
+    font.add_named :standard,       font_family, 16
+    font.add_named :small,          font_family, 14
+    font.add_named :tiny,           font_family, 12
 
     # Named colors
-    color.add_named :tint, '#438AF0' 
-    color.add_named :gray, '#DDDDDD' 
-    color.add_named :light_gray, '#EDEDED' 
-    color.add_named :very_light_gray,'#F4F4F4' 
+    color.add_named :tint, '#438AF0'
+    color.add_named :gray, '#DDDDDD'
+    color.add_named :light_gray, '#EDEDED'
+    color.add_named :very_light_gray,'#F4F4F4'
 
     # Set other application-wide visual things, such as appearances:
     SVProgressHUD.appearance.hudBackgroundColor = color.light_gray
@@ -185,7 +185,7 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     st.frame = {h: 30}
     st.background_color = color.tint
     st.color = color.white
-    st.corner_radius = 5 
+    st.corner_radius = 5
   end
 
   def standard_button_enabled(st)
@@ -268,7 +268,7 @@ class MainStylesheet < ApplicationStylesheet
       st.color = color.white
 
       # You can hardcode colors in styles like this, but it's better to use named colors
-      st.background_color = color("ed1160") 
+      st.background_color = color("ed1160")
     end
   end
 

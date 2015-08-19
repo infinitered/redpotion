@@ -8,7 +8,7 @@ There are two types of templates in RedPotion for tables:
 ### To create
 
 ```
-potion create table_screen foo
+potion g table_screen foo
 ```
 
 ## ProMotion tables (Table Screen)
@@ -22,7 +22,7 @@ ProMotion::TableScreen allows you to easily create lists or "tables" as iOS call
 ### To create
 
 ```
-potion create table_screen foo
+potion g table_screen foo
 ```
 
 [ProMotion table docs](https://github.com/clearsightstudio/ProMotion/blob/master/docs/Reference/API%20Reference%20-%20ProMotion%20TableScreen.md)
@@ -33,7 +33,7 @@ potion create table_screen foo
 We almost always use custom cells, rather than rely on the default ones provided by the SDK. To create a custom cell (or many different cell types) for your table screen, do this:
 
 ```
-potion create table_screen_cell bar_cell
+potion g table_screen_cell bar_cell
 ```
 
 Then follow the directions in the files that were created.

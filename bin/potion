@@ -267,7 +267,7 @@ end
 
 # Process input, execute actions
 unless ARGV.length > 0
-  puts "potion - Invalid command, do something like this: potion create my_new_app\n"
+  puts "potion - Invalid command, do something like this: potion new my_new_app\n"
   puts PotionCommandLine::HELP_TEXT
   exit
 end
