@@ -1,11 +1,11 @@
 # Quick start
 
 ```
-gem install redpotion
+> gem install redpotion
 
-potion new my_app
-cd myapp
-rake
+> potion new my_app
+> cd my_app
+> rake
 ```
 
 ## Installation

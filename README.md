@@ -30,36 +30,4 @@ ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 
 **Read the [RedPotion Documentation](http://docs.redpotion.org) here**
 
-<br />
-<br />
-
-----------
-
-<br />
-
-## Quick start
-
-```
-gem install redpotion
-
-potion new my_app
-rake
-```
-
-## Installation
-
-- `gem install redpotion`
-
-If you use rbenv
-
-- `rbenv rehash`
-
-add it to your `Gemfile`:
-
-- `gem 'redpotion'`
-
-<br />
-
-## Read the documentation at [docs.redpotion.org](http://docs.redpotion.org)
-
-<br />
+**Read the [RedPotion Quick Start Documentation](http://docs.redpotion.org/en/latest/quick_start/) here**
