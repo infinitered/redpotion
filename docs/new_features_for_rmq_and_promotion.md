@@ -3,20 +3,20 @@
 Our new generators allow you to create your ProMotion screen and stylesheet template to let you hit the ground running.  Currently the following RedPotion generators exist:
 
 ```
-potion create screen foo
-potion create table_screen foo
-potion create view foo
+potion g screen foo
+potion g table_screen foo
+potion g view foo
 
 # All rmq generators work with the potion command as well
-potion create model foo
-potion create shared foo
-potion create lib foo
+potion g model foo
+potion g shared foo
+potion g lib foo
 
 # rmq controller generators also still exist
 # but screens are preferred to get the redpotion value
-potion create controller foo
-potion create collection_view_controller foos
-potion create table_view_controller bars
+potion g controller foo
+potion g collection_view_controller foos
+potion g table_view_controller bars
 
 # RedPotion includes CDQ and afmotion by default, if you don't need these gems
 # we have provided command line tasks to remove either of them
