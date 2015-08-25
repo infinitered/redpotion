@@ -18,6 +18,8 @@ module ProMotion
       end
 
       def new_frc_with_search(search_string)
+        return if @data_table_predicate_fields.blank?
+
         # Create the predicate from the predetermined fetch scope.
         where = @data_table_predicate_fields.map{|f| "#{f} CONTAINS[cd] \"#{search_string}\"" }.join(" OR ")
         search_scope = fetch_scope.where(where)

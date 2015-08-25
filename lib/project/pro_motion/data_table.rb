@@ -58,7 +58,7 @@ module ProMotion
           data_with_scope = data_model.send(data_scope)
         end
 
-        if data_with_scope.sort_descriptors.empty
+        if data_with_scope.sort_descriptors.blank?
           # Try to be smart about how we sort things if a sort descriptor doesn't exist
           attributes = data_model.send(:attribute_names)
           sort_attribute = nil
