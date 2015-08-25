@@ -3,8 +3,8 @@
 ```
 > gem install redpotion
 
-> potion new my_app
-> cd my_app
+> potion new my_new_app
+> cd my_new_app
 > rake
 ```
 
@@ -26,8 +26,8 @@ add it to your `Gemfile`:
 Let's start by creating our app, do this:
 
 ```
-> potion new myapp
-> cd myapp
+> potion new my_new_app
+> cd my_new_app
 > rake
 ```
 
