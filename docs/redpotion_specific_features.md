@@ -35,6 +35,8 @@ nil.blank? => true
 * `enable_live_stylesheets` aliases `enable_rmq_live_stylesheets`
 * `on_load` aliases `rmq_build` in views. This is great as it now matches screens
 * `on_styled` aliases `rmq_style_applied`
+* `open` in the REPL aliases `find.screen.open(*)`
+* `close` in the REPL aliases `find.screen.close(*)`
 
 ## append, create, build, on, off, apply_style, etc inside of a view
 
