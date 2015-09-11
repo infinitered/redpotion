@@ -29,6 +29,17 @@ describe 'UIView' do
       appended = @view.append(UIView, nil, {})
       appended.get.is_a?(UIView).should.be.true
     end
+
+    it "inserts and then yields a block with the RMQ object" do
+      block_called = false
+      append = @view.append(UILabel, nil) do |mv|
+        mv.should.be.kind_of(RubyMotionQuery::RMQ)
+        mv.get.should.be.kind_of(UILabel)
+        block_called = true
+      end
+      block_called.should == true
+
+    end
   end
 
   describe "append!" do
@@ -39,10 +50,10 @@ describe 'UIView' do
       appended.is_a?(UIView).should.be.true
     end
 
-    it "inserts and then yields a block to the RMQ object" do
+    it "inserts and then yields a block with the created view" do
       block_called = false
-      append = @view.append(UILabel, nil) do |mv|
-        mv.should.be.kind_of(RubyMotionQuery::RMQ)
+      append = @view.append!(UILabel, nil) do |mv|
+        mv.should.be.kind_of(UILabel)
         mv.get.should.be.kind_of(UILabel)
         block_called = true
       end
