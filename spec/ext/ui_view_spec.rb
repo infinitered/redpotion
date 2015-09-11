@@ -54,7 +54,6 @@ describe 'UIView' do
       block_called = false
       append = @view.append!(UILabel, nil) do |mv|
         mv.should.be.kind_of(UILabel)
-        mv.get.should.be.kind_of(UILabel)
         block_called = true
       end
       block_called.should == true
@@ -97,6 +96,16 @@ describe 'UIView' do
       created = @view.create(UIView, nil, {})
       created.get.is_a?(UIView).should.be.true
     end
+
+    it "creates and then yields a block with the RMQ object" do
+      block_called = false
+      @view.create(UILabel, nil) do |mv|
+        mv.should.be.kind_of(RubyMotionQuery::RMQ)
+        mv.get.should.be.kind_of(UILabel)
+        block_called = true
+      end
+      block_called.should == true
+    end
   end
 
   describe "create!" do
@@ -119,6 +128,18 @@ describe 'UIView' do
     it "should create a new object class provided" do
       built = @view.build(UIView, nil, {})
       built.get.is_a?(UIView).should.be.true
+    end
+
+    it "builds and then yields a block with the RMQ object" do
+      block_called = false
+      existing_view = UILabel.new
+      @view.build(existing_view) do |mv|
+        mv.should.be.kind_of(RubyMotionQuery::RMQ)
+        mv.get.should.be.kind_of(UILabel)
+        mv.get.should == existing_view
+        block_called = true
+      end
+      block_called.should == true
     end
   end
 
