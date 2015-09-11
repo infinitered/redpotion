@@ -13,7 +13,7 @@ potion g table_screen foo
 
 ## ProMotion tables (Table Screen)
 
-ProMotion::TableScreen allows you to easily create lists or "tables" as iOS calls them. It's a subclass of [UITableViewController](http://developer.apple.com/library/ios/#documentation/uikit/reference/UITableViewController_Class/Reference/Reference.html) and has all the goodness of [PM::Screen](https://github.com/clearsightstudio/ProMotion/wiki/API-Reference:-ProMotion::Screen) with some additional magic to make the tables work beautifully.
+ProMotion::TableScreen allows you to easily create lists or "tables" as iOS calls them. It's a subclass of [UITableViewController](http://developer.apple.com/library/ios/#documentation/uikit/reference/UITableViewController_Class/Reference/Reference.html) and has all the goodness of [PM::Screen](https://github.com/clearsightstudio/ProMotion/blob/master/docs/Reference/ProMotion%20Screen.md) with some additional magic to make the tables work beautifully.
 
 |Table Screens|Grouped Tables|Searchable|Refreshable|
 |---|---|---|---|
@@ -25,7 +25,7 @@ ProMotion::TableScreen allows you to easily create lists or "tables" as iOS call
 potion g table_screen foo
 ```
 
-[ProMotion table docs](https://github.com/clearsightstudio/ProMotion/blob/master/docs/Reference/API%20Reference%20-%20ProMotion%20TableScreen.md)
+[ProMotion table docs](https://github.com/clearsightstudio/ProMotion/blob/master/docs/Reference/ProMotion%20TableScreen.md)
 
 
 ### Add a custom cell
