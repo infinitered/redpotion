@@ -19,31 +19,31 @@ class UIView
     on_styled
   end
 
-  def append(view_or_constant, style=nil, opts = {})
-    rmq(self).append(view_or_constant, style, opts)
+  def append(view_or_constant, style=nil, opts = {}, &block)
+    rmq(self).append(view_or_constant, style, opts, &block)
   end
-  def append!(view_or_constant, style=nil, opts = {})
-    rmq(self).append!(view_or_constant, style, opts)
+  def append!(view_or_constant, style=nil, opts = {}, &block)
+    rmq(self).append!(view_or_constant, style, opts, &block)
   end
 
-  def prepend(view_or_constant, style=nil, opts = {})
+  def prepend(view_or_constant, style=nil, opts = {}, &block)
     rmq(self).prepend(view_or_constant, style, opts)
   end
-  def prepend!(view_or_constant, style=nil, opts = {})
+  def prepend!(view_or_constant, style=nil, opts = {}, &block)
     rmq(self).prepend!(view_or_constant, style, opts)
   end
 
-  def create(view_or_constant, style=nil, opts = {})
+  def create(view_or_constant, style=nil, opts = {}, &block)
     rmq(self).create(view_or_constant, style, opts)
   end
-  def create!(view_or_constant, style=nil, opts = {})
+  def create!(view_or_constant, style=nil, opts = {}, &block)
     rmq(self).create!(view_or_constant, style, opts)
   end
 
-  def build(view, style = nil, opts = {})
+  def build(view, style = nil, opts = {}, &block)
     rmq(self).build(view, style, opts)
   end
-  def build!(view, style = nil, opts = {})
+  def build!(view, style = nil, opts = {}, &block)
     rmq(self).build!(view, style, opts)
   end
 
