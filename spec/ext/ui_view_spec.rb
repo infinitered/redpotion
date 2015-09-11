@@ -57,7 +57,6 @@ describe 'UIView' do
         block_called = true
       end
       block_called.should == true
-
     end
   end
 
@@ -73,6 +72,16 @@ describe 'UIView' do
       prepended = @view.prepend(UIView, nil, {})
       prepended.get.is_a?(UIView).should.be.true
     end
+
+    it "prepends and then yields a block with the RMQ object" do
+      block_called = false
+      @view.prepend(UILabel, nil) do |mv|
+        mv.should.be.kind_of(RubyMotionQuery::RMQ)
+        mv.get.should.be.kind_of(UILabel)
+        block_called = true
+      end
+      block_called.should == true
+    end
   end
 
   describe "prepend!" do
@@ -81,6 +90,15 @@ describe 'UIView' do
     it "should return the appended object" do
       prepended = @view.prepend!(UIView, nil, {})
       prepended.is_a?(UIView).should.be.true
+    end
+
+    it "prepends and then yields a block with the created view" do
+      block_called = false
+      @view.prepend!(UILabel, nil) do |mv|
+        mv.should.be.kind_of(UILabel)
+        block_called = true
+      end
+      block_called.should == true
     end
   end
 
@@ -114,6 +132,15 @@ describe 'UIView' do
     it "should return the appended object" do
       created = @view.create!(UIView, nil, {})
       created.is_a?(UIView).should.be.true
+    end
+
+    it "creates and then yields a block with the created view" do
+      block_called = false
+      @view.create!(UILabel, nil) do |mv|
+        mv.should.be.kind_of(UILabel)
+        block_called = true
+      end
+      block_called.should == true
     end
   end
 
@@ -149,6 +176,15 @@ describe 'UIView' do
     it "should return the appended object" do
       built = @view.build!(UIView, nil, {})
       built.is_a?(UIView).should.be.true
+    end
+
+    it "builds and then yields a block with the created view" do
+      block_called = false
+      @view.build!(UILabel) do |mv|
+        mv.should.be.kind_of(UILabel)
+        block_called = true
+      end
+      block_called.should == true
     end
   end
 

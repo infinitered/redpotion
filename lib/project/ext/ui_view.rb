@@ -27,10 +27,10 @@ class UIView
   end
 
   def prepend(view_or_constant, style=nil, opts = {}, &block)
-    rmq(self).prepend(view_or_constant, style, opts)
+    rmq(self).prepend(view_or_constant, style, opts, &block)
   end
   def prepend!(view_or_constant, style=nil, opts = {}, &block)
-    rmq(self).prepend!(view_or_constant, style, opts)
+    rmq(self).prepend!(view_or_constant, style, opts, &block)
   end
 
   def create(view_or_constant, style=nil, opts = {}, &block)
