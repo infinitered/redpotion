@@ -30,7 +30,7 @@ nil.blank? => true
 * `device` aliases `rmq.device`
 * `find` aliases `rmq` so you can do stuff like: `find(:some_style).find(UIButton).hide`
 * `app.data` aliases cdq.
-* `find.screen` aliases `rmq.view_controller`
+* `screen` aliases `rmq.view_controller`
 * `live` aliases `rmq_live_stylesheets`
 * `enable_live_stylesheets` aliases `enable_rmq_live_stylesheets`
 * `on_load` aliases `rmq_build` in views. This is great as it now matches screens
