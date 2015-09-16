@@ -16,7 +16,9 @@ class UIImageView
         options:SDWebImageRefreshCached,
         progress:nil,
         completed: -> image, error, cacheType, finished {
-        self.image = image unless image.nil?
+          Dispatch::Queue.main.async do
+            self.image = image
+          end unless image.nil?
       })
     else
       puts "\n[RedPotion ERROR]  tried to set remote_image without SDWebImage cocoapod. Please add this to your Rakefile: \n\napp.pods do\n  pod \"SDWebImage\"\nend\n"
