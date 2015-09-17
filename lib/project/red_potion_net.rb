@@ -59,9 +59,9 @@ class RedPotionNet
       @_session_client ||= AFMotion::SessionClient
     end
 
-    def session(force_json = false)
+    def session(use_json = false)
       # TODO use AFMotions's single use methods
-      session_client.shared ? session_client.shared : single_use_session(force_json)
+      session_client.shared ? session_client.shared : single_use_session(use_json)
     end
 
     def is_shared?
@@ -91,7 +91,7 @@ class RedPotionNet
 
     def post(url, params, opts={}, &block)
       raise "[RedPotion error] You must provide a block when using app.net.post" unless block
-      ses = opts.delete(:session) || self.session
+      ses = opts.delete(:session) || self.session(opts[:use_json])
       ses.post(url, params, &block)
     end
 
