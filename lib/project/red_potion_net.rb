@@ -78,7 +78,7 @@ class RedPotionNet
     def get(url, params={}, opts={}, &block)
       raise "[RedPotion error] You must provide a block when using app.net.get" unless block
       ses = opts.delete(:session) || self.session
-      ses.get(url, params, opts, &block)
+      ses.get(url, params, &block)
     end
 
     def get_json(url, params={}, opts={}, &block)
@@ -86,25 +86,25 @@ class RedPotionNet
       ses = opts.delete(:session) || self.session
       opts[:serializer] = :json
       #AFMotion::JSON.get
-      ses.get(url, params, opts, &block)
+      ses.get(url, params, &block)
     end
 
     def post(url, params, opts={}, &block)
       raise "[RedPotion error] You must provide a block when using app.net.post" unless block
       ses = opts.delete(:session) || self.session
-      ses.post(url, params, opts, &block)
+      ses.post(url, params, &block)
     end
 
     def put(url, params, opts={}, &block)
       raise "[RedPotion error] You must provide a block when using app.net.put" unless block
       ses = opts.delete(:session) || self.session
-      ses.put(url, params, opts, &block)
+      ses.put(url, params, &block)
     end
 
     def delete(url, params, opts={}, &block)
       raise "[RedPotion error] You must provide a block when using app.net.delete" unless block
       ses = opts.delete(:session) || self.session
-      ses.delete(url, params, opts, &block)
+      ses.delete(url, params, &block)
     end
 
     def single_use_session(use_json = false)
