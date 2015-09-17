@@ -1,5 +1,9 @@
 RedPotion uses Core Data as its local data store. Specifically it uses the [CDQ](https://github.com/infinitered/cdq) gem.
 
+## `app.data`
+
+The `cdq` command is aliased to `app.data` to give you a more semantic way to access local data.
+
 ## Schema
 
 Now go edit schemas/0001_initial.rb.  There's some commented-out example code

@@ -18,13 +18,15 @@ class TasksScreen < PM::TableScreen
           cell_class: TaskCell,
           properties: {
             my_title: "First task"
-          }
+          },
+          search_text: "First task",
         },
         {
           cell_class: TaskCell,
           properties: {
             my_title: "Second task"
-          }
+          },
+          search_text: "Second task",
         }
       ]
     }]

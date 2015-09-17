@@ -35,5 +35,6 @@ pages:
 - [cookbook/validations.md, Cookbook,                 "Validating data, text, text boxes, etc"]
 - [cookbook/debugging.md, Cookbook,                   "Debugging"]
 - [cookbook/testing.md, Cookbook,                     "Testing"]
+- [cookbook/accessibility.md, Cookbook,               "Accessibility for users with particular needs"]
 - [cookbook/distribution.md, Cookbook,                "Distribution"]
 - [cookbook/troubleshooting.md, Cookbook,             "Troubleshooting"]

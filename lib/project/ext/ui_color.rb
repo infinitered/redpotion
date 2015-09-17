@@ -1,13 +1,9 @@
 class UIColor
   def with(options)
-    begin
-      r, g, b, a = Pointer.new('d'), Pointer.new('d'), Pointer.new('d'), Pointer.new('d')
-      self.getRed(r, green: g, blue: b, alpha: a)
-    rescue
-      r, g, b, a = Pointer.new('f'), Pointer.new('f'), Pointer.new('f'), Pointer.new('f')
-      self.getRed(r, green: g, blue: b, alpha: a)
-    end
-
+    type = CGSize.type[/(f|d)/]
+    r, g, b, a = Pointer.new(type), Pointer.new(type), Pointer.new(type), Pointer.new(type)
+    self.getRed(r, green: g, blue: b, alpha: a)
+    
     r = options[:r] || options[:red] || r.value
     g = options[:g] || options[:green] || g.value
     b = options[:b] || options[:blue] || b.value

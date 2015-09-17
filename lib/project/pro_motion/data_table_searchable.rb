@@ -2,21 +2,15 @@ module ProMotion
   module Table
     module Searchable
 
-      # Replace this method so that we can gather the predicate fields for DataTableScreen searchable
-      alias_method :old_set_searchable_param_defaults, :set_searchable_param_defaults
-      def set_searchable_param_defaults(params)
-        all_params = old_set_searchable_param_defaults(params)
-
-        if self.is_a?(ProMotion::DataTableScreen)
-          if params[:search_bar][:fields].nil?
-            raise "ERROR: You must specify fields:[:example] for your searchable DataTableScreen. It should be an array of fields you want searched in CDQ."
-          else
-            @data_table_predicate_fields = all_params[:search_bar][:fields]
-          end
+      def make_data_table_searchable(params={})
+        if params[:search_bar][:fields].nil?
+          raise "ERROR: You must specify fields:[:example] for your searchable DataTableScreen. It should be an array of fields you want searched in CDQ."
+        else
+          @data_table_predicate_fields = params[:search_bar][:fields]
         end
+        params[:delegate] = search_delegate
 
-        all_params[:delegate] = search_delegate
-        all_params
+        make_searchable(params)
       end
 
       def search_fetch_controller
@@ -24,6 +18,8 @@ module ProMotion
       end
 
       def new_frc_with_search(search_string)
+        return if @data_table_predicate_fields.blank?
+
         # Create the predicate from the predetermined fetch scope.
         where = @data_table_predicate_fields.map{|f| "#{f} CONTAINS[cd] \"#{search_string}\"" }.join(" OR ")
         search_scope = fetch_scope.where(where)

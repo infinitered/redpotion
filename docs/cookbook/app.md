@@ -10,4 +10,5 @@ app.name
 app.identifier
 app.resource_path
 app.document_path
+app.reset_image_cache! # See images cookbook example
 ```

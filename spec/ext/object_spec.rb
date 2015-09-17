@@ -12,4 +12,9 @@ describe 'Object' do
   it "find should be an alias for rmq" do
     @subject.find.is_a?(RubyMotionQuery::RMQ).should.be.true
   end
+
+  it "should have access to the current screen" do
+    controller = UIViewController.alloc.init
+    controller.rmq.screen.should == controller
+  end
 end

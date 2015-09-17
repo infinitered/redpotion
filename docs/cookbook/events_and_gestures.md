@@ -4,10 +4,10 @@ To add an event, use .on, to remove it it, use .off
 
 ```ruby
 # Simple example
-rmq(UIView).on(:tap){|sender| rmq(sender).hide}
+append(UIView).on(:tap){|sender| find(sender).hide}
 
 # Adding an Event during creation
-view_q = rmq.append(UIView).on(:tap) do |sender, event|
+view_q = append(UIView).on(:tap) do |sender, event|
 # do something here
 end
 
@@ -18,7 +18,7 @@ view_q.off(:tap)
 view_q.off
 
 # like everything in RMQ, this works on all items selected
-rmq(UIView).off(:tap)
+find(UIView).off(:tap)
 ```
 
 ## RubyMotionQuery::Event
@@ -101,10 +101,23 @@ TODO, need many examples here
 ```ruby
 
 # this code allows you to place a tap event on an image
-rmq.append(UIImageView, :my_picture).enable_interaction.on(:tap) do |sender|
-puts "Imageview tapped"
+append(UIImageView, :my_picture).enable_interaction.on(:tap) do |sender|
+	puts "Imageview tapped"
 end
 
+```
+
+## Custom events
+
+To add a custom event, use `.on` with a custom symbol. Call `.trigger` to trigger your block.
+
+```ruby
+
+# this code allows you to add a custom event and trigger it
+append(UIView, :my_view).on(:custom_event) do |sender|
+    puts "custom_event has been triggered"
+end
+find(:my_view).trigger(:custom_event)
 ```
 
 ## RubyMotionQuery::Events

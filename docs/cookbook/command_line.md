@@ -26,12 +26,12 @@ Instead of `puts`, use `mp`:
 
 ## Generators
 
-Like Rails, RedPotion provides a command-line tool, mostly for generating files. 
+Like Rails, RedPotion provides a command-line tool, mostly for generating files.
 
 **Create a new app**:
 
 ```
-> potion create my_app
+> potion new my_app
 ```
 
 To get all the commands available just do:
@@ -39,27 +39,28 @@ To get all the commands available just do:
 ```
 > potion
 
-potion version 1.1.1
+potion version 1.4.0
 
 Some things you can do with the potion command:
 
-> potion create my_new_app
-> potion create my_new_app --skip-cdq # Setup application without CDQ
+> potion new my_new_app
+> potion new my_new_app --skip-cdq # Setup application without CDQ
+> potion new my_new_app --skip-afmotion # Setup application without afmotion
 
-> potion create model foo
-> potion create screen foo
-> potion create table_screen foo
-> potion create table_screen_cell bar_cell
-> potion create metal_table_screen foo
-> potion create collection_view_screen foos
-> potion create view bar
-> potion create shared some_class_used_app_wide
-> potion create lib some_class_used_by_multiple_apps
+> potion g model foo
+> potion g screen foo
+> potion g table_screen foo
+> potion g table_screen_cell bar_cell
+> potion g metal_table_screen foo
+> potion g collection_view_screen
+> potion g view bar
+> potion g shared some_class_used_app_wide
+> potion g lib some_class_used_by_multiple_apps
 
 You can still create controllers, but you should create screens instead
-> potion create controller foos
-> potion create collection_view_controller foos
-> potion create table_view_controller bars
+> potion g controller foos
+> potion g collection_view_controller foos
+> potion g table_view_controller bars
 
 You can remove CDQ or afmotion if your project does not use it
 > potion remove cdq
@@ -80,15 +81,13 @@ I recomend you play around with it, do this:
 ```
 > cd
 > cd Desktop
-> potion create test_app
+> potion new test_app
 > cd test_app
-> bundle
-> rake pod:install
 > rake spec
 > rake
-> potion create screen test
-> potion create table_screen test_table
-> potion create view test_view
+> potion g screen test
+> potion g table_screen test_table
+> potion g view test_view
 ```
 
 ------

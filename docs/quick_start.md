@@ -1,12 +1,11 @@
 # Quick start
 
 ```
-gem install redpotion
+> gem install redpotion
 
-potion create my_app
-bundle
-rake pod:install
-rake
+> potion new my_new_app
+> cd my_new_app
+> rake
 ```
 
 ## Installation
@@ -27,8 +26,8 @@ add it to your `Gemfile`:
 Let's start by creating our app, do this:
 
 ```
-> potion create myapp
-> cd myapp
+> potion new my_new_app
+> cd my_new_app
 > rake
 ```
 
@@ -119,4 +118,3 @@ Now paste this URL in and hit **Go**
 You should have this:
 
 ![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2015/03/myapp_screenshot.jpg)
-
