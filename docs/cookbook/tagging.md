@@ -12,7 +12,7 @@ find(:your_tag).and(:selected).hide
 # Check a selection for tags
 find(your_view).has_tag?(:foo)
 
-# Untag  (Available in edge and in 1.2.0 when it's released)
+# Untag
 find(your_view).untag(:foo)
 find(:your_tag).untag(:your_tag)
 find(view_a, view_b).untag(:foo, bar)
