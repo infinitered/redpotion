@@ -40,7 +40,7 @@ nil.blank? => true
 
 ## append, create, build, on, off, apply_style, etc inside of a view
 
-I RedPotion, if you call this inside of a custom view:
+In RedPotion, if you call this inside of a custom view:
 
 ```
 append(UIView)
