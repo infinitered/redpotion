@@ -168,6 +168,7 @@ module ProMotion
     end
 
     def controllerWillChangeContent(controller)
+      NSLog("controllerWillChangeContent")
       # TODO - we should update the search results table when a new record is added
       # or deleted or changed. For now, when the data changes, the search doesn't
       # update. Closing the search will update the data and then searching again
@@ -189,6 +190,7 @@ module ProMotion
     end
 
     def controllerDidChangeContent(controller)
+      NSLog('controllerDidChangeContent')
       table_view.endUpdates unless searching?
     end
 
