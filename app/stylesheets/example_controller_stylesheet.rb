@@ -9,12 +9,11 @@ class ExampleControllerStylesheet < ApplicationStylesheet
     st.background_color = color.purple
   end
 
- def hello_world(st)
+  def hello_world(st)
     st.frame = {w: 200, h: 30, centered: :both}
     st.color = color.black
     st.font = font.large
     st.text = "Hello world"
   end
-
 
 end

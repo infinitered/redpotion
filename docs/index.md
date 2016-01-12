@@ -25,7 +25,7 @@ Until these docs are complete, please also use RMQ's and ProMotion's docs
 
 
 
-The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creators of ProMotion** at [ClearSight](https://clearsightstudio.com/) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
+The creators of **RMQ** and **ProMotion** at [Infinite Red](http://www.infinite.red) (formerly [InfiniteRed](http://infinitered.com/) & [ClearSight](https://clearsightstudio.com/)) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
 
 [![image](https://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2013/08/InfiniteRed_logo_100h.png)](http://infinitered.com/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [![image](https://clearsightstudio.com/assets/images/clearsight-logos/color-logo@2x-458a9655.png)](https://clearsightstudio.com/)
 
@@ -43,8 +43,8 @@ You can use both RMQ Plugins and ProMotion Add-ons
 
 **Gems**
 
-* [RMQ 1.2+](http://rubymotionquery.com/)
-* [ProMotion 2.3+](https://github.com/clearsightstudio/ProMotion)
+* [RMQ 1.7+](http://rubymotionquery.com/)
+* [ProMotion 2.5+](https://github.com/clearsightstudio/ProMotion)
 * [CDQ](https://github.com/infinitered/cdq)
 * [AFMotion](https://github.com/clayallsopp/afmotion)
 * [newclear](https://github.com/IconoclastLabs/newclear)

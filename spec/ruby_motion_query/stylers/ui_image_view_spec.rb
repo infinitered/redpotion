@@ -1,4 +1,5 @@
 class StyleSheetForUIImageViewStylerTests < RubyMotionQuery::Stylesheet
+  
   def ui_image_view_placeholder(st)
     st.placeholder_image = UIImage.imageNamed('grumpy_cat')
   end
@@ -114,4 +115,5 @@ describe "RubyMotionQuery styler: UIImageView" do
         end
     })
   end
+  
 end

@@ -1,4 +1,5 @@
 describe 'UIView' do
+  
   it "should call on_load instead of rmq_build if rmq_build does not exist in the view" do
     rmq.create(TestView).get.on_loaded.should == true
 
@@ -333,4 +334,5 @@ describe 'UIView' do
       find(@view).find!(FakeView).should.equal([btn, btn2])
     end
   end
+  
 end

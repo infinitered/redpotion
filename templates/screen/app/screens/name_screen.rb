@@ -1,4 +1,5 @@
 class <%= @name_camel_case %>Screen < PM::<%= @screen_base %>
+  
   title "Your title here"
   stylesheet <%= @name_camel_case %>ScreenStylesheet
 
@@ -26,4 +27,5 @@ class <%= @name_camel_case %>Screen < PM::<%= @screen_base %>
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
+  
 end

@@ -22,4 +22,5 @@ class <%= @name_camel_case %>ScreenStylesheet < ApplicationStylesheet
     st.frame = {left: 5, top: 5, from_right: 10, from_bottom: 5}
     st.color = color.black
   end
+  
 end

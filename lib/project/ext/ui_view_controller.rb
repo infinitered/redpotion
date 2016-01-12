@@ -1,4 +1,5 @@
 class UIViewController
+  
   def append(view_or_constant, style=nil, opts = {})
     self.rmq.append(view_or_constant, style, opts)
   end
@@ -164,4 +165,5 @@ class UIViewController
   def pm_handles_delegates?
     self.respond_to?(:class_handles_delegates?) && self.class_handles_delegates?
   end
+
 end

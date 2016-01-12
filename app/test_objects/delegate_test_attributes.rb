@@ -1,4 +1,5 @@
 module DelegateTestAttributes
+  
   attr_accessor :view_did_load_count
   attr_accessor :view_will_appear_count
   attr_accessor :view_did_appear_count
@@ -29,4 +30,5 @@ module DelegateTestAttributes
     self.view_did_disappear_count ||= 0
     self.view_did_disappear_count += 1
   end
+  
 end

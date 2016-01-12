@@ -22,4 +22,5 @@ class CollectionScreenStylesheet < ApplicationStylesheet
       #cl.sectionInsert = [0,0,0,0]
     end
   end
+  
 end

@@ -1,4 +1,5 @@
 class HelloWorldSection < UIView
+  
   def on_load
     apply_style :section
 
@@ -6,4 +7,5 @@ class HelloWorldSection < UIView
       mp "Button touched"
     end
   end
+  
 end

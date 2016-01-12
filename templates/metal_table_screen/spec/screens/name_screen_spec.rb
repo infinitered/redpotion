@@ -5,4 +5,5 @@ describe '<%= @name_camel_case %>Screen' do
 
   after do
   end
+  
 end

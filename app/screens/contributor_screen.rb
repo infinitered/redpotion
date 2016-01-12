@@ -1,4 +1,5 @@
 class ContributorScreen < PM::DataTableScreen
+  
   title "RedPotion Contributors"
   stylesheet ContributorScreenStylesheet
   model Contributor
@@ -18,4 +19,5 @@ class ContributorScreen < PM::DataTableScreen
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
+  
 end

@@ -1,5 +1,6 @@
 module ProMotion
   class DataTableScreen < TableViewController
+    
     include ProMotion::ScreenModule
     include ProMotion::DataTable
 

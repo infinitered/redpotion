@@ -11,6 +11,7 @@ module RubyMotionQuery
       def placeholder_image=(value)
         @view.image = value
       end
+      
     end
   end
 end

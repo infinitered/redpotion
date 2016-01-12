@@ -62,4 +62,5 @@ class HomeScreenStylesheet < ApplicationStylesheet
     st.image = image.resource('grumpy_cat')
     st.remote_image = 'http://placehold.it/400x400'
   end
+  
 end

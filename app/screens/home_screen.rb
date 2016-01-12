@@ -1,4 +1,5 @@
 class HomeScreen < PM::Screen
+  
   title "RedPotion"
   stylesheet HomeScreenStylesheet
 
@@ -54,4 +55,5 @@ class HomeScreen < PM::Screen
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
+  
 end

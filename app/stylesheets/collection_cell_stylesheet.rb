@@ -1,4 +1,5 @@
 module CollectionCellStylesheet
+  
   def cell_size
     {w: 96, h: 96}
   end

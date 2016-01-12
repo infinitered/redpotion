@@ -13,4 +13,5 @@ class TasksScreenStylesheet < ApplicationStylesheet
     st.background_color = color.white
     st.color = color.red
   end
+  
 end

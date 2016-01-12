@@ -1,4 +1,5 @@
 class TasksScreen < PM::TableScreen
+  
   title "Tasks"
   refreshable
   stylesheet TasksScreenStylesheet
@@ -36,4 +37,5 @@ class TasksScreen < PM::TableScreen
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
+  
 end
