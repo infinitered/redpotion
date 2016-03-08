@@ -13,6 +13,7 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.identifier = "com.infinitered.redpotion"
   app.name = "RedPotion"
+  app.deployment_target = "8.0"
 
   app.icons = Dir.glob("resources/icon*.png").map{|icon| icon.split("/").last}
 
