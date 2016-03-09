@@ -1,7 +1,7 @@
 class StyleSheetForUIImageViewStylerTests < RubyMotionQuery::Stylesheet
-  
+
   def ui_image_view_placeholder(st)
-    st.placeholder_image = UIImage.imageNamed('grumpy_cat')
+    st.placeholder_image = rmq.image.resource('grumpy_cat')
   end
 
   def ui_image_view_remote(st)
@@ -35,7 +35,7 @@ describe "RubyMotionQuery styler: UIImageView" do
     @view_klass = UIImageView
 
     @image = load_image('homer')
-    @grumpy_cat = UIImage.imageNamed('grumpy_cat')
+    @grumpy_cat = rmq.image.resource('grumpy_cat')
     @url = 'http://somehost/image'
     WebStub::API.stub_request(:get, @url).to_return(body: load_image('homer'), content_type: "image/jpeg")
   end
@@ -115,5 +115,5 @@ describe "RubyMotionQuery styler: UIImageView" do
         end
     })
   end
-  
+
 end
