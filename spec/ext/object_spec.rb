@@ -1,4 +1,5 @@
 describe 'Object' do
+  
   before { @subject = Object.new }
 
   it "should return the RMQ App when Object#app is called" do
@@ -17,4 +18,5 @@ describe 'Object' do
     controller = UIViewController.alloc.init
     controller.rmq.screen.should == controller
   end
+  
 end

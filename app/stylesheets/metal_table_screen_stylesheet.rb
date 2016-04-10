@@ -1,4 +1,5 @@
 class MetalTableScreenStylesheet < ApplicationStylesheet
+  
   def setup
   end
 
@@ -19,4 +20,5 @@ class MetalTableScreenStylesheet < ApplicationStylesheet
     st.background_color = color.white
     st.color = color.blue
   end
+  
 end

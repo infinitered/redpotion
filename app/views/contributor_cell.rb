@@ -1,4 +1,5 @@
 class ContributorCell < ProMotion::TableViewCell
+  
   def on_load
     apply_style :cell
 
@@ -16,4 +17,5 @@ class ContributorCell < ProMotion::TableViewCell
       UIApplication.sharedApplication.openURL(url)
     end
   end
+  
 end

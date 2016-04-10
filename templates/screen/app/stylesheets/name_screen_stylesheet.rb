@@ -1,4 +1,5 @@
 class <%= @name_camel_case %>ScreenStylesheet < ApplicationStylesheet
+  
   # Add your view stylesheets here. You can then override styles if needed,
   # example: include FooStylesheet
 
@@ -10,4 +11,5 @@ class <%= @name_camel_case %>ScreenStylesheet < ApplicationStylesheet
   def root_view(st)
     st.background_color = color.white
   end
+  
 end

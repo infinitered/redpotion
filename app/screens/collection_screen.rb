@@ -1,4 +1,5 @@
 class CollectionScreen < UICollectionViewController
+
   include ProMotion::ScreenModule
 
   stylesheet CollectionScreenStylesheet

@@ -1,4 +1,5 @@
 class AppDelegate < PM::Delegate
+  
   include CDQ
   include ContributorsModule
   status_bar true, animation: :fade
@@ -19,4 +20,5 @@ class AppDelegate < PM::Delegate
     # So that we can do stuff like style views before the rotation begins
     device.orientation = new_orientation
   end
+  
 end

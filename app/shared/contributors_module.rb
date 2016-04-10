@@ -1,4 +1,5 @@
 module ContributorsModule
+  
   def contributors
     [{
       name: 'twerth',

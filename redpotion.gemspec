@@ -4,8 +4,8 @@ require "project/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "redpotion"
-  spec.authors       = ["InfiniteRed", "ClearSight Studio"]
-  spec.email         = ["hello@infinitered.com", "hello@clearsightstudio.com" ]
+  spec.authors       = ["Infinite Red"]
+  spec.email         = ["hello@infinite.red"]
   spec.description   = %q{RedPotion - The best combination of RubyMotion tools and libraries}
   spec.summary       = %q{RedPotion combines RMQ, ProMotion, CDQ, AFMotion, and more for the perfect mix to develop in RubyMotion fast}
   spec.homepage      = "http://redpotion.org"
@@ -23,8 +23,8 @@ Gem::Specification.new do |spec|
 
   spec.executables << 'potion'
 
-  spec.add_runtime_dependency "ruby_motion_query", ">= 1.6.1"
-  spec.add_runtime_dependency "ProMotion", ">= 2.4.2"
+  spec.add_runtime_dependency "ruby_motion_query", ">= 1.7.0"
+  spec.add_runtime_dependency "ProMotion", ">= 2.5.0"
   spec.add_runtime_dependency "motion_print"
   spec.add_runtime_dependency "motion-cocoapods"
   spec.add_runtime_dependency "RedAlert"

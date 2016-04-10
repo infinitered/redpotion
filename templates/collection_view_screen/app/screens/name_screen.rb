@@ -1,4 +1,5 @@
 class <%= @name_camel_case %>Screen < UICollectionViewController
+
   include ProMotion::ScreenModule
 
   title "Your title here"
@@ -50,4 +51,5 @@ class <%= @name_camel_case %>Screen < UICollectionViewController
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
+  
 end

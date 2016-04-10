@@ -1,4 +1,5 @@
 describe 'UIViewController' do
+  
   class FakeView < UIView; end
 
   after do
@@ -207,4 +208,5 @@ describe 'UIViewController' do
 
     behaves_like 'proper delegate caller'
   end
+  
 end

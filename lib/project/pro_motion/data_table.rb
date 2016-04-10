@@ -1,5 +1,6 @@
 module ProMotion
   module DataTable
+    
     include TableClassMethods
     include ProMotion::Styling
     include ProMotion::Table

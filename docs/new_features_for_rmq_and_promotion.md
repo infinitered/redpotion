@@ -122,4 +122,7 @@ end
 
 ## New features for ProMotion
 
-ProMotion 2.2.0 added on_styled and 2.3.0 added on_load to match RedPotion
+* 2.2.0 added on_styled
+* 2.3.0 added on_load to match RedPotion
+* 2.4.0 added support for SDWebImage to replace JMImageCache
+* 2.5.0 added footer_views to TableScreens

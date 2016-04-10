@@ -1,4 +1,5 @@
 describe 'ScreenModule' do
+  
   class TestScreenStylesheet < ApplicationStylesheet
     def root_view(st)
       st.background_color = color.white
@@ -32,4 +33,5 @@ describe 'ScreenModule' do
       TestScreen.new.grab_app.should == RubyMotionQuery::App
     end
   end
+  
 end

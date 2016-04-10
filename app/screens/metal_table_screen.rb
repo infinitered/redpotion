@@ -1,4 +1,5 @@
 class MetalTableScreen < UITableViewController
+  
   include ProMotion::ScreenModule
 
   title "Down to the metal table"
@@ -54,4 +55,5 @@ class MetalTableScreen < UITableViewController
     cell.update(data_row)
     cell
   end
+  
 end

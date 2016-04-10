@@ -1,4 +1,5 @@
 class Object
+  
   def app
     rmq.app
   end
@@ -22,4 +23,5 @@ class Object
   def screen
     rmq.screen
   end
+  
 end

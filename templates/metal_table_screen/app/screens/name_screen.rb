@@ -1,4 +1,5 @@
 class <%= @name_camel_case %>Screen < UITableViewController
+
   include ProMotion::ScreenModule
 
   title "Your title here"
@@ -70,4 +71,5 @@ class <%= @name_camel_case %>Screen < UITableViewController
   def will_animate_rotate(orientation, duration)
     reapply_styles
   end
+  
 end

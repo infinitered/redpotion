@@ -10,7 +10,7 @@
 
 We believe iPhone development should be clean, scalable, and fast with a language that developers not only enjoy, but actively choose.  With the advent of Ruby for iPhone development the RubyMotion community has combined and tested the most active and powerful gems into a single package called **RedPotion**.
 
-RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/clearsightstudio/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and [MORE!](#full-listing-of-gems-and-pods-for-redpotion). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
+RedPotion combines [RMQ](http://rubymotionquery.com/), [ProMotion](https://github.com/infinitered/ProMotion), [CDQ](https://github.com/infinitered/cdq), [AFMotion](https://github.com/clayallsopp/afmotion), [MotionPrint](https://github.com/OTGApps/motion_print) and [MORE!](#full-listing-of-gems-and-pods-for-redpotion). It also adds new features to better integrate RMQ with ProMotion.  The goal is simply to choose standard libraries and promote best practices, allowing you to develop iOS apps in record time.
 
 ---
 
@@ -24,10 +24,9 @@ Until these docs are complete, please also use RMQ's and ProMotion's docs
 ---
 
 
+The creators of **RMQ** and **ProMotion** at [Infinite Red](http://www.infinite.red) teamed up with [David Larrabee](https://twitter.com/Squidpunch) to create the ultimate RubyMotion library.
 
-The **makers of RMQ** at [InfiniteRed](http://infinitered.com/) and the **creators of ProMotion** at [ClearSight](https://clearsightstudio.com/) as well as [David Larrabee](https://twitter.com/Squidpunch) have teamed up to create the ultimate RubyMotion library.
-
-[![image](https://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2013/08/InfiniteRed_logo_100h.png)](http://infinitered.com/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [![image](https://clearsightstudio.com/assets/images/clearsight-logos/color-logo@2x-458a9655.png)](https://clearsightstudio.com/)
+[![image](https://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/11/2013/08/InfiniteRed_logo_100h.png)](http://infinitered.com/)
 
 ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 
@@ -43,8 +42,8 @@ You can use both RMQ Plugins and ProMotion Add-ons
 
 **Gems**
 
-* [RMQ 1.2+](http://rubymotionquery.com/)
-* [ProMotion 2.3+](https://github.com/clearsightstudio/ProMotion)
+* [RMQ 1.7+](http://rubymotionquery.com/)
+* [ProMotion 2.5+](https://github.com/infinitered/ProMotion)
 * [CDQ](https://github.com/infinitered/cdq)
 * [AFMotion](https://github.com/clayallsopp/afmotion)
 * [newclear](https://github.com/IconoclastLabs/newclear)

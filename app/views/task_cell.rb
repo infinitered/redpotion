@@ -1,4 +1,5 @@
 class TaskCell < PM::TableViewCell
+  
   def on_load
     apply_style :cell
 
@@ -10,4 +11,5 @@ class TaskCell < PM::TableViewCell
   def my_title=(value)
     @title.text = value
   end
+  
 end

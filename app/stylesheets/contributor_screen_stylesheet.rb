@@ -1,4 +1,5 @@
 class ContributorScreenStylesheet < ApplicationStylesheet
+  
   def root_view(st)
     st.background_color = color.white
   end
@@ -18,4 +19,5 @@ class ContributorScreenStylesheet < ApplicationStylesheet
     st.frame = {t: 5, w: device_width / 2, h: 20, fr: 5}
     st.color = color.orange
   end
+  
 end

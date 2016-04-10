@@ -1,4 +1,5 @@
 class <%= @name_camel_case %> < PM::TableViewCell
+
   def on_load
     apply_style :<%= @name %>
 
@@ -21,8 +22,6 @@ class <%= @name_camel_case %> < PM::TableViewCell
   end
 
 end
-
-
 
 __END__
 

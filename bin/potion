@@ -6,6 +6,7 @@ require 'open-uri'
 require_relative "../lib/project/version"
 
 class PotionCommandLine
+
   HELP_TEXT = %{     potion version #{RedPotion::VERSION}
 
      Some things you can do with the potion command:
@@ -43,6 +44,7 @@ class PotionCommandLine
      > rmq docs "background image" }
 
   class << self
+
     SKIP_FLAGS = [ "--skip-cdq", "--skip-afmotion" ]
 
     VALID_CREATE_TYPES = [
@@ -262,7 +264,9 @@ class PotionCommandLine
       data = IO.readlines("Gemfile.lock")
       data.any?{|l| l.match(/\s.cdq\s\(/) }
     end
+    
   end
+
 end
 
 # Process input, execute actions

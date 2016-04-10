@@ -1,4 +1,5 @@
 describe 'DataTableScreen' do
+  
   extend ContributorsModule
 
   class TestDataTableScreen < ProMotion::DataTableScreen
@@ -284,4 +285,5 @@ describe 'DataTableScreen' do
       TestDataTableScreen.data_scope.should.equal(:starts_with_s)
     end
   end
+  
 end
