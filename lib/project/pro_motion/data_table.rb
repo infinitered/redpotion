@@ -1,6 +1,6 @@
 module ProMotion
   module DataTable
-    
+
     include TableClassMethods
     include ProMotion::Styling
     include ProMotion::Table
@@ -51,6 +51,13 @@ module ProMotion
       end
     end
 
+    def refresh_fetch_control
+      @_fetch_scope = nil
+      @_fetch_controller = nil
+      set_up_fetch_controller
+      table_view.reloadData
+    end
+
     def fetch_scope
       @_fetch_scope ||= begin
         if respond_to?(:model_query)
@@ -87,7 +94,7 @@ module ProMotion
       if searching?
         search_fetch_controller
       else
-        @fetch_controller ||= NSFetchedResultsController.alloc.initWithFetchRequest(
+        @_fetch_controller ||= NSFetchedResultsController.alloc.initWithFetchRequest(
           fetch_scope.fetch_request,
           managedObjectContext: fetch_scope.context,
           sectionNameKeyPath: nil,
