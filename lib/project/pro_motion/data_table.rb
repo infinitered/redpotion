@@ -182,6 +182,7 @@ module ProMotion
       # update. Closing the search will update the data and then searching again
       # will show the new or changed content.
       table_view.beginUpdates unless searching?
+      will_change if respond_to?(:will_change)
     end
 
     def controller(controller, didChangeObject: task, atIndexPath: index_path, forChangeType: change_type, newIndexPath: new_index_path)
@@ -200,6 +201,7 @@ module ProMotion
     def controllerDidChangeContent(controller)
       NSLog('controllerDidChangeContent')
       table_view.endUpdates unless searching?
+      did_change if respond_to?(:did_change)
     end
 
   end
