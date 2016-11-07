@@ -53,6 +53,18 @@ class MyStylesheet < ApplicationStylesheet
 end
 ```
 
+You can also call `remote_image` with a closure to execute once the remote image has finished loading. It takes a hash with `url` and `did_load` keys.
+
+```ruby
+your_ui_image_view.remote_image({ url: 'http://bit.ly/18iMhwc',
+                                  did_load: -> { puts 'Image finished loading!' } })
+
+# Or
+
+your_ui_image_view.remote_image({ url: NSURL.urlWithString(...),
+                                  did_load: -> { puts 'Image finished loading!' } })
+```
+
 To assign a remote image to a UIImageView:
 
 ```ruby
