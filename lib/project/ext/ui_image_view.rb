@@ -1,6 +1,16 @@
 class UIImageView
 
-  def remote_image=(value)
+  def remote_image=(url)
+    load_remote_image(url)
+  end
+
+  def remote_image(args)
+    load_remote_image(arg.fetch(:url), args.fetch(:block))
+  end
+
+  private
+
+  def load_remote_image(url, block = -> {})
     if !!defined?(SDWebImageManager)
       @remote_image_operations ||= {}
 
@@ -11,13 +21,14 @@ class UIImageView
         @remote_image_operations[("%p" % self)] = nil
       end
 
-      value = NSURL.URLWithString(value) unless value.is_a?(NSURL)
+      value = NSURL.URLWithString(url) unless url.is_a?(NSURL)
       @remote_image_operations[("%p" % self)] = SDWebImageManager.sharedManager.downloadWithURL(value,
         options:SDWebImageRefreshCached,
         progress:nil,
         completed: -> image, error, cacheType, finished {
           Dispatch::Queue.main.async do
             self.image = image
+            block.call
           end unless image.nil?
       })
     else
