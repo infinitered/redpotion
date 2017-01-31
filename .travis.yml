@@ -1,10 +1,10 @@
 language: objective-c
-osx_image: xcode7.2
+# osx_image: xcode7.2
 before_install:
   - (ruby --version)
   - sudo chown -R travis ~/Library/RubyMotion
   - sudo mkdir -p ~/Library/RubyMotion/build
-  - sudo chown -R travis ~/Library/RubyMotion/build
+  # - sudo chown -R travis ~/Library/RubyMotion/build
   - sudo motion update
 gemfile:
   - Gemfile
@@ -14,11 +14,11 @@ cache:
   - vendor/Pods
 install:
   - bundle install --jobs=3 --retry=3
-  - pod setup > /dev/null
   - bundle exec rake clean
+  # - pod setup > /dev/null
   - bundle exec rake pod:install > /dev/null
 script:
   - bundle exec rake spec output=test_unit
-env:
-  global:
-    - COCOAPODS_NO_REPO_UPDATE_OUTPUT=true
+# env:
+#   global:
+#     - COCOAPODS_NO_REPO_UPDATE_OUTPUT=true
