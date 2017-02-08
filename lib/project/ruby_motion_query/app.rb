@@ -14,7 +14,13 @@ module RubyMotionQuery
         if !!defined?(SDWebImageManager)
           image_cache = SDImageCache.sharedImageCache
           image_cache.clearMemory
-          image_cache.clearDisk
+          if image_cache.respond_to?(:clearDisk)
+            # Support for SDWebImage v3.x
+            image_cache.clearDisk
+          else
+            # Support for SDWebImage v4.x
+            image_cache.clearDiskOnCompletion(nil)
+          end
         else
           puts "\n[RedPotion ERROR]  tried to reset image cache without SDWebImage cocoapod. Please add this to your Rakefile: \n\napp.pods do\n  pod \"SDWebImage\"\nend\n"
         end
