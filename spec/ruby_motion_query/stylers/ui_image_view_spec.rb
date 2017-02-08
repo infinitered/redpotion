@@ -62,7 +62,7 @@ describe "RubyMotionQuery styler: UIImageView" do
     view = @vc.rmq.append!(@view_klass, :ui_image_view_remote)
     view.image.should == @grumpy_cat
 
-    wait 0.1 do
+    wait 0.2 do
       view.image.should.not == @grumpy_cat
     end
   end
