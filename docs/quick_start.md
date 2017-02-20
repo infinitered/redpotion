@@ -112,6 +112,11 @@ def on_load
 end
 ```
 
+If you want to preview images which are under not secured (under HTTP), add the following line in the `Rakefile`:
+```ruby
+app.info_plist['NSAppTransportSecurity'] = { 'NSAllowsArbitraryLoads' => true }
+```
+
 Now paste this URL in and hit **Go**
 `http://bit.ly/18iMhwc`
 
