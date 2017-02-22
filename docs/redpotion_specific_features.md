@@ -140,3 +140,22 @@ end
 ```
 
 Once everything is in place, the new screen will mirror your CoreData database and build the cells based on the `cell` definition in the model. Whenever you update the data in CoreData the table will automatically update to reflect the new data! It automatically handles additions, deletions, and updates to existing model data.
+
+#### Preserving MVC separation
+You can also define the cell method on your DataTableScreen subclass, which enables you maintain traditional MVC separation when view-level information affects the cell definition.
+
+```ruby
+class MyTableScreen < PM::DataTableScreen
+
+  def cell model
+    {
+      #Define cell appearance specific to the model instance
+      cell_class: self.custom_cell_for model,
+      # Use the model's properties to populate data in the hash
+      title: model.name,
+      subtitle: "Something else: #{something_else}"
+    }
+  end
+end
+```
+
