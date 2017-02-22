@@ -272,13 +272,13 @@ describe 'DataTableScreen' do
       TestDataTableScreen.data_model.should.equal(Contributor)
     end
 
-    it "should require the model provided defines the cell method" do
-      class MissingCellMethod; end
+    # it "should require the model provided defines the cell method" do
+    #   class MissingCellMethod; end
 
-      should.raise(RuntimeError) do
-        TestDataTableScreen.model MissingCellMethod
-      end
-    end
+    #   should.raise(RuntimeError) do
+    #     TestDataTableScreen.model MissingCellMethod
+    #   end
+    # end
 
     it "should accept an optional scope" do
       TestDataTableScreen.model Contributor, scope: :starts_with_s
