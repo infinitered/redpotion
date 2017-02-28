@@ -1,6 +1,6 @@
 module ProMotion
   module DataTable
-    
+
     include TableClassMethods
     include ProMotion::Styling
     include ProMotion::Table
@@ -72,7 +72,7 @@ module ProMotion
             unless data_scope == :all
               mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope. Currently sorting by :#{sort_attribute}.", force_color: :yellow
             end
-            data_model.send(data_scope).sort_by(sort_attribute)
+            data_with_scope.sort_by(sort_attribute)
           else
             # This is where the application says goodbye and dies in a fiery crash.
             mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope.", force_color: :yellow
@@ -103,8 +103,16 @@ module ProMotion
 
     def cell_at(args = {})
       index_path = args.is_a?(Hash) ? args[:index_path] : args
-      c = object_at_index(index_path).cell
+      c = cell_for object_at_index(index_path)
       set_data_cell_defaults(c)
+    end
+
+    def cell_for model
+      begin
+        self.respond_to?(:cell) ? cell(model) : model.cell
+      rescue NoMethodError
+        raise "Either #{model} or #{self} must define the cell method."
+      end
     end
 
     def object_at_index(i)
@@ -165,7 +173,7 @@ module ProMotion
     end
 
     def tableView(table_view, heightForRowAtIndexPath: index_path)
-      (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
+      (cell_for(object_at_index(index_path))[:height] || table_view.rowHeight).to_f
     end
 
     def controllerWillChangeContent(controller)

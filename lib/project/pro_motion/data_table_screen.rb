@@ -1,19 +1,15 @@
 module ProMotion
   class DataTableScreen < TableViewController
-    
+
     include ProMotion::ScreenModule
     include ProMotion::DataTable
 
     class << self
       def model(value, opts = {})
-        if value.method_defined?(:cell)
-          @opts = {
-            model: value,
-            scope: :all,
-          }.merge(opts)
-        else
-          raise "#{value} must define the cell method"
-        end
+        @opts = {
+          model: value,
+          scope: :all,
+        }.merge(opts)
       end
 
       def data_model
