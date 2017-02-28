@@ -72,7 +72,7 @@ module ProMotion
             unless data_scope == :all
               mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope. Currently sorting by :#{sort_attribute}.", force_color: :yellow
             end
-            data_model.send(data_scope).sort_by(sort_attribute)
+            data_with_scope.sort_by(sort_attribute)
           else
             # This is where the application says goodbye and dies in a fiery crash.
             mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope.", force_color: :yellow
