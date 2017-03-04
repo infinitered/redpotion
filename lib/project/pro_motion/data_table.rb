@@ -96,6 +96,12 @@ module ProMotion
       end
     end
 
+    def refresh_scope
+      @fetch_controller = @_fetch_scope = nil
+      set_up_fetch_controller
+      update_table_data
+    end
+
     def on_cell_created(cell, data)
       # Do not call super here
       self.rmq.build(cell)
@@ -149,7 +155,16 @@ module ProMotion
     end
 
     def tableView(table_view, numberOfRowsInSection: section)
+      #schedule a callback on the next event loop letting the controller know all rows have been loaded in the background
+      #the only way to get this is on the LAST invocation of this delegate method. A little hacky, but Apple missed this one from the SDK.
+      NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: 'on_rows_loaded:', object:tableView) #this is not the last invocation
+      self.performSelector('on_rows_loaded:', withObject: table_view, afterDelay:0) #this one will be after the last, if not cancelled
+
       fetch_controller.sections[section].numberOfObjects
+    end
+
+    #default implementation; override
+    def on_rows_loaded table_view
     end
 
     def tableView(table_view, didSelectRowAtIndexPath: index_path)
