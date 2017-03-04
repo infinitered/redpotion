@@ -1,6 +1,6 @@
 module ProMotion
   module DataTable
-    
+
     include TableClassMethods
     include ProMotion::Styling
     include ProMotion::Table
@@ -72,7 +72,7 @@ module ProMotion
             unless data_scope == :all
               mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope. Currently sorting by :#{sort_attribute}.", force_color: :yellow
             end
-            data_model.send(data_scope).sort_by(sort_attribute)
+            data_with_scope.sort_by(sort_attribute)
           else
             # This is where the application says goodbye and dies in a fiery crash.
             mp "The `#{data_model}` model scope `#{data_scope}` needs a sort descriptor. Add sort_by(:property) to your scope.", force_color: :yellow
@@ -96,6 +96,12 @@ module ProMotion
       end
     end
 
+    def refresh_scope
+      @fetch_controller = @_fetch_scope = nil
+      set_up_fetch_controller
+      update_table_data
+    end
+
     def on_cell_created(cell, data)
       # Do not call super here
       self.rmq.build(cell)
@@ -103,8 +109,16 @@ module ProMotion
 
     def cell_at(args = {})
       index_path = args.is_a?(Hash) ? args[:index_path] : args
-      c = object_at_index(index_path).cell
+      c = cell_for object_at_index(index_path)
       set_data_cell_defaults(c)
+    end
+
+    def cell_for model
+      begin
+        self.respond_to?(:cell) ? cell(model) : model.cell
+      rescue NoMethodError
+        raise "Either #{model} or #{self} must define the cell method."
+      end
     end
 
     def object_at_index(i)
@@ -141,7 +155,16 @@ module ProMotion
     end
 
     def tableView(table_view, numberOfRowsInSection: section)
+      #schedule a callback on the next event loop letting the controller know all rows have been loaded in the background
+      #the only way to get this is on the LAST invocation of this delegate method. A little hacky, but Apple missed this one from the SDK.
+      NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: 'on_rows_loaded:', object:tableView) #this is not the last invocation
+      self.performSelector('on_rows_loaded:', withObject: table_view, afterDelay:0) #this one will be after the last, if not cancelled
+
       fetch_controller.sections[section].numberOfObjects
+    end
+
+    #default implementation; override
+    def on_rows_loaded table_view
     end
 
     def tableView(table_view, didSelectRowAtIndexPath: index_path)
@@ -160,12 +183,13 @@ module ProMotion
 
     def tableView(_, willDisplayCell: table_cell, forRowAtIndexPath: index_path)
       data_cell = cell_at(index_path: index_path)
+      try :will_display_cell, table_cell, index_path
       table_cell.send(:will_display) if table_cell.respond_to?(:will_display)
       table_cell.send(:restyle!) if table_cell.respond_to?(:restyle!) # Teacup compatibility
     end
 
     def tableView(table_view, heightForRowAtIndexPath: index_path)
-      (object_at_index(index_path).cell[:height] || table_view.rowHeight).to_f
+      (cell_for(object_at_index(index_path))[:height] || table_view.rowHeight).to_f
     end
 
     def controllerWillChangeContent(controller)

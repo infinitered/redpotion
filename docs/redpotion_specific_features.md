@@ -139,4 +139,32 @@ class SomeModelScreen < PM::DataTableScreen
 end
 ```
 
-Once everything is in place, the new screen will mirror your CoreData database and build the cells based on the `cell` definition in the model. Whenever you update the data in CoreData the table will automatically update to reflect the new data! It automatically handles additions, deletions, and updates to existing model data.
+Once everything is in place, the new screen will mirror your CoreData database and build the cells based on the `cell` definition in the model. Whenever you update the data in CoreData the table will automatically update to reflect the new data! It automatically handles additions, deletions, and updates to existing model data. There is also a callback method `on_rows_loaded` that you can implement to handle processing after the fetched results controller has finished its work.
+
+```ruby
+def on_rows_loaded table_view
+  #do something to the table_view, like scroll to an offset
+end
+```
+
+#### Preserving MVC separation
+You can also define the cell method on your DataTableScreen subclass, which enables you maintain traditional MVC separation when view-level information affects the cell definition.
+
+```ruby
+class MyTableScreen < PM::DataTableScreen
+
+  def cell model
+    {
+      #Define cell appearance specific to the model instance
+      cell_class: self.custom_cell_for model,
+      # Use the model's properties to populate data in the hash
+      title: model.name,
+      subtitle: "Something else: #{something_else}"
+    }
+  end
+end
+```
+
+#### Changing your model query
+If you want to update the model query that sources data for the fetched results controller, simply invoke `refresh_scope` and the Data Table will reload itself by reinvoking `model_query`. 
+
