@@ -31,3 +31,7 @@ ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 **Read the [RedPotion Documentation](http://docs.redpotion.org) here**
 
 **Read the [RedPotion Quick Start Documentation](http://docs.redpotion.org/en/latest/quick_start/) here**
+
+## Premium Support
+
+[RedPotion](https://github.com/infinitered/redpotion), as open source projects, is free to use and always will be. [Infinite Red](https://infinite.red/) offers premium RedPotion support and general mobile app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
