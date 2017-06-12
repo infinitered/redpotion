@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redpotion (1.4.0)
+    redpotion (1.6.0)
       ProMotion (>= 2.5.0)
       RedAlert
       motion-cocoapods
@@ -12,7 +12,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ProMotion (2.5.0)
+    ProMotion (2.6.1)
       methadone (~> 1.7)
       motion_print (~> 1.0)
     RedAlert (1.4)
@@ -61,7 +61,7 @@ GEM
     fuzzy_match (2.0.4)
     i18n (0.7.0)
     json (1.8.3)
-    methadone (1.9.2)
+    methadone (1.9.5)
       bundler
     minitest (5.8.3)
     molinillo (0.4.1)
@@ -74,7 +74,7 @@ GEM
     newclear (1.3)
       reset-sim
     plist (3.1.0)
-    rake (10.4.2)
+    rake (12.0.0)
     reset-sim (1.1.1)
     ruby-xcdm (0.0.9)
       activesupport (~> 4.1)
@@ -102,4 +102,4 @@ DEPENDENCIES
   webstub
 
 BUNDLED WITH
-   1.10.6
+   1.13.6
