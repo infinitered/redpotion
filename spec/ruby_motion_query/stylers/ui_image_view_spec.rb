@@ -42,8 +42,15 @@ describe "RubyMotionQuery styler: UIImageView" do
 
   after do
     WebStub::Protocol.enable_network_access!
-    SDWebImageManager.sharedManager.imageCache.clearMemory
-    SDWebImageManager.sharedManager.imageCache.clearDisk
+    image_cache = SDWebImageManager.sharedManager.imageCache
+    image_cache.clearMemory
+    if image_cache.respond_to?(:clearDisk)
+      # Support for SDWebImage v3.x
+      image_cache.clearDisk
+    else
+      # Support for SDWebImage v4.x
+      image_cache.deleteOldFilesWithCompletion(nil)
+    end
   end
 
   it "should set a placeholder image" do
@@ -104,16 +111,35 @@ describe "RubyMotionQuery styler: UIImageView" do
   it "should clear the image cache" do
     SDImageCache.sharedImageCache.getSize.should == 0.0
 
-    SDWebImageManager.sharedManager.downloadWithURL(NSURL.URLWithString('http://somehost/image'),
-      options:SDWebImageRefreshCached,
-      progress:nil,
-      completed: -> image, error, cacheType, finished {
-        SDImageCache.sharedImageCache.getSize.should > 0.0
-        rmq.app.reset_image_cache!
-        wait 0.1 do
-          SDImageCache.sharedImageCache.getSize.should == 0.0
-        end
-    })
+    url = NSURL.URLWithString('http://somehost/image')
+    manager = SDWebImageManager.sharedManager
+    if manager.respond_to?('downloadWithURL:options:progress:completed')
+      # Support for SDWebImage v3.x
+      manager.downloadWithURL(url,
+        options: SDWebImageRefreshCached,
+        progress: nil,
+        completed: -> image, error, cacheType, finished {
+          SDImageCache.sharedImageCache.getSize.should > 0.0
+          rmq.app.reset_image_cache!
+          wait 0.1 do
+            SDImageCache.sharedImageCache.getSize.should == 0.0
+          end
+        }
+      )
+    else
+      # Support for SDWebImage v4.x
+      manager.loadImageWithURL(url,
+        options: SDWebImageRefreshCached,
+        progress: nil,
+        completed: -> image, imageData, error, cacheType, finished, imageURL {
+          SDImageCache.sharedImageCache.getSize.should > 0.0
+          rmq.app.reset_image_cache!
+          wait 0.1 do
+            SDImageCache.sharedImageCache.getSize.should == 0.0
+          end
+        }
+      )
+    end
   end
 
 end
