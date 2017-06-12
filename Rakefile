@@ -2,7 +2,7 @@
 $:.unshift("/Library/RubyMotion/lib")
 
 require "motion/project/template/ios"
-require "bundler/gem_tasks"
+require "motion/project/template/gem/gem_tasks"
 require "bundler/setup"
 require "motion_print"
 require "webstub"
