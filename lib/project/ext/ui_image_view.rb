@@ -8,29 +8,48 @@ class UIImageView
 
   private
 
-  def load_remote_image(url, on_load = -> {})
-    if !!defined?(SDWebImageManager)
+  def load_remote_image(url, callback = nil)
+    if defined?(SDWebImageManager)
       @remote_image_operations ||= {}
-
       # Cancel the previous remote operation if it exists
       operation = @remote_image_operations[("%p" % self)]
       if operation && operation.respond_to?(:cancel)
         operation.cancel
         @remote_image_operations[("%p" % self)] = nil
       end
+      url = NSURL.URLWithString(url) unless url.is_a?(NSURL)
+      @remote_image_operations[("%p" % self)] = load_remote_image_using_sdwebimage(url, callback)
+    else
+      puts "\n[RedPotion ERROR]  tried to set remote_image without SDWebImage CocoaPod. Please add this to your Rakefile: \n\napp.pods do\n  pod \"SDWebImage\"\nend\n"
+    end
+  end
 
-      value = NSURL.URLWithString(url) unless url.is_a?(NSURL)
-      @remote_image_operations[("%p" % self)] = SDWebImageManager.sharedManager.downloadWithURL(value,
-        options:SDWebImageRefreshCached,
-        progress:nil,
+  def load_remote_image_using_sdwebimage(url, callback = nil)
+    manager = SDWebImageManager.sharedManager
+    if manager.respond_to?('downloadWithURL:options:progress:completed')
+      # Support for SDWebImage v3.x
+      manager.downloadWithURL(url,
+        options: SDWebImageRefreshCached,
+        progress: nil,
         completed: -> image, error, cacheType, finished {
           Dispatch::Queue.main.async do
             self.image = image
-            on_load.call
+            callback.call if callback
           end unless image.nil?
-      })
+        }
+      )
     else
-      puts "\n[RedPotion ERROR]  tried to set remote_image without SDWebImage cocoapod. Please add this to your Rakefile: \n\napp.pods do\n  pod \"SDWebImage\"\nend\n"
+      # Support for SDWebImage v4.x
+      manager.loadImageWithURL(url,
+        options: SDWebImageRefreshCached,
+        progress: nil,
+        completed: -> image, imageData, error, cacheType, finished, imageURL {
+          Dispatch::Queue.main.async do
+            self.image = image
+            callback.call if callback
+          end unless image.nil?
+        }
+      )
     end
   end
 
