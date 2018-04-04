@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
+$:.unshift("~/.rubymotion/rubymotion-templates")
 
 require "motion/project/template/ios"
 require "motion/project/template/gem/gem_tasks"
@@ -20,11 +21,12 @@ Motion::Project::App.setup do |app|
   app.device_family = [:iphone, :ipad]
   app.interface_orientations = [:portrait, :landscape_left, :landscape_right, :portrait_upside_down]
 
-  app.pods do
-    pod "SDWebImage"
-  end
+  app.redgreen_style = :full # test output
 
-  app.development do
+  app.info_plist['NSAppTransportSecurity'] = { 'NSAllowsArbitraryLoads' => true } # allow HTTP requests in tests
+
+  app.pods do
+    pod "SDWebImage", "~> 4.3"
   end
 end
 task :"build:simulator" => :"schema:build"
