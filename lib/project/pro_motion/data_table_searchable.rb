@@ -9,6 +9,7 @@ module ProMotion
           @data_table_predicate_fields = params[:search_bar][:fields]
         end
         params[:delegate] = search_delegate
+        params[:search_results_updater] = search_delegate
 
         make_searchable(params)
       end
@@ -59,10 +60,9 @@ module ProMotion
 
       ######### iOS methods, headless camel case #######
 
-      def dt_searchDisplayController(controller, shouldReloadTableForSearchString:search_string)
-        @_data_table_search_string = search_string
-        reset_search_frc
-        true
+      def dt_searchDisplayControllerWillBeginSearch(controller)
+        @_data_table_searching = true
+        search_controller.delegate.will_begin_search if search_controller.delegate.respond_to? "will_begin_search"
       end
 
       def dt_searchDisplayControllerWillEndSearch(controller)
@@ -70,15 +70,14 @@ module ProMotion
         @_search_fetch_controller.delegate = nil unless @_search_fetch_controller.nil?
         @_search_fetch_controller = nil
         @_data_table_search_string = nil
-        self.table_view.setScrollEnabled true
-        @table_search_display_controller.delegate.will_end_search if @table_search_display_controller.delegate.respond_to? "will_end_search"
+        search_controller.delegate.will_end_search if search_controller.delegate.respond_to? "will_end_search"
         update_table_data
       end
 
-      def dt_searchDisplayControllerWillBeginSearch(controller)
-        @_data_table_searching = true
-        self.table_view.setScrollEnabled false
-        @table_search_display_controller.delegate.will_begin_search if @table_search_display_controller.delegate.respond_to? "will_begin_search"
+      def dt_searchDisplayController(controller, shouldReloadTableForSearchString:search_string)
+        @_data_table_search_string = search_string
+        reset_search_frc
+        true
       end
       
     end
