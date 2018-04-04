@@ -2,9 +2,8 @@
 
 <br />
 
-[![Dependency Status](https://gemnasium.com/infinitered/redpotion.svg)](https://gemnasium.com/infinitered/redpotion)
-[![Build Status](https://travis-ci.org/infinitered/redpotion.svg)](https://travis-ci.org/infinitered/redpotion)
-[![Gem Version](https://badge.fury.io/rb/redpotion.png)](http://badge.fury.io/rb/redpotion)
+[![Gem Version](https://img.shields.io/gem/v/redpotion.svg?style=flat)](https://rubygems.org/gems/redpotion)
+[![Build Status](https://img.shields.io/travis/infinitered/redpotion.svg?style=flat)](https://travis-ci.org/infinitered/redpotion)
 
 # RedPotion
 
@@ -24,13 +23,12 @@ ProMotion for screens and RMQ for styles, animations, traversing, events, etc.
 ----------
 
 <br />
-<br />
 
 [![image](http://ir_wp.s3.amazonaws.com/wp-content/uploads/sites/19/2015/04/rp_docs.png)](http://docs.redpotion.org)
 
-**Read the [RedPotion Documentation](http://docs.redpotion.org) here**
+**Read the [RedPotion Documentation](http://docs.redpotion.org).**
 
-**Read the [RedPotion Quick Start Documentation](http://docs.redpotion.org/en/latest/quick_start/) here**
+**Read the [RedPotion Quick Start Documentation](http://docs.redpotion.org/en/latest/quick_start/).**
 
 ## Premium Support
 
