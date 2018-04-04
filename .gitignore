@@ -20,3 +20,4 @@ rm_spec_output
 resources/*.xcdatamodeld
 vendor
 site/
+Gemfile.lock
