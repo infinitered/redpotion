@@ -15,7 +15,7 @@ module ProMotion
         if self.is_a?(ProMotion::DataTableScreen)
           self.make_data_table_searchable(content_controller: self, search_bar: self.class.get_searchable_params)
         else
-          self.make_searchable(self.class.get_searchable_params)
+          self.make_searchable
         end
       end
     end

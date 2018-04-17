@@ -214,29 +214,15 @@ describe 'DataTableScreen' do
       @controller.tableView.delegate.search_delegate.class.should == DataTableSeachDelegate
     end
 
-    it "should create a search header" do
-      @controller.tableView.tableHeaderView.should.be.kind_of UISearchBar
-    end
+    if UIDevice.currentDevice.systemVersion.to_f < 11.0
+      it "should create a search header" do
+        @controller.tableView.tableHeaderView.should.be.kind_of UISearchBar
+      end
 
-    it "should not hide the search bar initally by default" do
-      @controller.tableView.contentOffset.should == CGPointMake(0,0)
+      it "should not hide the search bar initally by default" do
+        @controller.tableView.contentOffset.should == CGPointMake(0,0)
+      end
     end
-
-    it "should toggle searching?" do
-      @controller.searching?.should == false
-      @controller.search_delegate.willPresentSearchController(@controller.search_controller)
-      @controller.searching?.should == true
-    end
-
-    # FIXME
-    # it "should store the search_string" do
-    #   @controller.search_delegate.willPresentSearchController(@controller.search_controller)
-    #   @controller.search_controller.searchBar.text = "ma"
-    #   @controller.search_delegate.updateSearchResultsForSearchController(@controller.search_controller)
-    #   @controller.search_string.should == "ma"
-    #   @controller.search_delegate.willDismissSearchController(@controller.search_controller)
-    #   @controller.search_string.should.be.nil
-    # end
 
     it "should have a delegate object that isn't ProMotion" do
       @controller.search_delegate.class.should.not == @controller.class
